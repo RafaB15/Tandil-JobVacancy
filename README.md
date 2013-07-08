@@ -1,4 +1,4 @@
 job-vacancy
 ===========
 
-Job vacancy sandbox application
+Esta es una aplicación de ejemplo desarrollada con Padrino.
