@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .DS_Store
 log/**/*
 tmp/**/*
@@ -7,7 +6,6 @@ vendor/gems/*
 !vendor/gems/cache/
 .sass-cache/*
 db/*.db
-=======
 *.gem
 *.rbc
 .bundle
@@ -21,9 +19,9 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
+reports
 
 # YARD artifacts
 .yardoc
 _yardoc
 doc/
->>>>>>> 090a961dde8958d42956ce352e9ceddd51a5cff1

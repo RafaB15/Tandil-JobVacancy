@@ -3,18 +3,10 @@ require File.expand_path(File.dirname(__FILE__) + "/../config/boot")
 
 RSpec.configure do |conf|
   conf.include Rack::Test::Methods
+  DataMapper.setup(:default, "abstract::")
+  DataMapper::Logger.new($stdout, :all)
 end
 
-# You can use this method to custom specify a Rack app
-# you want rack-test to invoke:
-#
-#   app JobVacancy::App
-#   app JobVacancy::App.tap { |a| }
-#   app(JobVacancy::App) do
-#     set :foo, :bar
-#   end
-#
-def app(app = nil &blk)
-  @app ||= block_given? ? app.instance_eval(&blk) : app
-  @app ||= Padrino.application
+def app
+  JobVacancy::App.tap { |app|  }
 end

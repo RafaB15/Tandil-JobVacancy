@@ -1,11 +1,17 @@
 require 'spec_helper'
 
 describe "HomeController" do
-  before do
-    get "/"
+
+  describe 'default' do
+
+  	before do
+   		get "/"
+  	end
+
+  	it "should return Comming soon!" do
+    	last_response.body.include? 'Comming soon!'
+  	end
+
   end
 
-  it "returns hello world" do
-    last_response.body.should == "Hello World"
-  end
 end
