@@ -39,7 +39,6 @@ gem 'padrino', '0.11.2'
 group :development, :test do
   gem 'guard'		
   gem 'guard-rspec'
-  gem 'debugger'
   gem 'cucumber'
   gem 'capybara'
   gem 'rspec_junit_formatter'
@@ -47,6 +46,10 @@ group :development, :test do
   gem 'simplecov'
   gem 'rack-test', :require => 'rack/test'
   gem 'rubocop',  :github => 'bbatsov/rubocop'
+end
+
+group :development do
+  gem 'debugger'
 end
 
 # Or Padrino Edge
