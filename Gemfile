@@ -28,17 +28,26 @@ gem 'therubyracer'
 gem 'padrino-sprockets', :require => "padrino/sprockets"
 gem 'uglifier', '2.1.1'
 gem 'yui-compressor', '0.9.6'
+gem 'bcrypt-ruby', :require => 'bcrypt'
 
 # Test requirements
-gem 'cucumber', :group => 'test'
-gem 'capybara', :group => 'test'
-gem 'rspec_junit_formatter', :group => 'test'
-gem 'rspec', :group => 'test'
-gem 'simplecov', :group => 'test'
-gem 'rack-test', :require => 'rack/test', :group => 'test'
+
 
 # Padrino Stable Gem
 gem 'padrino', '0.11.2'
+
+group :development, :test do
+  gem 'guard'		
+  gem 'guard-rspec'
+  gem 'debugger'
+  gem 'cucumber'
+  gem 'capybara'
+  gem 'rspec_junit_formatter'
+  gem 'rspec'
+  gem 'simplecov'
+  gem 'rack-test', :require => 'rack/test'
+  gem 'rubocop',  :github => 'bbatsov/rubocop'
+end
 
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'

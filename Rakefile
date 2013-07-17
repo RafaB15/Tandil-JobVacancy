@@ -1,6 +1,10 @@
 require 'bundler/setup'
+require 'bundler'
+
 require 'padrino-core/cli/rake'
 PADRINO_ENV  = ENV['PADRINO_ENV'] ||= ENV['RACK_ENV'] ||= 'test'  unless defined?(PADRINO_ENV)
+
+require 'rake'
 
 PadrinoTasks.use(:database)
 PadrinoTasks.use(:datamapper)
@@ -35,5 +39,14 @@ if ['development', 'test', 'travis'].include?(PADRINO_ENV)
     t.rspec_opts = %w(--format RspecJunitFormatter --out reports/spec/spec.xml)
   end
   
+  require 'rubocop/rake_task'
+  desc 'Run RuboCop on the lib directory'
+  Rubocop::RakeTask.new(:rubocop) do |task|
+    #task.patterns = ['lib/**/*.rb']
+    # don't abort rake on failure
+    task.fail_on_error = false
+  end
+
 	task :default => [:travis]
+
 end
