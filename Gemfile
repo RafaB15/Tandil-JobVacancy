@@ -48,9 +48,6 @@ group :development, :test do
   gem 'rubocop',  :github => 'bbatsov/rubocop'
 end
 
-group :development do
-  gem 'debugger'
-end
 
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'
