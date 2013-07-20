@@ -6,7 +6,7 @@ SimpleCov.start do
   add_filter '/spec/'
   add_filter '/features/'
   add_filter '/admin/'
-  add_filter '/fixtures/'
+  add_filter '/db/'
   add_filter '/config/'
 
   add_group "Models", "app/models"
