@@ -16,20 +16,5 @@ describe "UsersController" do
 	  end
 
 	 end
-
-	describe 'get :login' do
-		
-	  it "should response ok" do
-	  	JobVacancy::App.any_instance.should_receive(:render).with('users/login')
-	  	get '/login'
-	    last_response.should be_ok
-	  end
-
-	  it 'should render users/login' do
-	  	JobVacancy::App.any_instance.should_receive(:render).with('users/login')
-	  	get '/login'
-	  end
-
-	 end
 	 
 end
