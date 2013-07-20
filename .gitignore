@@ -20,6 +20,7 @@ test/tmp
 test/version_tmp
 tmp
 reports
+:memory
 
 # YARD artifacts
 .yardoc

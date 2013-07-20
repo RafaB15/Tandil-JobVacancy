@@ -53,6 +53,8 @@ GEM
     diff-lcs (1.2.4)
     dm-aggregates (1.2.0)
       dm-core (~> 1.2.0)
+    dm-ar-finders (1.2.0)
+      dm-core (~> 1.2.0)
     dm-constraints (1.2.0)
       dm-core (~> 1.2.0)
     dm-core (1.2.1)
@@ -186,8 +188,8 @@ GEM
       builder
       rspec (~> 2.0)
       rspec-core (!= 2.12.0)
-    simplecov (0.7.1)
-      multi_json (~> 1.0)
+    simplecov (0.8.0.pre)
+      multi_json
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
     sinatra (1.4.3)
@@ -240,6 +242,7 @@ DEPENDENCIES
   cucumber
   debugger
   dm-aggregates
+  dm-ar-finders
   dm-constraints
   dm-core
   dm-migrations
@@ -257,7 +260,7 @@ DEPENDENCIES
   rspec
   rspec_junit_formatter
   rubocop!
-  simplecov
+  simplecov (= 0.8.0.pre)
   slim
   therubyracer
   thin
