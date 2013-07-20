@@ -48,7 +48,7 @@ group :development, :test do
   gem 'simplecov', "0.8.0.pre"
   gem 'rack-test', :require => 'rack/test'
   gem 'rubocop',  :github => 'bbatsov/rubocop'
-  gem 'debugger'
+  #gem 'debugger'
 end
 
 
