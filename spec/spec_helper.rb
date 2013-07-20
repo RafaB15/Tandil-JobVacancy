@@ -1,4 +1,7 @@
 PADRINO_ENV = 'test' unless defined?(PADRINO_ENV)
+require 'simplecov'
+SimpleCov.command_name 'spec'
+
 require File.expand_path(File.dirname(__FILE__) + "/../config/boot")
 
 RSpec.configure do |conf|

@@ -4,9 +4,11 @@ module JobVacancy
     register Padrino::Mailer
     register Padrino::Helpers
     register Padrino::Sprockets
+    #register Padrino::Admin::AccessControl
     sprockets :minify => (Padrino.env == :production)
 
     enable :sessions
+    
 
     ##
     # Caching support

@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + "/../../config/boot")
 require 'capybara/cucumber'
 require 'rspec/expectations'
 
-require 'simplecov'
+#require 'simplecov'
 
 ##
 # You can handle all padrino applications using instead:

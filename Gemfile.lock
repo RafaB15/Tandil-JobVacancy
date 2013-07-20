@@ -46,6 +46,8 @@ GEM
     diff-lcs (1.2.4)
     dm-aggregates (1.2.0)
       dm-core (~> 1.2.0)
+    dm-ar-finders (1.2.0)
+      dm-core (~> 1.2.0)
     dm-constraints (1.2.0)
       dm-core (~> 1.2.0)
     dm-core (1.2.1)
@@ -72,6 +74,7 @@ GEM
       dm-core (~> 1.2.0)
     do_sqlite3 (0.10.13)
       data_objects (= 0.10.13)
+    erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -178,8 +181,8 @@ GEM
       builder
       rspec (~> 2.0)
       rspec-core (!= 2.12.0)
-    simplecov (0.7.1)
-      multi_json (~> 1.0)
+    simplecov (0.8.0.pre)
+      multi_json
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
     sinatra (1.4.3)
@@ -231,6 +234,7 @@ DEPENDENCIES
   capybara
   cucumber
   dm-aggregates
+  dm-ar-finders
   dm-constraints
   dm-core
   dm-migrations
@@ -238,6 +242,7 @@ DEPENDENCIES
   dm-timestamps
   dm-types
   dm-validations
+  erubis (~> 2.7.0)
   guard
   guard-rspec
   padrino (= 0.11.2)
@@ -247,7 +252,7 @@ DEPENDENCIES
   rspec
   rspec_junit_formatter
   rubocop!
-  simplecov
+  simplecov (= 0.8.0.pre)
   slim
   therubyracer
   thin

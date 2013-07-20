@@ -16,6 +16,7 @@ gem 'rake'
 
 # Component requirements
 gem 'slim'
+gem 'erubis', '~> 2.7.0'
 gem 'dm-sqlite-adapter'
 gem 'dm-validations'
 gem 'dm-timestamps'
@@ -24,6 +25,7 @@ gem 'dm-constraints'
 gem 'dm-aggregates'
 gem 'dm-types'
 gem 'dm-core'
+gem 'dm-ar-finders'
 gem 'therubyracer'
 gem 'padrino-sprockets', :require => "padrino/sprockets"
 gem 'uglifier', '2.1.1'
@@ -43,9 +45,10 @@ group :development, :test do
   gem 'capybara'
   gem 'rspec_junit_formatter'
   gem 'rspec'
-  gem 'simplecov'
+  gem 'simplecov', "0.8.0.pre"
   gem 'rack-test', :require => 'rack/test'
   gem 'rubocop',  :github => 'bbatsov/rubocop'
+  #gem 'debugger'
 end
 
 

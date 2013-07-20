@@ -18,17 +18,34 @@
 <%= link_to 'Home', url_for(:home, :index) %>
 </div>
 <div class="span2">
+	<% if signed_in? %>	
+		<%= link_to 'Logout', url_for(:sessions, :destroy) %>
+	<% else%>
+		<%= link_to 'Login', url_for(:sessions, :login) %>
+	<% end %>
 </div>
 <div class="span2">
-          </div>
+	<% if signed_in? %>
+		<%= current_user.email %>
+	<% end %>
+</div>
         </nav>
 </div>
 <div class="row">
-<div class="span9 offset3 site"> <%= yield %>
-        </div>
-      </div>
-    </div>
+
+	<div class="span9 offset3 site"> 
+
+  <div class='row'>
+    <%= [:error, :warning, :success, :notice].map { |type| flash_tag(type, :class => "alert alert-#{type} fade in", :bootstrap => true) }.join.html_safe %>
   </div>
+
+		<%= yield %>
+	</div>
+ 
+
+ </div>
+ </div>
+ </div>
 <%= javascript_include_tag '/assets/application' %> 
 </body>
 </html>

@@ -5,6 +5,7 @@ require 'padrino-core/cli/rake'
 PADRINO_ENV  = ENV['PADRINO_ENV'] ||= ENV['RACK_ENV'] ||= 'test'  unless defined?(PADRINO_ENV)
 
 require 'rake'
+require 'simplecov'
 
 PadrinoTasks.use(:database)
 PadrinoTasks.use(:datamapper)
@@ -30,7 +31,7 @@ if ['development', 'test', 'travis'].include?(PADRINO_ENV)
   require 'rspec/core/rake_task'
   RSpec::Core::RakeTask.new(:spec) do |t|
     t.pattern = "./spec/**/*_spec.rb"
-    t.rspec_opts = %w(-fs --color --format progress)
+    t.rspec_opts = %w(-fs --color)
   end
 
   require 'rspec/core/rake_task'
