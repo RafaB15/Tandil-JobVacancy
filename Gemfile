@@ -16,6 +16,7 @@ gem 'rake'
 
 # Component requirements
 gem 'slim'
+gem 'erubis', '~> 2.7.0'
 gem 'dm-sqlite-adapter'
 gem 'dm-validations'
 gem 'dm-timestamps'
@@ -46,6 +47,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'rack-test', :require => 'rack/test'
   gem 'rubocop',  :github => 'bbatsov/rubocop'
+  gem 'debugger'
 end
 
 

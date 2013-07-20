@@ -24,11 +24,20 @@
         </nav>
 </div>
 <div class="row">
-<div class="span9 offset3 site"> <%= yield %>
-        </div>
-      </div>
-    </div>
+
+	<div class="span9 offset3 site"> 
+
+  <div class='row'>
+    <%= [:error, :warning, :success, :notice].map { |type| flash_tag(type, :class => "alert alert-#{type} fade in", :bootstrap => true) }.join.html_safe %>
   </div>
+
+		<%= yield %>
+	</div>
+ 
+
+ </div>
+ </div>
+ </div>
 <%= javascript_include_tag '/assets/application' %> 
 </body>
 </html>
