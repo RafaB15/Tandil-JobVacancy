@@ -5,6 +5,7 @@ class User
   property :name, String
   property :crypted_password, String
   property :email, String
+  has n, :job_offers
 
   validates_presence_of :name
   validates_presence_of :crypted_password
