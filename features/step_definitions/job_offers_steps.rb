@@ -1,15 +1,20 @@
 Given(/^I am logged in as job offerer$/) do
-  pending # express the regexp above with the code you wish you had
+  visit '/login'
+  fill_in('user[email]', :with => 'offerer@test.com')
+  fill_in('user[password]', :with => 'Passw0rd!')
+  click_button('Login')
+  page.should have_content('offerer@test.com')
 end
 
 Given(/^I access the new offer page$/) do
-  pending # express the regexp above with the code you wish you had
+  visit '/job_offers/new'
+  page.should have_content('Title')
 end
 
-When(/^I fill the title with "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+When(/^I fill the title with "(.*?)"$/) do |offer_title|
+  fill_in('job_offer[title]', :with => offer_title)
 end
 
 When(/^confirm the new offer$/) do
-  pending # express the regexp above with the code you wish you had
+  click_button('Create')
 end

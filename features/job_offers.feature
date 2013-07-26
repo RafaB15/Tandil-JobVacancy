@@ -11,3 +11,4 @@ Feature: Job Offers
     When I fill the title with "Programmer vacancy"
 		And confirm the new offer    
     Then I should see "Offer created"
+	And I should see "Programmer vacancy"
