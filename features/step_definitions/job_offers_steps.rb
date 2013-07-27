@@ -1,7 +1,4 @@
 Given(/^I am logged in as job offerer$/) do
-  user = User.create(:email => 'offerer@test.com',
-									 :name => 'Offerer', 
-									 :password => "Passw0rd!")
   visit '/login'
   fill_in('user[email]', :with => 'offerer@test.com')
   fill_in('user[password]', :with => 'Passw0rd!')
