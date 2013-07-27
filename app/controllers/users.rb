@@ -18,7 +18,7 @@ JobVacancy::App.controllers :users do
   # get '/example' do
   #   'Hello world!'
   # end
-  
+
   get :new, :map => '/register' do
     @user = User.new
     render 'users/new'

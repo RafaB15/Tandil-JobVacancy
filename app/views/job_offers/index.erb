@@ -1,0 +1,30 @@
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Location</th>
+		<th>Description</th>
+		<th>Actions</th>
+	</tr>
+	<% @offers.each do | offer| %>
+
+	<tr>
+		<td>
+			<%= offer.title %>
+		</td>
+		<td>
+			<%= offer.location %>
+		</td>
+		<td>
+			<%= offer.description %>
+		</td>		
+		<td>
+			<%= link_to 'Edit', url_for(:job_offers, :edit, :offer_id => offer.id) %>
+			<%= link_to 'Delete', url_for(:job_offers, :destroy, :offer_id => offer.id) %>
+		</td>		
+	</tr>
+
+  <% end %>
+
+
+
+</table>
