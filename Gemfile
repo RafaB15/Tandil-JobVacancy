@@ -39,8 +39,6 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'padrino', '0.11.2'
 
 group :development, :test do
-  gem 'guard'		
-  gem 'guard-rspec'
   gem 'cucumber'
   gem 'capybara'
   gem 'rspec_junit_formatter'
@@ -48,6 +46,11 @@ group :development, :test do
   gem 'simplecov', "0.8.0.pre"
   gem 'rack-test', :require => 'rack/test'
   gem 'rubocop',  :github => 'bbatsov/rubocop'
+end
+
+group :development do
+  gem 'guard'   
+  gem 'guard-rspec'
   gem 'debugger'
 end
 
