@@ -18,3 +18,27 @@ end
 When(/^confirm the new offer$/) do
   click_button('Create')
 end
+
+Then(/^I should see "(.*?)" in My Offers$/) do |content|
+	visit '/job_offers/my'
+  page.should have_content(content)
+end
+
+Given(/^I have "(.*?)" offer in My Offers$/) do |offer_title|
+  JobOffer.all.destroy
+  visit '/job_offers/new'
+  fill_in('job_offer[title]', :with => offer_title)
+  click_button('Create')
+end
+
+Given(/^I edit it$/) do
+  click_link('Edit')
+end
+
+Given(/^I set title to "(.*?)"$/) do |new_title|
+  fill_in('job_offer[title]', :with => new_title)
+end
+
+Given(/^I save the modification$/) do
+  click_button('Save')
+end

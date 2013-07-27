@@ -14,14 +14,6 @@ JobVacancy::App.controllers :job_offers do
     @job_offer = JobOffer.new
     render 'job_offers/new'
   end
-  
-  post :create do
-    title = params[:job_offer][:title]
-    @job_offer = JobOffer.new
-    @job_offer.title = title
-    @job_offer.save
-    render 'job_offers/show'          
-  end
 
   get :edit, :with =>:offer_id  do
     @job_offer = JobOffer.get(params[:offer_id])
