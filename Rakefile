@@ -5,7 +5,6 @@ require 'padrino-core/cli/rake'
 PADRINO_ENV  = ENV['PADRINO_ENV'] ||= ENV['RACK_ENV'] ||= 'test'  unless defined?(PADRINO_ENV)
 
 require 'rake'
-require 'simplecov'
 
 PadrinoTasks.use(:database)
 PadrinoTasks.use(:datamapper)
