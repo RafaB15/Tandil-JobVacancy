@@ -11,6 +11,7 @@ describe JobOffer do
 		it { should respond_to( :location) }
 		it { should respond_to( :description ) }
 		it { should respond_to( :owner ) }
+		it { should respond_to( :owner= ) }
 
 	end
 
@@ -19,6 +20,7 @@ describe JobOffer do
 	  let(:job_offer) { JobOffer.new }
 
 	  it 'should be false when title is blank' do
+	  	puts job_offer.owner
 	  	job_offer.valid?.should be_false
 	  end
 
