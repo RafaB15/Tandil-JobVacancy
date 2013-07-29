@@ -51,8 +51,14 @@ JobVacancy::App.controllers :job_offers do
     end  
   end
 
-  get :destroy do
-
+  delete :destroy do
+    @job_offer = JobOffer.get(params[:offer_id])
+    if @job_offer.destroy
+      flash[:success] = 'Offer deleted'
+    else
+      flash.now[:error] = 'Title is mandatory'
+    end
+    redirect 'job_offers/my'
   end
 
 end

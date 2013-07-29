@@ -24,6 +24,12 @@ Then(/^I should see "(.*?)" in My Offers$/) do |content|
   page.should have_content(content)
 end
 
+
+Then(/^I should not see "(.*?)" in My Offers$/) do |content|
+  visit '/job_offers/my'
+  page.should_not have_content(content)
+end
+
 Given(/^I have "(.*?)" offer in My Offers$/) do |offer_title|
   JobOffer.all.destroy
   visit '/job_offers/new'
@@ -33,6 +39,10 @@ end
 
 Given(/^I edit it$/) do
   click_link('Edit')
+end
+
+And(/^I delete it$/) do
+  click_button('Delete')
 end
 
 Given(/^I set title to "(.*?)"$/) do |new_title|

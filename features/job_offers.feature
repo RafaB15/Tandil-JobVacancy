@@ -20,3 +20,9 @@ Feature: Job Offers
     And I save the modification
     Then I should see "Offer updated"
     And I should see "Programmer vacancy!!!" in My Offers
+
+  Scenario: Delete offer
+    Given I have "Programmer vacancy" offer in My Offers
+    Given I delete it
+    Then I should see "Offer deleted"
+    And I should not see "Programmer vacancy!!!" in My Offers    
