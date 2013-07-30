@@ -1,0 +1,9 @@
+<h1>New Job Offer</h1>
+<% form_for(@job_offer, '/job_offers/create') do |f| %>
+	<%= f.label :title %>
+ 	<%= f.text_field :title %>
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+  <br/>
+  <%= f.submit "Create", :class => "btn btn-primary" %>
+<% end %>

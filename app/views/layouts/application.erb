@@ -13,24 +13,38 @@
 
 
 <div class="row">
-<nav id="navigation">
-<div class="span2 offset4">
-<%= link_to 'Home', url_for(:home, :index) %>
+	<nav id="navigation">
+		<div class="span2 offset4">
+			<%= link_to 'Home', url_for(:home, :index) %>
+		</div>
+		<div class="span2 offset4">
+			<%= link_to 'Job offers', url_for(:job_offers, :latest) %>
+		</div>
+
+		<% if signed_in? %>	
+			<div class="span2">
+					<%= link_to 'New Offer', url_for(:job_offers, :new) %>
+			</div>		
+			<div class="span2">
+					<%= link_to 'My Offers', url_for(:job_offers, :my) %>
+			</div>		
+			<div class="span2">
+					<%= link_to 'Logout', url_for(:sessions, :destroy) %>
+			</div>		
+		<% else%>	
+			<div class="span2">
+				<%= link_to 'Login', url_for(:sessions, :login) %>
+			</div>
+		<% end %>
+
+		<div class="span2">
+			<% if signed_in? %>
+				<%= current_user.email %>
+			<% end %>
+		</div>
+	</nav>
 </div>
-<div class="span2">
-	<% if signed_in? %>	
-		<%= link_to 'Logout', url_for(:sessions, :destroy) %>
-	<% else%>
-		<%= link_to 'Login', url_for(:sessions, :login) %>
-	<% end %>
-</div>
-<div class="span2">
-	<% if signed_in? %>
-		<%= current_user.email %>
-	<% end %>
-</div>
-        </nav>
-</div>
+
 <div class="row">
 
 	<div class="span9 offset3 site"> 

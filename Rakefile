@@ -5,7 +5,6 @@ require 'padrino-core/cli/rake'
 PADRINO_ENV  = ENV['PADRINO_ENV'] ||= ENV['RACK_ENV'] ||= 'test'  unless defined?(PADRINO_ENV)
 
 require 'rake'
-require 'simplecov'
 
 PadrinoTasks.use(:database)
 PadrinoTasks.use(:datamapper)
@@ -25,6 +24,7 @@ if ['development', 'test', 'travis'].include?(PADRINO_ENV)
   require 'cucumber/rake/task'
 	Cucumber::Rake::Task.new(:cucumber) do |task|
   	Rake::Task['db:migrate'].invoke
+  	Rake::Task['db:seed'].invoke
   	task.cucumber_opts = ["features"]
 	end
 
