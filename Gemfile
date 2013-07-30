@@ -32,7 +32,9 @@ gem 'yui-compressor', '0.9.6'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 
 # Test requirements
-
+group :staging, :production do
+  gem 'dm-postgres-adapter'
+end
 
 # Padrino Stable Gem
 gem 'padrino', '0.11.2'
