@@ -1,3 +1,7 @@
+When(/^I browse the default page$/) do
+  visit '/'
+end
+
 Given(/^I am logged in as job offerer$/) do
   visit '/login'
   fill_in('user[email]', :with => 'offerer@test.com')
