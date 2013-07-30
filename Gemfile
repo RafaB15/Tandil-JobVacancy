@@ -17,7 +17,6 @@ gem 'rake'
 # Component requirements
 gem 'slim'
 gem 'erubis', '~> 2.7.0'
-gem 'dm-sqlite-adapter'
 gem 'dm-validations'
 gem 'dm-timestamps'
 gem 'dm-migrations'
@@ -39,6 +38,7 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'padrino', '0.11.2'
 
 group :development, :test do
+  gem 'dm-sqlite-adapter'
   gem 'cucumber'
   gem 'capybara'
   gem 'rspec_junit_formatter'
