@@ -7,7 +7,7 @@ JobVacancy::App.controllers :job_offers do
 
   get :index do
     @offers = JobOffer.all
-    render 'job_offers/search'
+    render 'job_offers/list'
   end  
 
   get :new do
@@ -28,8 +28,18 @@ JobVacancy::App.controllers :job_offers do
 
   get :apply, :with =>:offer_id  do
     @job_offer = JobOffer.get(params[:offer_id])
+    @job_application = JobApplication.new
     # ToDo: validate the current user is the owner of the offer
     render 'job_offers/apply'
+  end
+
+  post :apply, :with => :offer_id do
+    @job_offer = JobOffer.get(params[:offer_id])    
+    applicant_email = params[:job_application][:applicant_email]
+    @job_application = JobApplication.create_for(applicant_email, @job_offer)
+    @job_application.process
+    flash[:success] = 'Contact information sent.'
+    redirect '/job_offers'
   end
 
   post :create do

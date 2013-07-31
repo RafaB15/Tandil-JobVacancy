@@ -9,6 +9,9 @@ module JobVacancy
 
     enable :sessions
     
+    set :delivery_method, :file => {
+      :location => "#{Padrino.root}/tmp/emails",
+    }
 
     ##
     # Caching support
