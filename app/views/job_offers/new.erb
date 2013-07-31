@@ -1,9 +1,8 @@
 <h1>New Job Offer</h1>
 <% form_for(@job_offer, '/job_offers/create') do |f| %>
-	<%= f.label :title %>
- 	<%= f.text_field :title %>
-  <%= f.label :location %>
-  <%= f.text_field :location %>
-  <br/>
+
+  <%= partial 'job_offers/form', :locals => { :f => f } %>
+
   <%= f.submit "Create", :class => "btn btn-primary" %>
+  <%= link_to 'Cancel', url_for(:job_offers, :my), :class => "btn btn-secondary" %>
 <% end %>
