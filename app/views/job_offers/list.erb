@@ -1,9 +1,5 @@
-<!--
-<div>
-	search box
-</div>
--->
-<table>
+<h1>Current Job Offers</h1>
+<table class="table table-bordered">
 	<tr>
 		<th>Title</th>
 		<th>Location</th>
@@ -23,7 +19,7 @@
 			<%= offer.description %>
 		</td>		
 		<td>
-			<%= link_to 'Apply', url_for(:job_offers, :apply, :offer_id => offer.id) %>
+			<%= link_to 'Apply', url_for(:job_offers, :apply, :offer_id => offer.id), :class => "btn btn-primary" %>
 		</td>		
 	</tr>
 

@@ -2,7 +2,7 @@ JobVacancy::App.controllers :job_offers do
   
   get :my do
     @offers = JobOffer.find_by_owner(current_user)
-    render 'job_offers/index'
+    render 'job_offers/my_offers'
   end    
 
   get :index do
