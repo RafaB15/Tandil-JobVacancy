@@ -30,6 +30,7 @@ gem 'padrino-sprockets', :require => "padrino/sprockets"
 gem 'uglifier', '2.1.1'
 gem 'yui-compressor', '0.9.6'
 gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'clockwork'
 
 # Test requirements
 group :staging, :production do

@@ -6,7 +6,7 @@ JobVacancy::App.controllers :job_offers do
   end    
 
   get :index do
-    @offers = JobOffer.all
+    @offers = JobOffer.all_active
     render 'job_offers/list'
   end  
 
@@ -16,7 +16,7 @@ JobVacancy::App.controllers :job_offers do
   end
 
   get :latest do
-    @offers = JobOffer.all
+    @offers = JobOffer.all_active
     render 'job_offers/list'
   end
 
