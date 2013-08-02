@@ -1,4 +1,5 @@
-<table>
+<h1>Current Job Offers</h1>
+<table class="table table-bordered">
 	<tr>
 		<th>Title</th>
 		<th>Location</th>
@@ -18,16 +19,10 @@
 			<%= offer.description %>
 		</td>		
 		<td>
-			<%= link_to 'Edit', url_for(:job_offers, :edit, :offer_id => offer.id) %>
-			<%- form_tag url(:job_offers, :destroy, :offer_id => offer.id), :method => :delete, :style => 'display:inline' do %>
-                <button type='submit' title="Delete offer" rel='tooltip' >Delete
-                </button>
-       <% end %>
+			<%= link_to 'Apply', url_for(:job_offers, :apply, :offer_id => offer.id), :class => "btn btn-primary" %>
 		</td>		
 	</tr>
 
   <% end %>
-
-
 
 </table>
