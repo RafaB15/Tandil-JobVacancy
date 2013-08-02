@@ -45,13 +45,13 @@ describe JobOffer do
 
 		it 'should deactivate offers updated 45 days ago' do
 			JobOffer.should_receive(:all).and_return([thirty_day_offer])
-			JobOffer.deactive_old_offers
+			JobOffer.deactivate_old_offers
 			thirty_day_offer.is_active.should be_false
 		end
 
 		it 'should not deactivate offers created today' do
 			JobOffer.should_receive(:all).and_return([today_offer])
-			JobOffer.deactive_old_offers
+			JobOffer.deactivate_old_offers
 			today_offer.is_active.should be_true
 		end
 	end
