@@ -4,6 +4,7 @@
 		<th>Title</th>
 		<th>Location</th>
 		<th>Description</th>
+		<th>Is active</th>
 		<th>Actions</th>
 	</tr>
 	<% @offers.each do | offer| %>
@@ -19,10 +20,20 @@
 			<%= offer.description %>
 		</td>		
 		<td>
+			<%= offer.is_active %>
+		</td>		
+
+		<td>
 			<%= link_to 'Edit', url_for(:job_offers, :edit, :offer_id => offer.id), :class => "btn btn-primary" %>
 			<%- form_tag url(:job_offers, :destroy, :offer_id => offer.id), :method => :delete, :style => 'display:inline' do %>
                 <button type='submit' title="Delete offer" rel='tooltip' class="btn btn-secondary" >Delete
                 </button>
+       <% end %>
+       <% if not offer.is_active %>
+				<%- form_tag url(:job_offers, :activate, :offer_id => offer.id), :method => :put, :style => 'display:inline' do %>
+	                <button type='submit' title="Activate offer" rel='tooltip' class="btn btn-secondary" >Activate
+	                </button>
+	       <% end %>
        <% end %>
 		</td>	
 	</tr>

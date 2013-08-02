@@ -6,7 +6,7 @@ JobVacancy::App.controllers :job_offers do
   end    
 
   get :index do
-    @offers = JobOffer.all
+    @offers = JobOffer.all_active
     render 'job_offers/list'
   end  
 
@@ -16,7 +16,7 @@ JobVacancy::App.controllers :job_offers do
   end
 
   get :latest do
-    @offers = JobOffer.all
+    @offers = JobOffer.all_active
     render 'job_offers/list'
   end
 
@@ -63,6 +63,18 @@ JobVacancy::App.controllers :job_offers do
     else
       flash.now[:error] = 'Title is mandatory'
       render 'job_offers/edit'
+    end  
+  end
+
+  put :activate, :with => :offer_id do
+    @job_offer = JobOffer.get(params[:offer_id])
+    @job_offer.activate
+    if @job_offer.save
+      flash[:success] = 'Offer activated'
+      redirect '/job_offers/my'
+    else
+      flash.now[:error] = 'Operation failed'
+      redirect '/job_offers/my'
     end  
   end
 
