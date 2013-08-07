@@ -28,3 +28,4 @@ reports
 .yardoc
 _yardoc
 doc/
+.env
