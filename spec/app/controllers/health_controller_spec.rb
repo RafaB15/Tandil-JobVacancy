@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe "HealthController" do
-  before do
-    get "/"
+
+  it "should check database and return ok" do
+  	Ping.stub(:create).and_return(Ping.new)
+  	get '/health'
+    last_response.should be_ok
   end
 
-  it "returns hello world" do
-    last_response.body.should == "Hello World"
-  end
 end
