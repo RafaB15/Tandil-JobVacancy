@@ -18,10 +18,12 @@ require File.expand_path(File.dirname(__FILE__) + "/../config/boot")
 
 RSpec.configure do |conf|
   conf.include Rack::Test::Methods
+  conf.include Capybara
   DataMapper.setup(:default, "abstract::")
   DataMapper::Logger.new($stdout, :all)
 end
 
 def app
   JobVacancy::App.tap { |app|  }
+  JobVacancy::App.set :protect_from_csrf, false
 end
