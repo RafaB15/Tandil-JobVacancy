@@ -10,4 +10,8 @@ JobVacancy::App.controllers :health do
     { offers_count: JobOffer.count, users_count: User.count }.to_json
   end
 
+  get :version do
+  	Version.current
+  end
+
 end
