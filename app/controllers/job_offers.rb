@@ -33,6 +33,12 @@ JobVacancy::App.controllers :job_offers do
     render 'job_offers/apply'
   end
 
+  post :search do
+    @offers = JobOffer.all(:title.like => "%#{params[:q]}%")
+    render 'job_offers/list'
+  end
+
+
   post :apply, :with => :offer_id do
     @job_offer = JobOffer.get(params[:offer_id])    
     applicant_email = params[:job_application][:applicant_email]
