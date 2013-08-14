@@ -79,6 +79,10 @@ body {
   margin-top: 20px;
 }
 
+.search-box {
+  float: right;  
+}
+
 h1 {
   font-size: 25px
 }
