@@ -18,8 +18,11 @@ SimpleCov.start do
   add_group "Helpers", "app/helpers"
 end
 
-##
-# You can handle all padrino applications using instead:
-#   Padrino.application
+
+DataMapper.auto_migrate!
+user = User.create(:email => 'offerer@test.com',
+									 :name => 'Offerer', 
+									 :password => "Passw0rd!") unless User.all.count > 0
+
 #Capybara.default_driver = :selenium
 Capybara.app = JobVacancy::App.tap { |app|  }
