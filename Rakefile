@@ -13,8 +13,16 @@ PadrinoTasks.init
 puts "PADRINO_ENV: #{PADRINO_ENV}"
 if ['development', 'test', 'travis'].include?(PADRINO_ENV)
 
-	task :travis do
-  ["rake spec_report", "rake cucumber"].each do |cmd|
+	task :all do
+  ["rake spec", "rake cucumber"].each do |cmd|
+    puts "Starting to run #{cmd}..."
+    system("export DISPLAY=:99.0 && bundle exec #{cmd}")
+    raise "#{cmd} failed!" unless $?.exitstatus == 0
+    end
+  end
+
+  task :build_server do
+  ["rake spec_report", "rake cucumber_report"].each do |cmd|
     puts "Starting to run #{cmd}..."
     system("export DISPLAY=:99.0 && bundle exec #{cmd}")
     raise "#{cmd} failed!" unless $?.exitstatus == 0
@@ -27,6 +35,11 @@ if ['development', 'test', 'travis'].include?(PADRINO_ENV)
   	Rake::Task['db:seed'].invoke
   	task.cucumber_opts = ["features"]
 	end
+
+  Cucumber::Rake::Task.new(:cucumber_report) do |task|
+    Rake::Task['db:migrate'].invoke
+    task.cucumber_opts = ['features', '--format html -o reports/cucumber.html']
+  end
 
   require 'rspec/core/rake_task'
   RSpec::Core::RakeTask.new(:spec) do |t|
@@ -48,6 +61,6 @@ if ['development', 'test', 'travis'].include?(PADRINO_ENV)
     task.fail_on_error = false
   end
 
-	task :default => [:travis]
+	task :default => [:all]
 
 end
