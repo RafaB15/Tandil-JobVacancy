@@ -1,6 +1,14 @@
 language: ruby
 version: 1.9.3
 bundler_args: --without development
-before_script: 
-  - "sh -e /etc/init.d/xvfb start"
+before_script:
+- sh -e /etc/init.d/xvfb start
 script: PADRINO_ENV=travis bundle exec padrino rake
+deploy:
+  provider: heroku
+  api_key:
+    secure: FWAjmzYV5vd3547x0vc9Fzrrvw+ruIvp8lCTxDq5RUT7WS1qXDlEz2ulHC7a5TshB5xi0QekvL1nV1ocIpLbC5iyG2VebmbdlLo8IpTtkjsu6sPb5t13hwhWFO9hjlJvOZLXQ2TOCgXhS7uUzCA7cdrMHmmUigFV081et+nWmd0=
+  app: job-vacancy-staging
+  on:
+    repo: kleer-la/job-vacancy
+    branch: develop
