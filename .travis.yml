@@ -1,6 +1,6 @@
 language: ruby
 version: 1.9.3
-bundler_args: --without development
+bundler_args: --without development staging production
 before_script:
 - sh -e /etc/init.d/xvfb start
 script: PADRINO_ENV=travis bundle exec padrino rake
