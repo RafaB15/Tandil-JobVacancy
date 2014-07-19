@@ -14,4 +14,11 @@ JobVacancy::App.controllers :health do
   	Version.current
   end
 
+  get :reset do
+    JobOffer.destroy
+    Ping.destroy
+    User.destroy
+    "ok"
+  end
+
 end
