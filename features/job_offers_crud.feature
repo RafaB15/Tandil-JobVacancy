@@ -1,4 +1,4 @@
-Feature: Job Offers
+Feature: Job Offers CRUD
   In order to get employees
   As a job offerer
   I want to manage my offers
