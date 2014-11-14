@@ -18,7 +18,10 @@ JobVacancy::App.controllers :health do
     JobOffer.destroy
     Ping.destroy
     User.destroy
-    "ok"
+    user = User.create(:email => 'offerer@test.com',
+                   :name => 'Offerer', 
+                   :password => "Passw0rd!")
+    'ok'
   end
 
 end
