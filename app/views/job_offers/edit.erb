@@ -3,6 +3,6 @@
 
   <%= partial 'job_offers/form', :locals => { :f => f } %>
 
-  <%= f.submit "Save", :class => "btn btn-primary" %>
-  <%= link_to 'Cancel', url_for(:job_offers, :my), :class => "btn btn-secondary" %>
+  <%= f.submit "Save", :class => "btn btn-primary", :id => 'saveButton' %>
+  <%= link_to 'Cancel', url_for(:job_offers, :my), :class => "btn btn-secondary", :id => 'cancelButton' %>
 <% end %>
