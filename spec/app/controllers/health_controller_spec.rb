@@ -11,7 +11,7 @@ describe "HealthController" do
   it 'should version should include BUILD_NUMBER' do
   	ENV['BUILD_NUMBER'] = '1'
   	get '/health/version'
-  	last_response.body.include?('.1').should be_true
+  	expect(last_response.body.include?('.1')).to eq(true)
   end
 
 end

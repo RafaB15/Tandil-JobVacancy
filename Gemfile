@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3'
+ruby '2.2.0'
 # Distribute your app as a gem
 # gemspec
 
@@ -56,7 +56,7 @@ end
 group :development do
   gem 'guard'   
   gem 'guard-rspec'
-  gem 'debugger'
+  gem 'byebug'
 end
 
 

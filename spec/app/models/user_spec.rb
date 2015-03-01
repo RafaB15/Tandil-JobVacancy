@@ -21,7 +21,7 @@ describe User do
 	  it 'should be false when name is blank' do
 	  	user.email = 'john.doe@someplace.com'
 	  	user.password = 'a_secure_passWord!'
-	  	user.valid?.should be_false
+	  	expect(user.valid?).to eq false
 	  end
 
 
@@ -29,20 +29,20 @@ describe User do
 	  	user.name = 'John Doe'
 	  	user.email = 'john'
 	  	user.password = 'a_secure_passWord!'
-	  	user.valid?.should be_false
+	  	expect(user.valid?).to eq false
 	  end
 
 	  it 'should be false when password is blank' do
 	  	user.name = 'John Doe'
 	  	user.email = 'john.doe@someplace.com'
-	  	user.valid?.should be_false
+	  	expect(user.valid?).to eq false
 	  end
 
 	  it 'should be true when all field are valid' do
 	  	user.name = 'John Doe'
 	  	user.email = 'john.doe@someplace.com'
 	  	user.password = 'a_secure_passWord!'
-	  	user.valid?.should be_true
+	  	expect(user.valid?).to eq true
 	  end
 
 	end
