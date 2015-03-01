@@ -18,7 +18,7 @@ PadrinoTasks.init
 
 if ['development', 'test', 'travis'].include?(PADRINO_ENV)
 
-	task :all do
+  task :all do
   ["rake spec", "rake cucumber"].each do |cmd|
     puts "Starting to run #{cmd}..."
     system("export DISPLAY=:99.0 && bundle exec #{cmd}")
@@ -35,11 +35,11 @@ if ['development', 'test', 'travis'].include?(PADRINO_ENV)
   end
 
   require 'cucumber/rake/task'
-	Cucumber::Rake::Task.new(:cucumber) do |task|
-  	Rake::Task['db:migrate'].invoke
-  	Rake::Task['db:seed'].invoke
-  	task.cucumber_opts = ["features"]
-	end
+  Cucumber::Rake::Task.new(:cucumber) do |task|
+    Rake::Task['db:migrate'].invoke
+    Rake::Task['db:seed'].invoke
+    task.cucumber_opts = ["features"]
+  end
 
   Cucumber::Rake::Task.new(:cucumber_report) do |task|
     Rake::Task['db:migrate'].invoke
@@ -66,6 +66,6 @@ if ['development', 'test', 'travis'].include?(PADRINO_ENV)
     task.fail_on_error = false
   end
 
-	task :default => [:all]
+  task :default => [:all]
 
 end
