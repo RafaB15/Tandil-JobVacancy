@@ -49,7 +49,6 @@ if ['development', 'test', 'travis'].include?(PADRINO_ENV)
   require 'rspec/core/rake_task'
   RSpec::Core::RakeTask.new(:spec) do |t|
     t.pattern = "./spec/**/*_spec.rb"
-    t.rspec_opts = %w(-fs --color)
   end
 
   require 'rspec/core/rake_task'
@@ -57,7 +56,8 @@ if ['development', 'test', 'travis'].include?(PADRINO_ENV)
     t.pattern = "./spec/**/*_spec.rb"
     t.rspec_opts = %w(--format RspecJunitFormatter --out reports/spec/spec.xml)
   end
-  
+
+=begin  
   require 'rubocop/rake_task'
   desc 'Run RuboCop on the lib directory'
   Rubocop::RakeTask.new(:rubocop) do |task|
@@ -65,6 +65,7 @@ if ['development', 'test', 'travis'].include?(PADRINO_ENV)
     # don't abort rake on failure
     task.fail_on_error = false
   end
+=end
 
   task :default => [:all]
 

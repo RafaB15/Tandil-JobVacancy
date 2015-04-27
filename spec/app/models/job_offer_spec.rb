@@ -24,7 +24,7 @@ describe JobOffer do
 
 	  it 'should be false when title is blank' do
 	  	puts job_offer.owner
-	  	job_offer.valid?.should be_false
+	  	expect(job_offer.valid?).to eq false
 	  end
 
 	end
@@ -46,13 +46,13 @@ describe JobOffer do
 		it 'should deactivate offers updated 45 days ago' do
 			JobOffer.should_receive(:all).and_return([thirty_day_offer])
 			JobOffer.deactivate_old_offers
-			thirty_day_offer.is_active.should be_false
+			expect(thirty_day_offer.is_active).to eq false
 		end
 
 		it 'should not deactivate offers created today' do
 			JobOffer.should_receive(:all).and_return([today_offer])
 			JobOffer.deactivate_old_offers
-			today_offer.is_active.should be_true
+			expect(today_offer.is_active).to eq true
 		end
 	end
 
