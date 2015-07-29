@@ -22,11 +22,11 @@ JobVacancy::App.controllers :health do
                    :name => 'Offerer', 
                    :password => "Passw0rd!")
     JobOffer.create(:title => 'Java programmer',
-                    :user = user,
+                    :user => user,
                     :description => 'Spring experience required',
                     :location => 'Cordoba')
     JobOffer.create(:title => 'Web programmer',
-                    :user = user,
+                    :user => user,
                     :description => 'HTML5 experience required',
                     :location => 'Rosario')
     'ok'
