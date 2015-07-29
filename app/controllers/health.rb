@@ -33,5 +33,3 @@ JobVacancy::App.controllers :health do
   end
 
 end
-
-JobOffer.create(:title => 'Java programmer',:description => 'Spring experience required',:location => 'Cordoba')
