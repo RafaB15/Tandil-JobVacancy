@@ -19,7 +19,5 @@ Vagrant.configure(2) do |config|
     source ~/.rvm/scripts/rvm
     rvm install 2.2.0
     gem install bundler
-    # sudo apt-get install libcurl4-gnutls-dev
-    # sudo apt-get install libxml2-dev
   SHELL
 end
