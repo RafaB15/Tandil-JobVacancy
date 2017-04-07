@@ -307,8 +307,5 @@ DEPENDENCIES
   uglifier (= 2.1.1)
   yui-compressor (= 0.9.6)
 
-RUBY VERSION
-   ruby 2.2.0p0
-
 BUNDLED WITH
-   1.13.1
+   1.14.6
