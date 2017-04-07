@@ -1,7 +1,7 @@
 Job Vacancy Application
 =======================
 
-[![Build Status](https://snap-ci.com/nicopaez/job-vacancy/branch/develop/build_image)](https://snap-ci.com/nicopaez/job-vacancy/branch/develop)
+[![build status](https://gitlab.com/jobvacancy-ruby/jobvacancy-source/badges/gitlab/build.svg)](https://gitlab.com/jobvacancy-ruby/jobvacancy-source/commits/gitlab)
 
 Once you have clone this repository, follow these steps to start working:
 
