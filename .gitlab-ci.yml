@@ -6,7 +6,7 @@ before_script:
   - ruby -v
   - which ruby
   - gem install bundler --no-ri --no-rdoc
-  - bundle install
+  - bundle install --without staging production
 
 build:
   script:
