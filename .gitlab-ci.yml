@@ -1,4 +1,6 @@
 image: ruby:2.2.0
+services:
+  - postgres
 before_script:
   - gem install bundler --no-ri --no-rdoc
   - bundle install
