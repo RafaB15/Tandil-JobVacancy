@@ -10,4 +10,4 @@ before_script:
 
 build:
   script:
-    - bundle exec rake
+    - PADRINO_ENV=test bundle exec rake
