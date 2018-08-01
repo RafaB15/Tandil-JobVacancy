@@ -1,35 +1,24 @@
 source 'https://rubygems.org'
 
-ruby '2.2.0'
-# Distribute your app as a gem
-# gemspec
+ruby '2.5.1'
+
+git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 # Server requirements
-gem 'thin' # or mongrel
-# gem 'trinidad', :platform => 'jruby'
-
-# Optional JSON codec (faster performance)
-# gem 'oj'
+gem 'thin'
 
 # Project requirements
 gem 'rake'
 
 # Component requirements
-gem 'slim'
+gem 'sequel'
+
 gem 'erubis', '~> 2.7.0'
-gem 'dm-validations'
-gem 'dm-timestamps'
-gem 'dm-migrations'
-gem 'dm-constraints'
-gem 'dm-aggregates'
-gem 'dm-types'
-gem 'dm-core'
-gem 'dm-ar-finders'
 gem 'therubyracer'
 gem 'padrino-sprockets', :require => "padrino/sprockets"
 gem 'uglifier', '2.1.1'
 gem 'yui-compressor', '0.9.6'
-gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'bcrypt'
 gem 'json'
 gem 'clockwork'
 gem 'twitter'
@@ -40,10 +29,9 @@ group :staging, :production do
 end
 
 # Padrino Stable Gem
-gem 'padrino', '0.11.2'
+gem 'padrino', '~> 0.14'
 
 group :development, :test do
-  gem 'dm-sqlite-adapter'
   gem 'cucumber'
   gem 'capybara'
   gem 'rspec_junit_formatter'
@@ -54,16 +42,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'guard'   
+  gem 'guard'
   gem 'guard-rspec'
   gem 'byebug'
 end
-
-
-# Or Padrino Edge
-# gem 'padrino', :github => 'padrino/padrino-framework'
-
-# Or Individual Gems
-# %w(core gen helpers cache mailer admin).each do |g|
-#   gem 'padrino-' + g, '0.11.2'
-# end

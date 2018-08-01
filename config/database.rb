@@ -1,21 +1,8 @@
-##
-# A MySQL connection:
-# DataMapper.setup(:default, 'mysql://user:password@localhost/the_database_name')
-#
-# # A Postgres connection:
-# DataMapper.setup(:default, 'postgres://user:password@localhost/the_database_name')
-#
-# # A Sqlite3 connection
-# DataMapper.setup(:default, "sqlite3://" + Padrino.root('db', "development.db"))
-#
+Sequel::Model.raise_on_save_failure = false # Do not throw exceptions on failure
 
-DataMapper.logger = logger
-DataMapper::Property::String.length(255)
-
-case Padrino.env
-  when :development then DataMapper.setup(:default, "sqlite3://" + Padrino.root('db', "job_vacancy_development.db"))
-  when :travis      then DataMapper.setup(:default, "sqlite3::memory:")
-  when :test        then DataMapper.setup(:default, "sqlite3::memory:")
-  when :staging 		then DataMapper.setup(:default, ENV['DATABASE_URL'])
-  when :production  then DataMapper.setup(:default, ENV['DATABASE_URL'])
+Sequel::Model.db = case Padrino.env
+  when :development then Sequel.connect("sqlite3://" + Padrino.root('db', "job_vacancy_development.db"), loggers: [logger])
+  when :test        then Sequel.connect("sqlite3::memory:", loggers: [logger])
+  when :staging     then Sequel.connect(ENV['DATABASE_URL'], loggers: [logger])
+  when :production  then Sequel.connect(ENV['DATABASE_URL'], loggers: [logger])
 end
