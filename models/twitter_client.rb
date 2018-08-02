@@ -1,4 +1,3 @@
-
 class TwitterClient
 
 	def self.publish(job_offer)

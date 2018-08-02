@@ -1,17 +1,7 @@
-class JobOffer
-	include DataMapper::Resource
+class JobOffer < Sequel::Model
+  many_to_one :user
 
-	# property <name>, <type>
-	property :id, Serial
-	property :title, String
-	property :location, String
-	property :description, String
-  property :created_on, Date
-  property :updated_on, Date
-  property :is_active, Boolean, :default => true
-	belongs_to :user
-
-	validates_presence_of :title
+	# validates_presence_of :title
 
 	def owner
 		user

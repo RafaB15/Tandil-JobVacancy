@@ -1,4 +1,4 @@
-PADRINO_ENV = 'test' unless defined?(PADRINO_ENV)
+RACK_ENV = 'test' unless defined?(RACK_ENV)
 
 require 'simplecov'
 SimpleCov.start do

@@ -4,4 +4,4 @@ require File.expand_path('../../config/boot',        __FILE__)
 
 include Clockwork
 
-every(1.minute, 'Deactivate old offers') { JobOffer.deactivate_old_offers }
+# every(1.minute, 'Deactivate old offers') { JobOffer.deactivate_old_offers }

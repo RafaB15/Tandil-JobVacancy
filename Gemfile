@@ -11,6 +11,10 @@ gem 'thin'
 gem 'rake'
 
 # Component requirements
+gem 'sqlite3'
+group :staging, :production do
+  gem 'pg'
+end
 gem 'sequel'
 
 gem 'erubis', '~> 2.7.0'
@@ -22,11 +26,6 @@ gem 'bcrypt'
 gem 'json'
 gem 'clockwork'
 gem 'twitter'
-
-# Test requirements
-group :staging, :production do
-  gem 'dm-postgres-adapter'
-end
 
 # Padrino Stable Gem
 gem 'padrino', '~> 0.14'

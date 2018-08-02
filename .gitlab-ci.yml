@@ -14,4 +14,4 @@ stages:
 job_build:
   stage: build
   script:
-    - PADRINO_ENV=test bundle exec rake
+    - RACK_ENV=test bundle exec rake

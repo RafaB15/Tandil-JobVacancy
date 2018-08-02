@@ -54,19 +54,7 @@ GEM
     cucumber-tag_expressions (1.1.1)
     cucumber-wire (0.0.1)
     daemons (1.2.6)
-    data_objects (0.10.17)
-      addressable (~> 2.1)
     diff-lcs (1.3)
-    dm-core (1.2.1)
-      addressable (~> 2.3)
-    dm-do-adapter (1.2.0)
-      data_objects (~> 0.10.6)
-      dm-core (~> 1.2.0)
-    dm-postgres-adapter (1.2.0)
-      dm-do-adapter (~> 1.2.0)
-      do_postgres (~> 0.10.6)
-    do_postgres (0.10.17)
-      data_objects (= 0.10.17)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     equalizer (0.0.11)
@@ -166,6 +154,7 @@ GEM
     parallel (1.12.1)
     parser (2.5.1.2)
       ast (~> 2.4.0)
+    pg (1.0.0)
     powerpack (0.1.2)
     pry (0.11.3)
       coderay (~> 1.1.0)
@@ -214,6 +203,7 @@ GEM
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
+    sqlite3 (1.3.13)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
       ref
@@ -258,13 +248,13 @@ DEPENDENCIES
   capybara
   clockwork
   cucumber
-  dm-postgres-adapter
   erubis (~> 2.7.0)
   guard
   guard-rspec
   json
   padrino (~> 0.14)
   padrino-sprockets
+  pg
   rack-test
   rake
   rspec
@@ -272,6 +262,7 @@ DEPENDENCIES
   rubocop!
   sequel
   simplecov (= 0.8.0.pre)
+  sqlite3
   therubyracer
   thin
   twitter
