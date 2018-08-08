@@ -35,7 +35,7 @@ Then(/^I should not see "(.*?)" in My Offers$/) do |content|
 end
 
 Given(/^I have "(.*?)" offer in My Offers$/) do |offer_title|
-  JobOffer.all.destroy
+  JobOffer.all.each(&:delete)
   visit '/job_offers/new'
   fill_in('job_offer[title]', :with => offer_title)
   click_button('Create')

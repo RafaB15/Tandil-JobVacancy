@@ -1,7 +1,7 @@
 JobVacancy::App.controllers :job_offers do
 
   get :my do
-    @offers = JobOffer.first(owner: current_user)
+    @offers = JobOffer.find_by_owner(current_user)
     render 'job_offers/my_offers'
   end
 
@@ -21,26 +21,26 @@ JobVacancy::App.controllers :job_offers do
   end
 
   get :edit, :with =>:offer_id  do
-    @job_offer = JobOffer.get(params[:offer_id])
+    @job_offer = JobOffer.with_pk(params[:offer_id])
     # ToDo: validate the current user is the owner of the offer
     render 'job_offers/edit'
   end
 
   get :apply, :with =>:offer_id  do
-    @job_offer = JobOffer.get(params[:offer_id])
+    @job_offer = JobOffer.with_pk(params[:offer_id])
     @job_application = JobApplication.new
     # ToDo: validate the current user is the owner of the offer
     render 'job_offers/apply'
   end
 
   post :search do
-    @offers = JobOffer.all(:title.like => "%#{params[:q]}%")
+    @offers = JobOffer.where(Sequel.like(:title, "%#{params[:q]}%"))
     render 'job_offers/list'
   end
 
 
   post :apply, :with => :offer_id do
-    @job_offer = JobOffer.get(params[:offer_id])
+    @job_offer = JobOffer.with_pk(params[:offer_id])
     applicant_email = params[:job_application][:applicant_email]
     @job_application = JobApplication.create_for(applicant_email, @job_offer)
     @job_application.process
@@ -64,7 +64,7 @@ JobVacancy::App.controllers :job_offers do
   end
 
   post :update, :with => :offer_id do
-    @job_offer = JobOffer.get(params[:offer_id])
+    @job_offer = JobOffer.with_pk(params[:offer_id])
     @job_offer.update(params[:job_offer])
     if @job_offer.save
       flash[:success] = 'Offer updated'
@@ -76,7 +76,7 @@ JobVacancy::App.controllers :job_offers do
   end
 
   put :activate, :with => :offer_id do
-    @job_offer = JobOffer.get(params[:offer_id])
+    @job_offer = JobOffer.with_pk(params[:offer_id])
     @job_offer.activate
     if @job_offer.save
       flash[:success] = 'Offer activated'
@@ -88,7 +88,7 @@ JobVacancy::App.controllers :job_offers do
   end
 
   delete :destroy do
-    @job_offer = JobOffer.get(params[:offer_id])
+    @job_offer = JobOffer.with_pk(params[:offer_id])
     if @job_offer.destroy
       flash[:success] = 'Offer deleted'
     else

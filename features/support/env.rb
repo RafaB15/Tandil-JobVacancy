@@ -19,9 +19,8 @@ SimpleCov.start do
 end
 
 
-DataMapper.auto_migrate!
 user = User.create(:email => 'offerer@test.com',
-									 :name => 'Offerer', 
+									 :name => 'Offerer',
 									 :password => "Passw0rd!") unless User.all.count > 0
 
 #Capybara.default_driver = :selenium
