@@ -1,7 +1,10 @@
 class JobOffer < Sequel::Model
   many_to_one :user
 
-	# validates_presence_of :title
+  def validate
+    super
+    validates_presence :title
+  end
 
 	def owner
 		user
@@ -20,7 +23,7 @@ class JobOffer < Sequel::Model
 	end
 
 	def self.deactivate_old_offers
-		active_offers = JobOffer.all(:is_active => true)
+		active_offers = JobOffer.where(is_active: true)
 
 		active_offers.each do | offer |
 			if (Date.today - offer.updated_on) >= 30

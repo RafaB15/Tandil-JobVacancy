@@ -33,6 +33,7 @@ Bundler.require(:default, RACK_ENV)
 # Add your before (RE)load hooks here
 #
 Padrino.before_load do
+  Sequel::Model.plugin :validation_helpers
 end
 
 ##

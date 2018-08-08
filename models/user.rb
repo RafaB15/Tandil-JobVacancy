@@ -1,10 +1,11 @@
 class User < Sequel::Model
   one_to_many :job_offers
 
-  # validates_presence_of :name
-  # validates_presence_of :crypted_password
-  # validates_presence_of :email
-  # validates_format_of   :email,    :with => :email_address
+  def validate
+    super
+    validates_presence [ :name, :email, :crypted_password ]
+    validates_format /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, :email
+  end
 
   def password= (password)
     self.crypted_password = ::BCrypt::Password.create(password) unless password.nil?
