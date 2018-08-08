@@ -1,14 +1,14 @@
 JobVacancy::App.controllers :job_offers do
-  
+
   get :my do
-    @offers = JobOffer.find_by_owner(current_user)
+    @offers = JobOffer.first(owner: current_user)
     render 'job_offers/my_offers'
-  end    
+  end
 
   get :index do
     @offers = JobOffer.all_active
     render 'job_offers/list'
-  end  
+  end
 
   get :new do
     @job_offer = JobOffer.new
@@ -40,7 +40,7 @@ JobVacancy::App.controllers :job_offers do
 
 
   post :apply, :with => :offer_id do
-    @job_offer = JobOffer.get(params[:offer_id])    
+    @job_offer = JobOffer.get(params[:offer_id])
     applicant_email = params[:job_application][:applicant_email]
     @job_application = JobApplication.create_for(applicant_email, @job_offer)
     @job_application.process
@@ -60,7 +60,7 @@ JobVacancy::App.controllers :job_offers do
     else
       flash.now[:error] = 'Title is mandatory'
       render 'job_offers/new'
-    end  
+    end
   end
 
   post :update, :with => :offer_id do
@@ -72,7 +72,7 @@ JobVacancy::App.controllers :job_offers do
     else
       flash.now[:error] = 'Title is mandatory'
       render 'job_offers/edit'
-    end  
+    end
   end
 
   put :activate, :with => :offer_id do
@@ -84,7 +84,7 @@ JobVacancy::App.controllers :job_offers do
     else
       flash.now[:error] = 'Operation failed'
       redirect '/job_offers/my'
-    end  
+    end
   end
 
   delete :destroy do

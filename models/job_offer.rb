@@ -15,17 +15,15 @@ class JobOffer < Sequel::Model
 	end
 
 	def self.all_active
-		JobOffer.all(:is_active => true)
+		JobOffer.where(is_active: true)
 	end
 
 	def self.find_by_owner(user)
-		JobOffer.all(:user => user)
+		JobOffer.where(user: user)
 	end
 
 	def self.deactivate_old_offers
-		active_offers = JobOffer.where(is_active: true)
-
-		active_offers.each do | offer |
+		JobOffer.all_active.each do | offer |
 			if (Date.today - offer.updated_on) >= 30
 				offer.deactivate
 				offer.save

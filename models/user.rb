@@ -12,7 +12,7 @@ class User < Sequel::Model
   end
 
   def self.authenticate(email, password)
-    user = User.find_by_email(email)
+    user = User.first(email: email)
     return nil if user.nil?
     user.has_password?(password)? user : nil
   end

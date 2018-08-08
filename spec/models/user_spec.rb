@@ -59,19 +59,19 @@ describe User do
 		it 'should return nil when password do not match' do
 			email = @user.email
 			password = 'wrong_password'
-			User.should_receive(:find_by_email).with(email).and_return(@user)
+			User.should_receive(:first).with(email: email).and_return(@user)
 			User.authenticate(email, password).should be_nil
 		end
 
 		it 'should return nil when email do not match' do
 			email = 'wrong@email.com'
-			User.should_receive(:find_by_email).with(email).and_return(nil)
+			User.should_receive(:first).with(email: email).and_return(nil)
 			User.authenticate(email, @password).should be_nil
 		end
 
 		it 'should return the user when email and password match' do
 			email = @user.email
-			User.should_receive(:find_by_email).with(email).and_return(@user)
+			User.should_receive(:first).with(email: email).and_return(@user)
 			User.authenticate(email, @password).should eq @user
 		end
 
