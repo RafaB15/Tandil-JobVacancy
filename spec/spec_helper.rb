@@ -1,5 +1,8 @@
 RACK_ENV = 'test' unless defined?(RACK_ENV)
 
+require File.expand_path(File.dirname(__FILE__) + "/../config/boot")
+Dir[File.expand_path(File.dirname(__FILE__) + "/../app/helpers/**/*.rb")].each(&method(:require))
+
 require 'simplecov'
 SimpleCov.start do
 	root(File.join(File.dirname(__FILE__), '..'))
@@ -14,13 +17,9 @@ SimpleCov.start do
   add_group "Helpers", "app/helpers"
 end
 
-require File.expand_path(File.dirname(__FILE__) + "/../config/boot")
-
 RSpec.configure do |conf|
   conf.include Rack::Test::Methods
   conf.include Capybara
-  DataMapper.setup(:default, "abstract::")
-  DataMapper::Logger.new($stdout, :all)
 end
 
 def app
