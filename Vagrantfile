@@ -3,7 +3,7 @@
 
 Vagrant.configure(2) do |config|
 
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "ubuntu/xenial64"
 
   config.vm.network "forwarded_port", guest: 3000, host: 3000
 
@@ -13,8 +13,11 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision "shell", privileged: false,  inline: <<-SHELL
     sudo apt-get update
-    sudo apt-get install build-essential
-    sudo apt-get install -y git
+    sudo apt-get install -y build-essential git
+
+    sudo apt-get install -y postgresql-9.3 postgresql-contrib postgresql-server-dev-9.5
+    sudo -u postgres psql --dbname=postgres -f ./create_dev_and_test_dbs.sql
+
     gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
     curl -sSL https://get.rvm.io | bash -s stable
     source ~/.rvm/scripts/rvm

@@ -11,10 +11,7 @@ gem 'thin'
 gem 'rake'
 
 # Component requirements
-gem 'sqlite3'
-group :staging, :production do
-  gem 'pg'
-end
+gem 'pg', '~> 0.18'
 gem 'sequel'
 
 gem 'erubis', '~> 2.7.0'
