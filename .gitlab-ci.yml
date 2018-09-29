@@ -11,6 +11,7 @@ variables:
   POSTGRES_DB: jobvacancy_test
   POSTGRES_USER: jobvacancy
   POSTGRES_PASSWORD: jobvacancy
+  DB_HOST: postgres
 stages:
   - build
 
