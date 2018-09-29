@@ -1,13 +1,16 @@
 image: ruby:2.5.1
 services:
-  - postgres
+  - postgres:9.5
 before_script:
   - apt-get update -qq && apt-get install -y -qq postgresql postgresql-contrib libpq-dev cmake
   - ruby -v
   - which ruby
   - gem install bundler --no-ri --no-rdoc
   - bundle install --without staging production
-
+variables:
+  POSTGRES_DB: jobvacancy_test
+  POSTGRES_USER: jobvacancy
+  POSTGRES_PASSWORD: jobvacancy
 stages:
   - build
 
