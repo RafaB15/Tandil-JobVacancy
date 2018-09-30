@@ -1,8 +1,8 @@
 require 'bundler/setup'
 require 'padrino-core/cli/rake'
+require 'English'
 
-RACK_ENV  = ENV['RACK_ENV'] ||= ENV['RACK_ENV'] ||= 'test'  unless defined?(RACK_ENV)
-
+RACK_ENV = ENV['RACK_ENV'] ||= ENV['RACK_ENV'] ||= 'test' unless defined?(RACK_ENV)
 
 task :version do
   require './lib/version.rb'
@@ -14,21 +14,21 @@ PadrinoTasks.use(:database)
 PadrinoTasks.use(:sequel)
 PadrinoTasks.init
 
-if ['development', 'test', 'travis'].include?(RACK_ENV)
+if %w[development test travis].include?(RACK_ENV)
 
   task :all do
-  ["rake spec", "rake cucumber"].each do |cmd|
-    puts "Starting to run #{cmd}..."
-    system("export DISPLAY=:99.0 && bundle exec #{cmd}")
-    raise "#{cmd} failed!" unless $?.exitstatus == 0
+    ['rake spec', 'rake cucumber'].each do |cmd|
+      puts "Starting to run #{cmd}..."
+      system("export DISPLAY=:99.0 && bundle exec #{cmd}")
+      raise "#{cmd} failed!" unless $CHILD_STATUS.exitstatus.zero?
     end
   end
 
   task :build_server do
-  ["rake spec_report", "rake cucumber_report"].each do |cmd|
-    puts "Starting to run #{cmd}..."
-    system("export DISPLAY=:99.0 && bundle exec #{cmd}")
-    raise "#{cmd} failed!" unless $?.exitstatus == 0
+    ['rake spec_report', 'rake cucumber_report'].each do |cmd|
+      puts "Starting to run #{cmd}..."
+      system("export DISPLAY=:99.0 && bundle exec #{cmd}")
+      raise "#{cmd} failed!" unless $CHILD_STATUS.exitstatus.zero?
     end
   end
 
@@ -36,7 +36,7 @@ if ['development', 'test', 'travis'].include?(RACK_ENV)
   Cucumber::Rake::Task.new(:cucumber) do |task|
     Rake::Task['db:migrate'].invoke
     Rake::Task['db:seed'].invoke
-    task.cucumber_opts = ["features"]
+    task.cucumber_opts = ['features']
   end
 
   Cucumber::Rake::Task.new(:cucumber_report) do |task|
@@ -46,13 +46,13 @@ if ['development', 'test', 'travis'].include?(RACK_ENV)
 
   require 'rspec/core/rake_task'
   RSpec::Core::RakeTask.new(:spec) do |t|
-    t.pattern = "./spec/**/*_spec.rb"
+    t.pattern = './spec/**/*_spec.rb'
   end
 
   require 'rspec/core/rake_task'
   RSpec::Core::RakeTask.new(:spec_report) do |t|
-    t.pattern = "./spec/**/*_spec.rb"
-    t.rspec_opts = %w(--format RspecJunitFormatter --out reports/spec/spec.xml)
+    t.pattern = './spec/**/*_spec.rb'
+    t.rspec_opts = %w[--format RspecJunitFormatter --out reports/spec/spec.xml]
   end
 
   require 'rubocop/rake_task'
@@ -64,6 +64,6 @@ if ['development', 'test', 'travis'].include?(RACK_ENV)
     task.fail_on_error = false
   end
 
-  task :default => [:all]
+  task default: [:all]
 
 end

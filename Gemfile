@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.5.1'
 
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 # Server requirements
 gem 'thin'
@@ -14,32 +14,32 @@ gem 'rake'
 gem 'pg', '~> 0.18'
 gem 'sequel'
 
+gem 'bcrypt'
+gem 'clockwork'
 gem 'erubis', '~> 2.7.0'
+gem 'json'
+gem 'padrino-sprockets', require: 'padrino/sprockets'
 gem 'therubyracer'
-gem 'padrino-sprockets', :require => "padrino/sprockets"
+gem 'twitter'
 gem 'uglifier', '2.1.1'
 gem 'yui-compressor', '0.9.6'
-gem 'bcrypt'
-gem 'json'
-gem 'clockwork'
-gem 'twitter'
 
 # Padrino Stable Gem
 gem 'padrino', '~> 0.14'
 
 group :development, :test do
-  gem 'cucumber'
   gem 'capybara'
-  gem 'rspec_junit_formatter'
+  gem 'cucumber'
+  gem 'rack-test', require: 'rack/test'
   gem 'rspec'
-  gem 'simplecov'
-  gem 'rack-test', :require => 'rack/test'
+  gem 'rspec_junit_formatter'
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
+  gem 'simplecov'
 end
 
 group :development do
+  gem 'byebug'
   gem 'guard'
   gem 'guard-rspec'
-  gem 'byebug'
 end

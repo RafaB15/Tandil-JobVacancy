@@ -4,8 +4,8 @@ end
 
 Given(/^I am logged in as job offerer$/) do
   visit '/login'
-  fill_in('user[email]', :with => 'offerer@test.com')
-  fill_in('user[password]', :with => 'Passw0rd!')
+  fill_in('user[email]', with: 'offerer@test.com')
+  fill_in('user[password]', with: 'Passw0rd!')
   click_button('Login')
   page.should have_content('offerer@test.com')
 end
@@ -16,7 +16,7 @@ Given(/^I access the new offer page$/) do
 end
 
 When(/^I fill the title with "(.*?)"$/) do |offer_title|
-  fill_in('job_offer[title]', :with => offer_title)
+  fill_in('job_offer[title]', with: offer_title)
 end
 
 When(/^confirm the new offer$/) do
@@ -24,10 +24,9 @@ When(/^confirm the new offer$/) do
 end
 
 Then(/^I should see "(.*?)" in My Offers$/) do |content|
-	visit '/job_offers/my'
+  visit '/job_offers/my'
   page.should have_content(content)
 end
-
 
 Then(/^I should not see "(.*?)" in My Offers$/) do |content|
   visit '/job_offers/my'
@@ -37,7 +36,7 @@ end
 Given(/^I have "(.*?)" offer in My Offers$/) do |offer_title|
   JobOffer.all.each(&:delete)
   visit '/job_offers/new'
-  fill_in('job_offer[title]', :with => offer_title)
+  fill_in('job_offer[title]', with: offer_title)
   click_button('Create')
 end
 
@@ -50,7 +49,7 @@ And(/^I delete it$/) do
 end
 
 Given(/^I set title to "(.*?)"$/) do |new_title|
-  fill_in('job_offer[title]', :with => new_title)
+  fill_in('job_offer[title]', with: new_title)
 end
 
 Given(/^I save the modification$/) do

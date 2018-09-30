@@ -1,9 +1,8 @@
 class Version
+  MAYOR = 1
+  MINOR = 0
 
-	MAYOR = 1
-	MINOR = 0
-
-	def self.current
-		"#{MAYOR}.#{MINOR}.#{ENV['BUILD_NUMBER']}"
-	end
+  def self.current
+    "#{MAYOR}.#{MINOR}.#{ENV['BUILD_NUMBER']}"
+  end
 end

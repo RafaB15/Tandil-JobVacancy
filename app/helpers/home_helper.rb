@@ -5,7 +5,6 @@ JobVacancy::App.helpers do
   #  ...
   # end
   def feature_enabled?(feature_name)
-  	ENV[feature_name.to_s] == 'true'
+    ENV[feature_name.to_s] == 'true'
   end
-
 end
