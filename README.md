@@ -19,6 +19,8 @@ Follow these steps to initialize the PostgreSQL databases:
 1. Run **_RACK_ENV=development bundle exec rake db:migrate db:seed_**, to setup the development database
 1. Run **_bundle exec padrino start -h 0.0.0.0_**, to start the application
 
+For authenticating as an offerer you can use the credentials offerer@test.com / Passw0rd!
+
 Some conventions to work on it:
 
 * Follow existing coding conventions
