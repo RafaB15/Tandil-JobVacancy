@@ -3,11 +3,11 @@ require 'spec_helper'
 describe "JobOffersController" do
 
 	describe 'get :new' do
-		
+
 	  it "should response ok and render job_offers/new" do
-	  	JobVacancy::App.any_instance.should_receive(:render).with('job_offers/new')
+	  	expect_any_instance_of(JobVacancy::App).to receive(:render).with('job_offers/new')
 	  	get '/job_offers/new'
-	    last_response.should be_ok
+	    expect(last_response).to be_ok
 	  end
 
 	 end
@@ -21,19 +21,19 @@ describe "JobOffersController" do
 		end
 
 		it 'should call TwitterClient when create_and_twit is present' do
-			JobVacancy::App.any_instance.stub(:current_user).and_return(current_user)
-			JobOffer.any_instance.stub(:save).and_return(true)
-			TwitterClient.should_receive(:publish)
+			expect_any_instance_of(JobVacancy::App).to receive(:current_user).and_return(current_user)
+			expect_any_instance_of(JobOffer).to receive(:save).and_return(true)
+			expect(TwitterClient).to receive(:publish)
 			post '/job_offers/create', { :job_offer => {:title => 'Programmer offer' } , :create_and_twit => 'create_and_twit' }
-			last_response.location.should == 'http://example.org/job_offers/my'
+			expect(last_response.location).to eq('http://example.org/job_offers/my')
 		end
 
 		it 'should not call TwitterClient when create_and_twit not present' do
-			JobVacancy::App.any_instance.stub(:current_user).and_return(current_user)
-			JobOffer.any_instance.stub(:save).and_return(true)
-			TwitterClient.should_not_receive(:publish)
+			expect_any_instance_of(JobVacancy::App).to receive(:current_user).and_return(current_user)
+			expect_any_instance_of(JobOffer).to receive(:save).and_return(true)
+			expect(TwitterClient).not_to receive(:publish)
 			post '/job_offers/create', { :job_offer => {:title => 'Programmer offer' } }
-			last_response.location.should == 'http://example.org/job_offers/my'
+			expect(last_response.location).to eq('http://example.org/job_offers/my')
 		end
 
 	end
