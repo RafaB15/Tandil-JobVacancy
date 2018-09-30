@@ -55,15 +55,14 @@ if ['development', 'test', 'travis'].include?(RACK_ENV)
     t.rspec_opts = %w(--format RspecJunitFormatter --out reports/spec/spec.xml)
   end
 
-=begin
   require 'rubocop/rake_task'
   desc 'Run RuboCop on the lib directory'
-  Rubocop::RakeTask.new(:rubocop) do |task|
-    #task.patterns = ['lib/**/*.rb']
+  RuboCop::RakeTask.new(:rubocop) do |task|
+    # run analysis on rspec tests
+    task.requires << 'rubocop-rspec'
     # don't abort rake on failure
     task.fail_on_error = false
   end
-=end
 
   task :default => [:all]
 

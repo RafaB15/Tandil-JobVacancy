@@ -34,7 +34,8 @@ group :development, :test do
   gem 'rspec'
   gem 'simplecov'
   gem 'rack-test', :require => 'rack/test'
-  gem 'rubocop',  :github => 'bbatsov/rubocop'
+  gem 'rubocop', require: false
+  gem 'rubocop-rspec', require: false
 end
 
 group :development do
