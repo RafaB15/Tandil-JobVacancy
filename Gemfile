@@ -32,7 +32,7 @@ group :development, :test do
   gem 'capybara'
   gem 'rspec_junit_formatter'
   gem 'rspec'
-  gem 'simplecov', "0.8.0.pre"
+  gem 'simplecov'
   gem 'rack-test', :require => 'rack/test'
   gem 'rubocop',  :github => 'bbatsov/rubocop'
 end
