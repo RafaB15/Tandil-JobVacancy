@@ -1,14 +1,14 @@
-migration 1, :create_users do
+Sequel.migration do
   up do
-    create_table :users do
-      column :id, Integer, :serial => true
-      column :name, DataMapper::Property::String, :length => 255
-      column :crypted_password, DataMapper::Property::String, :length => 255
-      column :email, DataMapper::Property::String, :length => 255
+    create_table(:users) do
+      primary_key :id
+      String :name
+      String :crypted_password
+      String :email
     end
   end
 
   down do
-    drop_table :users
+    drop_table(:users)
   end
 end

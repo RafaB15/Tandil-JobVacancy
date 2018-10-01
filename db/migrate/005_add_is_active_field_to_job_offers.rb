@@ -1,13 +1,9 @@
-migration 5, :add_is_active_field_to_job_offers do
+Sequel.migration do
   up do
-  	 modify_table :job_offers do
-      add_column :is_active, TrueClass
-    end
+    add_column :job_offers, :is_active, TrueClass, default: true
   end
 
   down do
-  	modify_table :job_offers do
-      drop_column :is_active
-    end
+    drop_column :job_offers, :is_active
   end
 end

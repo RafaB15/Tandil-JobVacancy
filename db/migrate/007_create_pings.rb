@@ -1,13 +1,13 @@
-migration 7, :create_pings do
+Sequel.migration do
   up do
-    create_table :pings do
-      column :id, Integer, :serial => true
-      column :created_at, DateTime
-      column :description, DataMapper::Property::String, :length => 255      
+    create_table(:pings) do
+      primary_key :id
+      String :description
+      DateTime :created_at
     end
   end
 
   down do
-    drop_table :pings
+    drop_table(:pings)
   end
 end

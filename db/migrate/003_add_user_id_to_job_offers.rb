@@ -1,13 +1,9 @@
-migration 3, :add_user_id_to_job_offers do
+Sequel.migration do
   up do
-    modify_table :job_offers do
-      add_column :user_id, Integer
-    end
+    add_column :job_offers, :user_id, Integer
   end
 
   down do
-    modify_table :job_offers do
-      drop_column :user_id
-    end
+    drop_column :job_offers, :user_id
   end
 end

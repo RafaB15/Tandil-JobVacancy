@@ -59,20 +59,29 @@ describe User do
 		it 'should return nil when password do not match' do
 			email = @user.email
 			password = 'wrong_password'
-			User.should_receive(:find_by_email).with(email).and_return(@user)
-			User.authenticate(email, password).should be_nil
+			expect(User).to receive(:first).with(email: email).and_return(@user)
+
+			authentication_result = User.authenticate(email, password)
+
+      expect(authentication_result).to be_nil
 		end
 
 		it 'should return nil when email do not match' do
 			email = 'wrong@email.com'
-			User.should_receive(:find_by_email).with(email).and_return(nil)
-			User.authenticate(email, @password).should be_nil
+			expect(User).to receive(:first).with(email: email).and_return(nil)
+
+			authentication_result = User.authenticate(email, @password)
+
+      expect(authentication_result).to be_nil
 		end
 
 		it 'should return the user when email and password match' do
 			email = @user.email
-			User.should_receive(:find_by_email).with(email).and_return(@user)
-			User.authenticate(email, @password).should eq @user
+			expect(User).to receive(:first).with(email: email).and_return(@user)
+
+			authentication_result = User.authenticate(email, @password)
+
+      expect(authentication_result).to eq @user
 		end
 
 	end

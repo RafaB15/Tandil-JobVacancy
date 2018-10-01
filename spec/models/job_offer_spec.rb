@@ -34,23 +34,25 @@ describe JobOffer do
 		let(:today_offer) do
 			today_offer = JobOffer.new
 			today_offer.updated_on = Date.today
+      today_offer.is_active = true
 			today_offer
 		end
 
 		let(:thirty_day_offer) do
 			thirty_day_offer = JobOffer.new
 			thirty_day_offer.updated_on = Date.today - 45
+      thirty_day_offer.is_active = true
 			thirty_day_offer
 		end
 
 		it 'should deactivate offers updated 45 days ago' do
-			JobOffer.should_receive(:all).and_return([thirty_day_offer])
+			expect(JobOffer).to receive(:where).with(is_active: true).and_return([thirty_day_offer])
 			JobOffer.deactivate_old_offers
 			expect(thirty_day_offer.is_active).to eq false
 		end
 
 		it 'should not deactivate offers created today' do
-			JobOffer.should_receive(:all).and_return([today_offer])
+			expect(JobOffer).to receive(:where).with(is_active: true).and_return([today_offer])
 			JobOffer.deactivate_old_offers
 			expect(today_offer.is_active).to eq true
 		end

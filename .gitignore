@@ -1,5 +1,6 @@
 .DS_Store
 .vagrant
+*.log
 log/
 log/**/*
 tmp/**/*
@@ -24,6 +25,7 @@ tmp
 reports
 :memory
 *.sublime-*
+.byebug_history
 
 # YARD artifacts
 .yardoc

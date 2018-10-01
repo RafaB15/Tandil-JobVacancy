@@ -1,10 +1,6 @@
-migration 6, :set_is_active_field_to_job_offers do
+Sequel.migration do
   up do
-    offers = JobOffer.all
-    offers.each do | offer |
-      offer.is_active = true
-      offer.save
-    end
+    from(:job_offers).update(is_active: true)
   end
 
   down do

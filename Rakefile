@@ -1,9 +1,7 @@
 require 'bundler/setup'
-require 'bundler'
-require 'rake'
 require 'padrino-core/cli/rake'
 
-PADRINO_ENV  = ENV['PADRINO_ENV'] ||= ENV['RACK_ENV'] ||= 'test'  unless defined?(PADRINO_ENV)
+RACK_ENV  = ENV['RACK_ENV'] ||= ENV['RACK_ENV'] ||= 'test'  unless defined?(RACK_ENV)
 
 
 task :version do
@@ -13,10 +11,10 @@ task :version do
 end
 
 PadrinoTasks.use(:database)
-PadrinoTasks.use(:datamapper)
+PadrinoTasks.use(:sequel)
 PadrinoTasks.init
 
-if ['development', 'test', 'travis'].include?(PADRINO_ENV)
+if ['development', 'test', 'travis'].include?(RACK_ENV)
 
   task :all do
   ["rake spec", "rake cucumber"].each do |cmd|
@@ -57,7 +55,7 @@ if ['development', 'test', 'travis'].include?(PADRINO_ENV)
     t.rspec_opts = %w(--format RspecJunitFormatter --out reports/spec/spec.xml)
   end
 
-=begin  
+=begin
   require 'rubocop/rake_task'
   desc 'Run RuboCop on the lib directory'
   Rubocop::RakeTask.new(:rubocop) do |task|
