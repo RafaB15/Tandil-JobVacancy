@@ -1,14 +1,14 @@
 Job Vacancy Application
 =======================
 
-[![build status](https://gitlab.com/is-untref/jobvacancy/badges/gitlab/build.svg)](https://gitlab.com/is-untref/jobvacancy/commits/gitlab)
+[![build status](https://gitlab.com/is-untref/jobvacancy/badges/master/build.svg)](https://gitlab.com/is-untref/jobvacancy/commits/master)
 
 ## PostgreSQL setup
 
 Follow these steps to initialize the PostgreSQL databases:
 
 1. Install PostgreSQL if needed. On Ubuntu you can do this by running:
-`sudo apt-get install -y postgresql-9.3 postgresql-contrib postgresql-server-dev-9.5`
+`sudo apt-get install -y postgresql-9.5 postgresql-contrib postgresql-server-dev-9.5`
 1. Create development and test databases by running:
 `sudo -u postgres psql --dbname=postgres -f ./create_dev_and_test_dbs.sql`
 
@@ -21,7 +21,7 @@ Follow these steps to initialize the PostgreSQL databases:
 
 For authenticating as an offerer you can use the credentials offerer@test.com / Passw0rd!
 
-Some conventions to work on it:
+## Some conventions to work on it:
 
 * Follow existing coding conventions
 * Use feature branch
