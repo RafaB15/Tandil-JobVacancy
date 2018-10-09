@@ -19,7 +19,8 @@
 #     :user_name       => 'user',
 #     :password        => 'pass',
 #     :authentication  => :plain, # :plain, :login, :cram_md5, no auth by default
-#     :domain          => "localhost.localdomain" # the HELO domain provided by the client to the server
+#     :domain          => "localhost.localdomain" # the HELO domain provided
+#                         by the client to the server
 #   }
 #
 # or sendmail (default):
@@ -40,14 +41,12 @@
 #
 
 JobVacancy::App.mailer :notification do
-
-  email :contact_info_email do | job_application |
+  email :contact_info_email do |job_application|
     from 'no_reply@jobvacancy.com'
     to job_application.applicant_email
     subject 'Job Application: Contact information'
-    locals :job_offer => job_application.job_offer
+    locals job_offer: job_application.job_offer
     content_type :plain
     render 'notification/contant_info_email'
   end
-
 end

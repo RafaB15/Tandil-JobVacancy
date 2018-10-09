@@ -1,5 +1,4 @@
 JobVacancy::App.controllers :job_offers do
-
   get :my do
     @offers = JobOffer.find_by_owner(current_user)
     render 'job_offers/my_offers'
@@ -20,16 +19,16 @@ JobVacancy::App.controllers :job_offers do
     render 'job_offers/list'
   end
 
-  get :edit, :with =>:offer_id  do
+  get :edit, with: :offer_id do
     @job_offer = JobOffer.with_pk(params[:offer_id])
-    # ToDo: validate the current user is the owner of the offer
+    # TODO: validate the current user is the owner of the offer
     render 'job_offers/edit'
   end
 
-  get :apply, :with =>:offer_id  do
+  get :apply, with: :offer_id do
     @job_offer = JobOffer.with_pk(params[:offer_id])
     @job_application = JobApplication.new
-    # ToDo: validate the current user is the owner of the offer
+    # TODO: validate the current user is the owner of the offer
     render 'job_offers/apply'
   end
 
@@ -38,8 +37,7 @@ JobVacancy::App.controllers :job_offers do
     render 'job_offers/list'
   end
 
-
-  post :apply, :with => :offer_id do
+  post :apply, with: :offer_id do
     @job_offer = JobOffer.with_pk(params[:offer_id])
     applicant_email = params[:job_application][:applicant_email]
     @job_application = JobApplication.create_for(applicant_email, @job_offer)
@@ -52,9 +50,7 @@ JobVacancy::App.controllers :job_offers do
     @job_offer = JobOffer.new(params[:job_offer])
     @job_offer.owner = current_user
     if @job_offer.save
-      if params['create_and_twit']
-        TwitterClient.publish(@job_offer)
-      end
+      TwitterClient.publish(@job_offer) if params['create_and_twit']
       flash[:success] = 'Offer created'
       redirect '/job_offers/my'
     else
@@ -63,7 +59,7 @@ JobVacancy::App.controllers :job_offers do
     end
   end
 
-  post :update, :with => :offer_id do
+  post :update, with: :offer_id do
     @job_offer = JobOffer.with_pk(params[:offer_id])
     @job_offer.update(params[:job_offer])
     if @job_offer.save
@@ -75,16 +71,16 @@ JobVacancy::App.controllers :job_offers do
     end
   end
 
-  put :activate, :with => :offer_id do
+  put :activate, with: :offer_id do
     @job_offer = JobOffer.with_pk(params[:offer_id])
     @job_offer.activate
     if @job_offer.save
       flash[:success] = 'Offer activated'
-      redirect '/job_offers/my'
     else
       flash.now[:error] = 'Operation failed'
-      redirect '/job_offers/my'
     end
+
+    redirect '/job_offers/my'
   end
 
   delete :destroy do
@@ -96,5 +92,4 @@ JobVacancy::App.controllers :job_offers do
     end
     redirect 'job_offers/my'
   end
-
 end

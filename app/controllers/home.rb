@@ -1,7 +1,5 @@
 JobVacancy::App.controllers :home do
-  
-  get :index, :map => '/' do
+  get :index, map: '/' do
     render 'home/index'
   end
-  
 end
