@@ -18,11 +18,8 @@ gem 'bcrypt'
 gem 'clockwork'
 gem 'erubis', '~> 2.7.0'
 gem 'json'
-gem 'padrino-sprockets', require: 'padrino/sprockets'
 gem 'therubyracer'
 gem 'twitter'
-gem 'uglifier', '2.1.1'
-gem 'yui-compressor', '0.9.6'
 
 # Padrino Stable Gem
 gem 'padrino', '~> 0.14'
