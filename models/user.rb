@@ -1,22 +1,29 @@
-class User < Sequel::Model
-  one_to_many :job_offers
+class User
+  include ActiveModel::Validations
 
-  def validate
-    super
-    validates_presence %i[name email crypted_password]
-    validates_format(/\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, :email)
-  end
+  attr_accessor :id, :name, :email, :crypted_password, :job_offers, :updated_on, :created_on
 
-  def password=(password)
-    self.crypted_password = ::BCrypt::Password.create(password) unless password.nil?
-  end
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
-  def self.authenticate(email, password)
-    user = User.first(email: email)
-    user&.has_password?(password) ? user : nil
+  validates :name, :crypted_password, presence: true
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX,
+                                              message: 'invalid email' }
+
+  def initialize(data = {})
+    @id = data[:id]
+    @name = data[:name]
+    @email = data[:email]
+    @crypted_password = if data[:password].nil?
+                          data[:crypted_password]
+                        else
+                          Crypto.encrypt(data[:password])
+                        end
+    @job_offers = data[:job_offers]
+    @updated_on = data[:updated_on]
+    @created_on = data[:created_on]
   end
 
   def has_password?(password)
-    ::BCrypt::Password.new(crypted_password) == password
+    Crypto.decrypt(crypted_password) == password
   end
 end

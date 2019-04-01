@@ -1,11 +1,11 @@
 JobVacancy::App.controllers :job_offers do
   get :my do
-    @offers = JobOffer.find_by_owner(current_user)
+    @offers = JobOfferRepository.new.find_by_owner(current_user)
     render 'job_offers/my_offers'
   end
 
   get :index do
-    @offers = JobOffer.all_active
+    @offers = JobOfferRepository.new.all_active
     render 'job_offers/list'
   end
 
@@ -15,30 +15,30 @@ JobVacancy::App.controllers :job_offers do
   end
 
   get :latest do
-    @offers = JobOffer.all_active
+    @offers = JobOfferRepository.new.all_active
     render 'job_offers/list'
   end
 
   get :edit, with: :offer_id do
-    @job_offer = JobOffer.with_pk(params[:offer_id])
+    @job_offer = JobOfferRepository.new.find(params[:offer_id])
     # TODO: validate the current user is the owner of the offer
     render 'job_offers/edit'
   end
 
   get :apply, with: :offer_id do
-    @job_offer = JobOffer.with_pk(params[:offer_id])
+    @job_offer = JobOfferRepository.new.find(params[:offer_id])
     @job_application = JobApplication.new
     # TODO: validate the current user is the owner of the offer
     render 'job_offers/apply'
   end
 
   post :search do
-    @offers = JobOffer.where(Sequel.like(:title, "%#{params[:q]}%"))
+    @offers = JobOfferRepository.new.search_by_title(params[:q])
     render 'job_offers/list'
   end
 
   post :apply, with: :offer_id do
-    @job_offer = JobOffer.with_pk(params[:offer_id])
+    @job_offer = JobOfferRepository.new.find(params[:offer_id])
     applicant_email = params[:job_application][:applicant_email]
     @job_application = JobApplication.create_for(applicant_email, @job_offer)
     @job_application.process
@@ -47,9 +47,9 @@ JobVacancy::App.controllers :job_offers do
   end
 
   post :create do
-    @job_offer = JobOffer.new(params[:job_offer])
+    @job_offer = JobOffer.new(job_offer_params)
     @job_offer.owner = current_user
-    if @job_offer.save
+    if JobOfferRepository.new.save(@job_offer)
       TwitterClient.publish(@job_offer) if params['create_and_twit']
       flash[:success] = 'Offer created'
       redirect '/job_offers/my'
@@ -60,9 +60,10 @@ JobVacancy::App.controllers :job_offers do
   end
 
   post :update, with: :offer_id do
-    @job_offer = JobOffer.with_pk(params[:offer_id])
-    @job_offer.update(params[:job_offer])
-    if @job_offer.save
+    @job_offer = JobOffer.new(job_offer_params.merge(id: params[:offer_id]))
+    @job_offer.owner = current_user
+
+    if JobOfferRepository.new.save(@job_offer)
       flash[:success] = 'Offer updated'
       redirect '/job_offers/my'
     else
@@ -72,9 +73,9 @@ JobVacancy::App.controllers :job_offers do
   end
 
   put :activate, with: :offer_id do
-    @job_offer = JobOffer.with_pk(params[:offer_id])
+    @job_offer = JobOfferRepository.new.find(params[:offer_id])
     @job_offer.activate
-    if @job_offer.save
+    if JobOfferRepository.new.save(@job_offer)
       flash[:success] = 'Offer activated'
     else
       flash.now[:error] = 'Operation failed'
@@ -84,8 +85,8 @@ JobVacancy::App.controllers :job_offers do
   end
 
   delete :destroy do
-    @job_offer = JobOffer.with_pk(params[:offer_id])
-    if @job_offer.destroy
+    @job_offer = JobOfferRepository.new.find(params[:offer_id])
+    if JobOfferRepository.new.destroy(@job_offer)
       flash[:success] = 'Offer deleted'
     else
       flash.now[:error] = 'Title is mandatory'

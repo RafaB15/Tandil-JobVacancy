@@ -11,6 +11,7 @@ gem 'thin'
 gem 'rake'
 
 # Component requirements
+gem 'activemodel', require: 'active_model'
 gem 'pg', '~> 0.18'
 gem 'sequel'
 
