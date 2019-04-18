@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  subject(:user) { described_class.new }
+  subject(:user) { described_class.new({}) }
 
   describe 'model' do
     it { is_expected.to respond_to(:id) }
@@ -13,66 +13,46 @@ describe User do
 
   describe 'valid?' do
     it 'should be false when name is blank' do
-      user.email = 'john.doe@someplace.com'
-      user.password = 'a_secure_passWord!'
+      user = described_class.new(email: 'john.doe@someplace.com',
+                                 crypted_password: 'a_secure_passWord!')
       expect(user.valid?).to eq false
+      expect(user.errors).to have_key(:name)
     end
 
     it 'should be false when email is not valid' do
-      user.name = 'John Doe'
-      user.email = 'john'
-      user.password = 'a_secure_passWord!'
+      user = described_class.new(name: 'John Doe', email: 'john',
+                                 crypted_password: 'a_secure_passWord!')
       expect(user.valid?).to eq false
+      expect(user.errors).to have_key(:email)
     end
 
     it 'should be false when password is blank' do
-      user.name = 'John Doe'
-      user.email = 'john.doe@someplace.com'
+      user = described_class.new(name: 'John Doe', email: 'john')
       expect(user.valid?).to eq false
+      expect(user.errors).to have_key(:crypted_password)
     end
 
     it 'should be true when all field are valid' do
-      user.name = 'John Doe'
-      user.email = 'john.doe@someplace.com'
-      user.password = 'a_secure_passWord!'
+      user = described_class.new(name: 'John Doe', email: 'john@doe.com',
+                                 crypted_password: 'a_secure_passWord!')
       expect(user.valid?).to eq true
     end
   end
 
-  describe 'authenticate' do
+  describe 'has password?' do
     let(:password) { 'password' }
-
-    before :each do
-      user.email = 'john.doe@someplace.com'
-      user.password = password
+    let(:user) do
+      described_class.new(password: password,
+                          email: 'john.doe@someplace.com',
+                          name: 'john doe')
     end
 
-    it 'should return nil when password do not match' do
-      email = user.email
-      password = 'wrong_password'
-      expect(described_class).to receive(:first).with(email: email).and_return(user)
-
-      authentication_result = described_class.authenticate(email, password)
-
-      expect(authentication_result).to be_nil
+    it 'should return false when password do not match' do
+      expect(user).not_to have_password('invalid')
     end
 
-    it 'should return nil when email do not match' do
-      email = 'wrong@email.com'
-      expect(described_class).to receive(:first).with(email: email).and_return(nil)
-
-      authentication_result = described_class.authenticate(email, password)
-
-      expect(authentication_result).to be_nil
-    end
-
-    it 'should return the user when email and password match' do
-      email = user.email
-      expect(described_class).to receive(:first).with(email: email).and_return(user)
-
-      authentication_result = described_class.authenticate(email, password)
-
-      expect(authentication_result).to eq user
+    it 'should return true when password do  match' do
+      expect(user).to have_password(password)
     end
   end
 end

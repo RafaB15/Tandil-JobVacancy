@@ -34,6 +34,8 @@ Bundler.require(:default, RACK_ENV)
 #
 Padrino.before_load do
   Sequel::Model.plugin :validation_helpers
+  Padrino.dependency_paths << Padrino.root('app/repositories/**/*.rb')
+  Padrino.dependency_paths << Padrino.root('app/security/**/*.rb')
 end
 
 #

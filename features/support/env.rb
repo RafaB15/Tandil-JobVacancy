@@ -18,10 +18,19 @@ SimpleCov.start do
   add_group 'Helpers', 'app/helpers'
 end
 
-unless User.all.count.positive?
-  User.create(email: 'offerer@test.com',
-              name: 'Offerer',
-              password: 'Passw0rd!')
+user_repository = UserRepository.new
+unless user_repository.all.count.positive?
+  user = User.new(
+    email: 'offerer@test.com',
+    name: 'Offerer',
+    password: 'Passw0rd!'
+  )
+
+  user_repository.save(user)
+end
+
+Around do |_scenario, block|
+  DB.transaction(rollback: :always, auto_savepoint: true) { block.call }
 end
 
 # Capybara.default_driver = :selenium

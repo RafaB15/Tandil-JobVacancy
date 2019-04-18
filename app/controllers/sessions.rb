@@ -7,15 +7,19 @@ JobVacancy::App.controllers :sessions do
   post :create do
     email = params[:user][:email]
     password = params[:user][:password]
-    @user = User.authenticate(email, password)
 
-    if @user.nil?
+    gate_keeper = GateKeeper.new.authenticate(email, password)
+
+    gate_keeper.when_succeed do |user|
+      @user = user
+      sign_in @user
+      redirect '/'
+    end
+
+    gate_keeper.when_failed do
       @user = User.new
       flash.now[:error] = 'Invalid credentials'
       render 'sessions/new'
-    else
-      sign_in @user
-      redirect '/'
     end
   end
 
