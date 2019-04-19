@@ -7,9 +7,8 @@ describe 'HealthController' do
     expect(last_response).to be_ok
   end
 
-  it 'should version should include BUILD_NUMBER' do
-    ENV['BUILD_NUMBER'] = '1'
+  it 'should include version' do
     get '/health/version'
-    expect(last_response.body.include?('.1')).to eq(true)
+    expect(last_response.body.include?(Version.current)).to eq(true)
   end
 end

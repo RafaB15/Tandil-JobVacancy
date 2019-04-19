@@ -6,5 +6,4 @@ class Version
   def self.current
     "#{MAYOR}.#{MINOR}.#{PATCH}"
   end
-
 end
