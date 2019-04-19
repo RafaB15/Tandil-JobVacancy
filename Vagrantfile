@@ -5,9 +5,10 @@ Vagrant.configure(2) do |config|
   config.vm.box = 'ubuntu/xenial64'
 
   config.vm.network 'forwarded_port', guest: 3000, host: 3000
-
+  config.vm.hostname = 'jobvacancy'
   config.vm.provider 'virtualbox' do |vb|
     vb.memory = '1024'
+    vb.name = 'jobvacancy'
   end
 
   config.vm.provision 'shell', privileged: false, inline: <<-SHELL
@@ -22,6 +23,7 @@ Vagrant.configure(2) do |config|
     curl -sSL https://get.rvm.io | bash -s stable
     source ~/.rvm/scripts/rvm
     rvm install 2.5.1
+    rvm --default use 2.5.1
     gem install bundler -v 1.16.1
   SHELL
 end

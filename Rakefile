@@ -36,7 +36,7 @@ if %w[development test travis].include?(RACK_ENV)
   Cucumber::Rake::Task.new(:cucumber) do |task|
     Rake::Task['db:migrate'].invoke
     Rake::Task['db:seed'].invoke
-    task.cucumber_opts = ['features']
+    task.cucumber_opts = ['features', '--tags not @wip']
   end
 
   Cucumber::Rake::Task.new(:cucumber_report) do |task|
