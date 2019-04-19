@@ -23,7 +23,9 @@ Vagrant.configure(2) do |config|
     curl -sSL https://get.rvm.io | bash -s stable
     source ~/.rvm/scripts/rvm
     rvm install 2.5.1
-    rvm --default use 2.5.1
+    rvm use 2.5.1
+    rvm gemset create jobvacancy
+    rvm gemset use jobvacancy
     gem install bundler -v 1.16.1
   SHELL
 end
