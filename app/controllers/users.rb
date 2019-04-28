@@ -11,7 +11,7 @@ JobVacancy::App.controllers :users do
     @user = User.new(params[:user])
 
     if params[:user][:password] == password_confirmation
-      if @user.save
+      if UserRepository.new.save(@user)
         flash[:success] = 'User created'
         redirect '/'
       else

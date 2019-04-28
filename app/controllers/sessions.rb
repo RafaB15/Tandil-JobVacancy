@@ -18,8 +18,8 @@ JobVacancy::App.controllers :sessions do
 
     gate_keeper.when_failed do
       @user = User.new
-      flash.now[:error] = 'Invalid credentials'
-      render 'sessions/new'
+      flash[:error] = 'Invalid credentials'
+      redirect '/login'
     end
   end
 
