@@ -14,8 +14,17 @@ variables:
   DB_HOST: postgres
 stages:
   - build
+  - deploy_staging
 
 job_build:
   stage: build
   script:
     - RACK_ENV=test bundle exec rake
+
+job_deploy_staging:
+  stage: deploy_staging
+  script:
+  - gem install dpl
+  - dpl --provider=heroku --app=$HEROKU_STAGING_APP --api-key=$HEROKU_STAGING_API_KEY
+  only:
+  - staging
