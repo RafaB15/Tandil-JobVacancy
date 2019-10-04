@@ -1,12 +1,6 @@
 image: ruby:2.5.1
 services:
   - postgres:9.5
-before_script:
-  - apt-get update -qq && apt-get install -y -qq postgresql postgresql-contrib libpq-dev cmake
-  - ruby -v
-  - which ruby
-  - gem install bundler --no-ri --no-rdoc
-  - bundle install --without staging production
 variables:
   POSTGRES_DB: jobvacancy_test
   POSTGRES_USER: jobvacancy
@@ -19,6 +13,11 @@ stages:
 job_build:
   stage: build
   script:
+    - apt-get update -qq && apt-get install -y -qq postgresql postgresql-contrib libpq-dev cmake
+    - ruby -v
+    - which ruby
+    - gem install bundler --no-ri --no-rdoc
+    - bundle install --without staging production
     - RACK_ENV=test bundle exec rake
 
 job_deploy_staging:
