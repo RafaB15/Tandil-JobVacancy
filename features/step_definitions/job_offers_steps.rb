@@ -1,5 +1,6 @@
 OFFER_CREATED_MESSAGE = "Offer created";
 OFFER_UPDATED_MESSAGE = "Offer updated";
+OFFER_DELETED_MESSAGE = "Offer deleted";
 
 When(/^I browse the default page$/) do
   visit '/'
@@ -27,12 +28,16 @@ Then(/^I should see a offer updated confirmation message$/) do
   page.should have_content(OFFER_UPDATED_MESSAGE)
 end
 
+Then(/^I should see a offer deleted confirmation message$/) do
+  page.should have_content(OFFER_DELETED_MESSAGE)
+end
+
 Then(/^I should see "(.*?)" in my offers list$/) do |content|
   visit '/job_offers/my'
   page.should have_content(content)
 end
 
-Then(/^I should not see "(.*?)" in My Offers$/) do |content|
+Then(/^I should not see "(.*?)" in my offers list$/) do |content|
   visit '/job_offers/my'
   page.should_not have_content(content)
 end
