@@ -1,6 +1,8 @@
-OFFER_CREATED_MESSAGE = "Offer created";
-OFFER_UPDATED_MESSAGE = "Offer updated";
-OFFER_DELETED_MESSAGE = "Offer deleted";
+OFFER_CREATED_MESSAGE = 'Offer created'.freeze
+OFFER_UPDATED_MESSAGE = 'Offer updated'.freeze
+OFFER_DELETED_MESSAGE = 'Offer deleted'.freeze
+REGISTRATION_MENU = 'register'.freeze
+JOB_OFFERS_MENU = 'Job offers'.freeze
 
 When(/^I browse the default page$/) do
   visit '/'
@@ -40,6 +42,14 @@ end
 Then(/^I should not see "(.*?)" in my offers list$/) do |content|
   visit '/job_offers/my'
   page.should_not have_content(content)
+end
+
+Then(/^I should see a registration menu$/) do
+  page.should have_content(REGISTRATION_MENU)
+end
+
+Then(/^I should see a job offers menu$/) do
+  page.should have_content(JOB_OFFERS_MENU)
 end
 
 Given(/^I have "(.*?)" offer in my offers list$/) do |offer_title|
