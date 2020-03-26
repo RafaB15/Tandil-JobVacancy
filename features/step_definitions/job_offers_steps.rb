@@ -1,3 +1,5 @@
+OFFER_CREATED_MESSAGE = "Offer created";
+
 When(/^I browse the default page$/) do
   visit '/'
 end
@@ -10,20 +12,18 @@ Given(/^I am logged in as job offerer$/) do
   page.should have_content('offerer@test.com')
 end
 
-Given(/^I access the new offer page$/) do
+When(/^I create a new offer with "(.*?)" as the title$/) do |title|
+  @title = title
   visit '/job_offers/new'
-  page.should have_content('Title')
-end
-
-When(/^I fill the title with "(.*?)"$/) do |offer_title|
-  fill_in('job_offer[title]', with: offer_title)
-end
-
-When(/^confirm the new offer$/) do
+  fill_in('job_offer[title]', with: title)
   click_button('Create')
 end
 
-Then(/^I should see "(.*?)" in My Offers$/) do |content|
+Then(/^I should see a offer created confirmation message$/) do
+  page.should have_content(OFFER_CREATED_MESSAGE)
+end
+
+Then(/^I should see "(.*?)" in my offers list$/) do |content|
   visit '/job_offers/my'
   page.should have_content(content)
 end
