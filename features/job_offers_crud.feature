@@ -12,15 +12,13 @@ Feature: Job Offers CRUD
     And I should see "Programmer vacancy" in my offers list
 
   Scenario: Update offer
-    Given I have "Programmer vacancy" offer in My Offers
-    And I edit it
-    And I set title to "Programmer vacancy!!!"
-    And I save the modification
-    Then I should see "Offer updated"
+    Given I have "Programmer vacancy" offer in my offers list
+    When I change the title to "Programmer vacancy!!!"
+    Then I should see a offer updated confirmation message
     And I should see "Programmer vacancy!!!" in my offers list
 
   Scenario: Delete offer
-    Given I have "Programmer vacancy" offer in My Offers
+    Given I have "Programmer vacancy" offer in my offers list
     Given I delete it
     Then I should see "Offer deleted"
     And I should not see "Programmer vacancy!!!" in My Offers
