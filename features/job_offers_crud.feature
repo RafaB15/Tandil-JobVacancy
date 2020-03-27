@@ -7,22 +7,18 @@ Feature: Job Offers CRUD
   	Given I am logged in as job offerer
 
   Scenario: Create new offer
-    Given I access the new offer page
-    When I fill the title with "Programmer vacancy"
-		And confirm the new offer    
-    Then I should see "Offer created"
-    And I should see "Programmer vacancy" in My Offers
+    When I create a new offer with "Programmer vacancy" as the title
+    Then I should see a offer created confirmation message
+    And I should see "Programmer vacancy" in my offers list
 
   Scenario: Update offer
-    Given I have "Programmer vacancy" offer in My Offers
-    And I edit it
-    And I set title to "Programmer vacancy!!!"
-    And I save the modification
-    Then I should see "Offer updated"
-    And I should see "Programmer vacancy!!!" in My Offers
+    Given I have "Programmer vacancy" offer in my offers list
+    When I change the title to "Programmer vacancy!!!"
+    Then I should see a offer updated confirmation message
+    And I should see "Programmer vacancy!!!" in my offers list
 
   Scenario: Delete offer
-    Given I have "Programmer vacancy" offer in My Offers
-    Given I delete it
-    Then I should see "Offer deleted"
-    And I should not see "Programmer vacancy!!!" in My Offers
+    Given I have "Programmer vacancy" offer in my offers list
+    When I delete it
+    Then I should see a offer deleted confirmation message
+    And I should not see "Programmer vacancy!!!" in my offers list
