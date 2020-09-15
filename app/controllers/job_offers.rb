@@ -10,7 +10,7 @@ JobVacancy::App.controllers :job_offers do
   end
 
   get :new do
-    @job_offer = JobOffer.new
+    @job_offer = JobOfferForm.new
     render 'job_offers/new'
   end
 
@@ -20,14 +20,14 @@ JobVacancy::App.controllers :job_offers do
   end
 
   get :edit, with: :offer_id do
-    @job_offer = JobOfferRepository.new.find(params[:offer_id])
+    @job_offer = JobOfferForm.from(JobOfferRepository.new.find(params[:offer_id]))
     # TODO: validate the current user is the owner of the offer
     render 'job_offers/edit'
   end
 
   get :apply, with: :offer_id do
-    @job_offer = JobOfferRepository.new.find(params[:offer_id])
-    @job_application = JobApplication.new
+    @job_offer = JobOfferForm.from(JobOfferRepository.new.find(params[:offer_id]))
+    @job_application = JobApplicationForm.new
     # TODO: validate the current user is the owner of the offer
     render 'job_offers/apply'
   end
@@ -39,7 +39,7 @@ JobVacancy::App.controllers :job_offers do
 
   post :apply, with: :offer_id do
     @job_offer = JobOfferRepository.new.find(params[:offer_id])
-    applicant_email = params[:job_application][:applicant_email]
+    applicant_email = params[:job_application_form][:applicant_email]
     @job_application = JobApplication.create_for(applicant_email, @job_offer)
     @job_application.process
     flash[:success] = 'Contact information sent.'
@@ -47,16 +47,18 @@ JobVacancy::App.controllers :job_offers do
   end
 
   post :create do
-    @job_offer = JobOffer.new(job_offer_params)
-    @job_offer.owner = current_user
-    if JobOfferRepository.new.save(@job_offer)
-      TwitterClient.publish(@job_offer) if params['create_and_twit']
+    job_offer = JobOffer.new(job_offer_params)
+    job_offer.owner = current_user
+    if JobOfferRepository.new.save(job_offer)
+      TwitterClient.publish(job_offer) if params['create_and_twit']
       flash[:success] = 'Offer created'
       redirect '/job_offers/my'
-    else
-      flash.now[:error] = 'Title is mandatory'
-      render 'job_offers/new'
     end
+  rescue ActiveModel::ValidationError => e
+    @job_offer = JobOfferForm.new
+    @errors = e.model.errors
+    flash.now[:error] = 'Please review the errors'
+    render 'job_offers/new'
   end
 
   post :update, with: :offer_id do
@@ -66,10 +68,12 @@ JobVacancy::App.controllers :job_offers do
     if JobOfferRepository.new.save(@job_offer)
       flash[:success] = 'Offer updated'
       redirect '/job_offers/my'
-    else
-      flash.now[:error] = 'Title is mandatory'
-      render 'job_offers/edit'
     end
+  rescue ActiveModel::ValidationError => e
+    @job_offer = JobOfferForm.new
+    @errors = e.model.errors
+    flash.now[:error] = 'Please review the errors'
+    render 'job_offers/edit'
   end
 
   put :activate, with: :offer_id do

@@ -16,6 +16,7 @@ class JobOffer
     @updated_on = data[:updated_on]
     @created_on = data[:created_on]
     @user_id = data[:user_id]
+    validate!
   end
 
   def owner
