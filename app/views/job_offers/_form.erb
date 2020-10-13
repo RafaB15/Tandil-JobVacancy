@@ -1,8 +1,11 @@
 	<%= f.label :title %>
  	<%= f.text_field :title, :class => "input-block-level" %>
+	<%= errors_for(@errors, :title) %>
   <%= f.label :location %>
   <%= f.text_field :location, :class => "input-block-level" %>
+	<%= errors_for(@errors, :location) %>
   <%= f.label :description %>
   <%= f.text_area :description, :class => "input-block-level" %>
+	<%= errors_for(@errors, :description) %>
 
   <br/>

@@ -18,7 +18,7 @@ end
 
 When(/^I create a new offer with "(.*?)" as the title$/) do |title|
   visit '/job_offers/new'
-  fill_in('job_offer[title]', with: title)
+  fill_in('job_offer_form[title]', with: title)
   click_button('Create')
 end
 
@@ -56,13 +56,13 @@ Given(/^I have "(.*?)" offer in my offers list$/) do |offer_title|
   JobOfferRepository.new.delete_all
 
   visit '/job_offers/new'
-  fill_in('job_offer[title]', with: offer_title)
+  fill_in('job_offer_form[title]', with: offer_title)
   click_button('Create')
 end
 
 When(/^I change the title to "(.*?)"$/) do |new_title|
   click_link('Edit')
-  fill_in('job_offer[title]', with: new_title)
+  fill_in('job_offer_form[title]', with: new_title)
   click_button('Save')
 end
 

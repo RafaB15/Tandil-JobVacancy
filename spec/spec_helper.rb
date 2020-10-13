@@ -4,6 +4,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../config/boot')
 Dir[File.expand_path(File.dirname(__FILE__) + '/../app/helpers/**/*.rb')].each(&method(:require))
 
 require 'simplecov'
+require 'spec_helpers/validation_helpers'
 
 SimpleCov.start do
   root(File.join(File.dirname(__FILE__), '..'))
@@ -21,6 +22,7 @@ end
 RSpec.configure do |conf|
   conf.include Rack::Test::Methods
   conf.include Capybara
+  conf.include ValidationHelpers
 end
 
 def app

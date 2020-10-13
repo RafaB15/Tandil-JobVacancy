@@ -25,14 +25,14 @@ describe 'JobOffersController' do
     it 'should call TwitterClient when create_and_twit is present' do
       expect(TwitterClient).to receive(:publish)
 
-      post '/job_offers/create', { job_offer: { title: 'Programmer offer' }, create_and_twit: 'create_and_twit' }, signed_in_session
+      post '/job_offers/create', { job_offer_form: { title: 'Programmer offer' }, create_and_twit: 'create_and_twit' }, signed_in_session
       expect(last_response.location).to eq('http://example.org/job_offers/my')
     end
 
     it 'should not call TwitterClient when create_and_twit not present' do
       expect(TwitterClient).not_to receive(:publish)
 
-      post '/job_offers/create', { job_offer: { title: 'Programmer offer' } }, signed_in_session
+      post '/job_offers/create', { job_offer_form: { title: 'Programmer offer' } }, signed_in_session
       expect(last_response.location).to eq('http://example.org/job_offers/my')
     end
   end

@@ -1,5 +1,9 @@
 require: rubocop-rspec
 
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+
 # Avoid methods longer than 30 lines of code
 MethodLength:
   Max: 30
@@ -26,3 +30,5 @@ RSpec/MessageSpies:
   EnforcedStyle: receive
 RSpec/MultipleExpectations:
   Max: 3
+Style/GuardClause:
+  Enabled: false

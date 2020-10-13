@@ -1,9 +1,6 @@
 Given(/^only a "(.*?)" offer exists in the offers list$/) do |job_title|
-  @job_offer = JobOffer.new
+  @job_offer = JobOffer.new(title: job_title, location: 'a nice job', description: 'a nice job')
   @job_offer.owner = UserRepository.new.first
-  @job_offer.title = job_title
-  @job_offer.location = 'a nice job'
-  @job_offer.description = 'a nice job'
   @job_offer.is_active = true
 
   JobOfferRepository.new.save @job_offer
@@ -15,7 +12,7 @@ end
 
 When(/^I apply$/) do
   click_link 'Apply'
-  fill_in('job_application[applicant_email]', with: 'applicant@test.com')
+  fill_in('job_application_form[applicant_email]', with: 'applicant@test.com')
   click_button('Apply')
 end
 
