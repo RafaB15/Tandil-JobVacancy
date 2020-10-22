@@ -28,3 +28,10 @@ For authenticating as an offerer you can use the credentials offerer@test.com / 
 * Add descriptive commits messages in English to every commit
 * Write code and comments in English
 * Use REST routes
+
+
+## Using Docker-compose for development
+
+docker-compose run --rm webapp bundle exec rake db:migrate
+docker-compose up
+docker-compose exec webapp /bin/bash
