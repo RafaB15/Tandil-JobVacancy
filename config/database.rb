@@ -3,12 +3,11 @@ Sequel::Model.raise_on_save_failure = false # Do not throw exceptions on failure
 DB =
   case Padrino.env
   when :development
-    Sequel.connect('postgres://jobvacancy:jobvacancy@localhost/jobvacancy_development',
-                   loggers: [logger])
+    dev_db_url = ENV['DEV_DB_URL'] || 'postgres://jobvacancy:jobvacancy@localhost/jobvacancy_development'
+    Sequel.connect(dev_db_url,loggers: [logger])
   when :test
-    test_db_host = ENV['DB_HOST'] || 'localhost'
-    Sequel.connect("postgres://jobvacancy:jobvacancy@#{test_db_host}/jobvacancy_test",
-                   loggers: [logger])
+    test_db_url = ENV['TEST_DB_URL'] || 'postgres://jobvacancy:jobvacancy@localhost/jobvacancy_test'
+    Sequel.connect(test_db_url,loggers: [logger])
   when :staging
     Sequel.connect(ENV['DATABASE_URL'], loggers: [logger])
   when :production
