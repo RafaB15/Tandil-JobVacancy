@@ -15,7 +15,7 @@ Follow these steps to initialize the PostgreSQL databases:
 ## Padrino application setup
 
 1. Run **_bundle install --without staging production_**, to install all application dependencies
-1. Run **_bundle exec rake_**, to run all tests and ensure everything is properly setup
+1. Run **_RACK_ENV=test bundle exec rake_**, to run all tests and ensure everything is properly setup
 1. Run **_RACK_ENV=development bundle exec rake db:migrate db:seed_**, to setup the development database
 1. Run **_bundle exec padrino start -h 0.0.0.0_**, to start the application
 
