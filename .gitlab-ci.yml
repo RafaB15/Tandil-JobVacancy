@@ -6,6 +6,7 @@ variables:
   POSTGRES_USER: jobvacancy
   POSTGRES_PASSWORD: jobvacancy
   DB_HOST: postgres
+  TEST_DB_URL: postgres://jobvacancy:jobvacancy@postgres/jobvacancy_test
 stages:
   - build
   - deploy_staging
