@@ -32,6 +32,8 @@ For authenticating as an offerer you can use the credentials offerer@test.com / 
 
 ## Using Docker-compose for development
 
-docker-compose run --rm webapp bundle exec rake db:migrate
-docker-compose up
-docker-compose exec webapp /bin/bash
+```
+$ docker-compose run --rm webapp bundle exec rake db:migrate
+$ docker-compose up -d
+$ docker-compose exec webapp /bin/bash
+```
