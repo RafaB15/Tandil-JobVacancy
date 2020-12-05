@@ -1,11 +1,4 @@
-RACK_ENV = 'test'.freeze unless defined?(RACK_ENV)
-
-require File.expand_path(File.dirname(__FILE__) + '/../config/boot')
-Dir[File.expand_path(File.dirname(__FILE__) + '/../app/helpers/**/*.rb')].each(&method(:require))
-
 require 'simplecov'
-require 'spec_helpers/validation_helpers'
-
 SimpleCov.start do
   root(File.join(File.dirname(__FILE__), '..'))
   coverage_dir 'reports/coverage'
@@ -14,10 +7,22 @@ SimpleCov.start do
   add_filter '/admin/'
   add_filter '/db/'
   add_filter '/config/'
-  add_group 'Models', 'app/models'
+  add_group 'Models', 'models'
   add_group 'Controllers', 'app/controllers'
   add_group 'Helpers', 'app/helpers'
+  add_group 'Repositories', 'app/repositories'
+  add_group 'Mailers', 'app/mailers'
+  add_group 'Security', 'app/security'
+  add_group 'Forms', 'app/forms'
+  add_group 'Lib', 'lib'
 end
+
+RACK_ENV = 'test'.freeze unless defined?(RACK_ENV)
+
+require File.expand_path(File.dirname(__FILE__) + '/../config/boot')
+Dir[File.expand_path(File.dirname(__FILE__) + '/../app/helpers/**/*.rb')].each(&method(:require))
+
+require 'spec_helpers/validation_helpers'
 
 RSpec.configure do |conf|
   conf.include Rack::Test::Methods
