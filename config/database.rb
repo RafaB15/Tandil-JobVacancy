@@ -14,4 +14,4 @@ DB =
     Sequel.connect(ENV['DATABASE_URL'], loggers: [logger])
   end
 
-DB.loggers << Logger.new($stdout)
+#DB.loggers << Logger.new($stdout)
