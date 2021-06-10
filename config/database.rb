@@ -13,5 +13,3 @@ DB =
   when :production
     Sequel.connect(ENV['DATABASE_URL'], loggers: [logger])
   end
-
-#DB.loggers << Logger.new($stdout)
