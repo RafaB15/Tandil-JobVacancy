@@ -5,7 +5,7 @@ require 'English'
 RACK_ENV = ENV['RACK_ENV'] ||= ENV['RACK_ENV'] ||= 'test' unless defined?(RACK_ENV)
 
 task :version do
-  require './lib/version.rb'
+  require './lib/version'
   puts Version.current
   exit 0
 end
@@ -49,7 +49,6 @@ if %w[development test travis].include?(RACK_ENV)
     t.pattern = './spec/**/*_spec.rb'
   end
 
-  require 'rspec/core/rake_task'
   RSpec::Core::RakeTask.new(:spec_report) do |t|
     t.pattern = './spec/**/*_spec.rb'
     t.rspec_opts = %w[--format RspecJunitFormatter --out reports/spec/spec.xml]

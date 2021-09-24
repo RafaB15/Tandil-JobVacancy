@@ -1,8 +1,7 @@
 class JobApplication
   include ActiveModel::Validations
 
-  attr_accessor :applicant_email
-  attr_accessor :job_offer
+  attr_accessor :applicant_email, :job_offer
 
   validates :applicant_email, :job_offer, presence: true
 
