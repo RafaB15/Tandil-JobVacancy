@@ -1,4 +1,4 @@
-image: ruby:2.5.7
+image: ruby:2.7.4
 services:
   - postgres:9.5
 variables:
@@ -17,7 +17,7 @@ job_build:
     - apt-get update -qq && apt-get install -y -qq postgresql postgresql-contrib libpq-dev cmake
     - ruby -v
     - which ruby
-    - gem install bundler --no-document
+    - gem install bundler -v 2.1.4 --no-document
     - bundle install --without staging production
     - RACK_ENV=test bundle exec rake
 
