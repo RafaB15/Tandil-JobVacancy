@@ -19,8 +19,8 @@ end
 
 RACK_ENV = 'test'.freeze unless defined?(RACK_ENV)
 
-require File.expand_path(File.dirname(__FILE__) + '/../config/boot')
-Dir[File.expand_path(File.dirname(__FILE__) + '/../app/helpers/**/*.rb')].each(&method(:require))
+require File.expand_path '../config/boot', __dir__
+Dir[File.expand_path("#{File.dirname(__FILE__)}/../app/helpers/**/*.rb")].sort.each(&method(:require))
 
 require 'spec_helpers/validation_helpers'
 

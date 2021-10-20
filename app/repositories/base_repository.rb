@@ -29,8 +29,7 @@ class BaseRepository
   end
 
   class << self
-    attr_accessor :table_name
-    attr_accessor :model_class
+    attr_accessor :table_name, :model_class
   end
 
   protected
