@@ -12,7 +12,7 @@ services:
       POSTGRES_PASSWORD: example
 
   webapp:
-    image: nicopaez/jobvacancy-dev:2.7.4
+    image: nicopaez/jobvacancy-dev:2.7.5
     command: "/bin/bash"
     stdin_open: true # docker run -i
     tty: true        # docker run -t
