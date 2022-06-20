@@ -18,9 +18,10 @@ JobVacancy::App.controllers :health do
   end
 
   get :reset do
-    JobOffer.destroy
-    Ping.destroy
-    User.destroy
+    #JobOffer.destroy
+    JobOfferRepository.new.delete_all
+    UserRepository.new.delete_all
+=begin    
     user = User.create(email: 'offerer@test.com',
                        name: 'Offerer',
                        password: 'Passw0rd!')
@@ -32,6 +33,7 @@ JobVacancy::App.controllers :health do
                     user: user,
                     description: 'HTML5 experience required',
                     location: 'Rosario')
+=end                    
     'ok'
   end
 end
