@@ -18,22 +18,20 @@ JobVacancy::App.controllers :health do
   end
 
   get :reset do
-    #JobOffer.destroy
+    # JobOffer.destroy
     JobOfferRepository.new.delete_all
     UserRepository.new.delete_all
-=begin    
-    user = User.create(email: 'offerer@test.com',
-                       name: 'Offerer',
-                       password: 'Passw0rd!')
-    JobOffer.create(title: 'Java programmer',
-                    user: user,
-                    description: 'Spring experience required',
-                    location: 'Cordoba')
-    JobOffer.create(title: 'Web programmer',
-                    user: user,
-                    description: 'HTML5 experience required',
-                    location: 'Rosario')
-=end                    
+    #     user = User.create(email: 'offerer@test.com',
+    #                        name: 'Offerer',
+    #                        password: 'Passw0rd!')
+    #     JobOffer.create(title: 'Java programmer',
+    #                     user: user,
+    #                     description: 'Spring experience required',
+    #                     location: 'Cordoba')
+    #     JobOffer.create(title: 'Web programmer',
+    #                     user: user,
+    #                     description: 'HTML5 experience required',
+    #                     location: 'Rosario')
     'ok'
   end
 end

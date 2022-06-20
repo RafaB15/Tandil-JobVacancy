@@ -42,5 +42,4 @@ class JobOfferRepository < BaseRepository
       user_id: offer.owner&.id || offer.user_id
     }
   end
-
 end
