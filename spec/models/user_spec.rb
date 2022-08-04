@@ -42,7 +42,7 @@ describe User do
   describe 'has password?' do
     let(:password) { 'password' }
     let(:user) do
-      described_class.new(password: password,
+      described_class.new(password:,
                           email: 'john.doe@someplace.com',
                           name: 'john doe')
     end
