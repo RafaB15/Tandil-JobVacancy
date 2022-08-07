@@ -19,6 +19,7 @@ gem 'bcrypt'
 gem 'clockwork'
 gem 'erubis', '~> 2.7.0'
 gem 'json'
+gem 'net-smtp'
 gem 'twitter'
 
 # Padrino Stable Gem

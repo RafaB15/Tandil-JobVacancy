@@ -55,6 +55,7 @@ GEM
     cucumber-tag-expressions (4.1.0)
     daemons (1.4.1)
     diff-lcs (1.5.0)
+    digest (3.1.0)
     docile (1.4.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
@@ -93,6 +94,7 @@ GEM
     http_parser.rb (0.6.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
+    io-wait (0.2.1)
     json (2.6.2)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -117,6 +119,13 @@ GEM
       ruby2_keywords (~> 0.0.1)
     naught (1.1.0)
     nenv (0.3.0)
+    net-protocol (0.1.2)
+      io-wait
+      timeout
+    net-smtp (0.3.1)
+      digest
+      net-protocol
+      timeout
     nokogiri (1.13.8)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
@@ -229,6 +238,7 @@ GEM
     thor (1.2.1)
     thread_safe (0.3.6)
     tilt (2.0.11)
+    timeout (0.2.0)
     twitter (7.0.0)
       addressable (~> 2.3)
       buftok (~> 0.2.0)
@@ -263,6 +273,7 @@ DEPENDENCIES
   guard
   guard-rspec
   json
+  net-smtp
   padrino (~> 0.14)
   pg (~> 0.18)
   rack-test
