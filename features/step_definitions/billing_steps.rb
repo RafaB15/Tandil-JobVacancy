@@ -1,16 +1,24 @@
-Given('a user with an on-demand susbcription') do
-  pending # este step deberiamos usarlo para preparar el contexto del test
+require 'byebug'
+require 'json'
+
+Given('user {string} with an on-demand susbcription') do |user_email|
+  @user = User.create(user_email, user_email, 'somePassword!')
+  UserRepository.new.save(@user)
 end
 
-Given('{int} active offers') do |_offers_count|
-  pending # este step deberiamos usarlo para preparar el contexto del test
+Given('there are no offers at all') do
+  JobOfferRepository.new.delete_all
 end
 
 When('I get the billing report') do
-  pending # aqui que hay ejercitar lo que estamos testeando
-  # ya sea incovar al endpoint o la clase que engloba toda la logica
+  visit 'reports/billing'
+  @report_as_json = JSON.parse(page.body)
 end
 
-Then('the billing for this use is {float}') do |_float|
-  pending # aqui hacemos los asserts/expects
+Then('the total active offers is {int}') do |expected_active_offers|
+  expect(@report_as_json['total_active_offers']).to eq expected_active_offers
+end
+
+Then('the total amount is {float}') do |expected_total_amount|
+  # pendiente
 end

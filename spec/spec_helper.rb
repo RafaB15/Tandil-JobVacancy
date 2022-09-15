@@ -23,6 +23,7 @@ require File.expand_path '../config/boot', __dir__
 Dir[File.expand_path("#{File.dirname(__FILE__)}/../app/helpers/**/*.rb")].sort.each(&method(:require))
 
 require 'spec_helpers/validation_helpers'
+require 'spec_helpers/doubles'
 
 RSpec.configure do |conf|
   conf.include Rack::Test::Methods

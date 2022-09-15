@@ -9,6 +9,14 @@ class User
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX,
                                               message: 'invalid email' }
 
+  def self.create(name, email, password)
+    data = {}
+    data[:name] = name
+    data[:email] = email
+    data[:password] = password
+    User.new(data)
+  end
+
   def initialize(data = {})
     @id = data[:id]
     @name = data[:name]
