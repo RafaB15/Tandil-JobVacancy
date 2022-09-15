@@ -7,7 +7,7 @@ DB =
     Sequel.connect(dev_db_url, loggers: [logger])
   when :test
     test_db_url = ENV['TEST_DB_URL'] || 'postgres://jobvacancy:jobvacancy@localhost/jobvacancy_test'
-    Sequel.connect(test_db_url, loggers: [logger])
+    Sequel.connect(test_db_url)
   when :staging
     Sequel.connect(ENV['DATABASE_URL'], loggers: [logger])
   when :production
