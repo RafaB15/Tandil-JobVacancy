@@ -26,6 +26,7 @@ gem 'twitter'
 gem 'padrino', '~> 0.14'
 
 group :development, :test do
+  gem 'byebug'
   gem 'capybara'
   gem 'cucumber'
   gem 'rack-test', require: 'rack/test'
@@ -37,7 +38,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'byebug'
   gem 'guard'
   gem 'guard-rspec'
 end
