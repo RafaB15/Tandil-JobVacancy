@@ -20,7 +20,10 @@ job_build:
     - gem install bundler -v 2.1.4 --no-document
     - bundle install --without staging production
     - RACK_ENV=test bundle exec rake
-
+  except:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /\[driver-switch\]/
+        
 job_deploy_staging:
   stage: deploy_staging
   script:

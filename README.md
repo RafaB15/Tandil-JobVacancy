@@ -29,6 +29,10 @@ For authenticating as an offerer you can use the credentials offerer@test.com / 
 * Write code and comments in English
 * Use REST routes
 
+## Pair/Mob Programming
+
+If you are practicing Pair/Mob Programming and want to switch driver without running CI, then use "[driver-switch]" as your exact commit message.
+
 
 ## Using Docker-compose for development
 
