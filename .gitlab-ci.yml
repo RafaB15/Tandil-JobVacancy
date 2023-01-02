@@ -24,7 +24,9 @@ job_build:
 job_deploy_staging:
   stage: deploy_staging
   script:
-  - gem install dpl
-  - dpl --provider=heroku --app=$HEROKU_STAGING_APP --api-key=$HEROKU_STAGING_API_KEY
+  - curl $DEPLOY_ENDPOINT
+  environment:
+    name: staging
+    url: https://jobvacancyapp.onrender.com
   only:
   - staging
