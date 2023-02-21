@@ -1,6 +1,9 @@
 image: ruby:3.1.2
+include:
+  - template: Code-Quality.gitlab-ci.yml
 services:
   - postgres:14.4
+  - docker:dind
 variables:
   POSTGRES_DB: jobvacancy_test
   POSTGRES_USER: jobvacancy
@@ -10,6 +13,11 @@ variables:
 stages:
   - build
   - deploy_staging
+
+code_quality:
+  stage: build
+  artifacts:
+    paths: [gl-code-quality-report.json]
 
 job_build:
   stage: build
