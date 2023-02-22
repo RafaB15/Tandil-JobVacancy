@@ -12,7 +12,9 @@ services:
       POSTGRES_PASSWORD: example
 
   webapp:
-    image: nicopaez/jobvacancy-dev:2.7.5
+    build:
+      context: .
+      dockerfile: ./Dockerfile
     command: "/bin/bash"
     stdin_open: true # docker run -i
     tty: true        # docker run -t
@@ -21,11 +23,11 @@ services:
     expose:
       - 3000
     volumes:
-        - .:/jobvacancy
+      - .:/jobvacancy
     environment:
-        RACK_ENV: "development"
-        TEST_DB_URL: "postgres://postgres:example@test_db:5432/postgres"
-        DEV_DB_URL: "postgres://postgres:example@dev_db:5432/postgres"
+      RACK_ENV: "development"
+      TEST_DB_URL: "postgres://postgres:example@test_db:5432/postgres"
+      DEV_DB_URL: "postgres://postgres:example@dev_db:5432/postgres"
     depends_on:
       - test_db
       - dev_db
