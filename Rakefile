@@ -51,7 +51,7 @@ if %w[development test travis].include?(RACK_ENV)
 
   RSpec::Core::RakeTask.new(:spec_report) do |t|
     t.pattern = './spec/**/*_spec.rb'
-    t.rspec_opts = %w[--format RspecJunitFormatter --out reports/spec/spec.xml]
+    t.rspec_opts = %w[ --format progress --format RspecJunitFormatter --out reports/spec/rspec.xml]
   end
 
   require 'rubocop/rake_task'

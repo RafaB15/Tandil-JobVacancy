@@ -27,7 +27,14 @@ job_build_and_test:
     - which ruby
     - gem install bundler -v 2.3.19 --no-document
     - bundle install --without staging production
-    - RACK_ENV=test bundle exec rake
+    - RACK_ENV=test bundle exec rake build_server
+  artifacts:
+    when: always
+    paths:
+      - reports/
+    reports:
+      junit: reports/spec/rspec.xml
+
 
 job_deploy_staging:
   stage: deploy_staging
