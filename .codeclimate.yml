@@ -3,3 +3,5 @@ plugins:
   rubocop:
     enabled: true
     channel: rubocop-1-45
+exclude_patterns:
+  - public/javascripts
