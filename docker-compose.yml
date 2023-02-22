@@ -14,7 +14,7 @@ services:
   webapp:
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: Dockerfile.dev
     command: "/bin/bash"
     stdin_open: true # docker run -i
     tty: true        # docker run -t
