@@ -17,7 +17,7 @@ PadrinoTasks.init
 if %w[development test travis].include?(RACK_ENV)
 
   task :all do
-    ['rubocop', 'rake spec', 'rake cucumber'].each do |cmd|
+    ['rake spec', 'rake cucumber', 'rubocop'].each do |cmd|
       puts "Starting to run #{cmd}..."
       system("export DISPLAY=:99.0 && bundle exec #{cmd}")
       raise "#{cmd} failed!" unless $CHILD_STATUS.exitstatus.zero?
@@ -35,7 +35,6 @@ if %w[development test travis].include?(RACK_ENV)
   require 'cucumber/rake/task'
   Cucumber::Rake::Task.new(:cucumber) do |task|
     Rake::Task['db:migrate'].invoke
-    Rake::Task['db:seed'].invoke
     task.cucumber_opts = ['features', '--tags \'not @wip\'']
   end
 
@@ -57,9 +56,7 @@ if %w[development test travis].include?(RACK_ENV)
   require 'rubocop/rake_task'
   desc 'Run RuboCop on the lib directory'
   RuboCop::RakeTask.new(:rubocop) do |task|
-    # run analysis on rspec tests
     task.requires << 'rubocop-rspec'
-    # don't abort rake on failure
     task.fail_on_error = false
   end
 
