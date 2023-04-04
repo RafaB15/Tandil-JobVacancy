@@ -46,7 +46,7 @@ if %w[development test travis].include?(RACK_ENV)
 
   Cucumber::Rake::Task.new(:cucumber_report) do |task|
     Rake::Task['db:migrate'].invoke
-    task.cucumber_opts = ['features', '--format html -o reports/cucumber.html']
+    task.cucumber_opts = ['features', '--format html -o reports/cucumber.html --tags \'not @wip\'']
   end
 
   require 'rspec/core/rake_task'
