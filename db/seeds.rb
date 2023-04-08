@@ -14,7 +14,7 @@ test_user = user_repository.find_by_email 'offerer@test.com'
 
 offer_repository = JobOfferRepository.new
 
-return unless offer_repository.all.count == 0
+return unless offer_repository.all.count.zero?
 
 ruby_offer = JobOffer.new(title: 'Ruby Dev',
                           location: 'Baires, Argentina',
