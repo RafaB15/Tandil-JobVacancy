@@ -8,7 +8,6 @@ describe User do
     it { is_expected.to respond_to(:name) }
     it { is_expected.to respond_to(:crypted_password) }
     it { is_expected.to respond_to(:email) }
-    it { is_expected.to respond_to(:job_offers) }
   end
 
   describe 'valid?' do

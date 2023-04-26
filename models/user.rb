@@ -1,7 +1,7 @@
 class User
   include ActiveModel::Validations
 
-  attr_accessor :id, :name, :email, :crypted_password, :job_offers, :updated_on, :created_on
+  attr_accessor :id, :name, :email, :crypted_password, :updated_on, :created_on
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d-]+(\.[a-z]+)*\.[a-z]+\z/i
 
@@ -18,7 +18,6 @@ class User
                         else
                           Crypto.encrypt(data[:password])
                         end
-    @job_offers = data[:job_offers]
     @updated_on = data[:updated_on]
     @created_on = data[:created_on]
   end
