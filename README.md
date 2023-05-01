@@ -8,11 +8,11 @@ It is built on Padrino (web framework) and Sequel (database access framework).
 
 There are several development setup options to work on this application but the recommended one is Docker Compose. 
 
-## Docker Compose setup
+## Docker Compose Development Setup
 
 A Docker compose setup is provided with the project, to use it you just need to have Docker Compose  installed. With that in place, just execute _start_dev.sh_. This will spin up 2 Postgres instances (one for running the application and another one for running the automated tests) and a ruby container to work inside. After spinning up the containers, the script with log you in in the ruby development container.
 
-## Working with the application
+## Developing the application
 
 1. Run **_bundle install --without staging production_**, to install all application dependencies
 2. Run **_RACK_ENV=test bundle exec rake_**, to run all tests and ensure everything is properly setup
@@ -21,8 +21,18 @@ A Docker compose setup is provided with the project, to use it you just need to 
 
 For authenticating as an offerer you can use the credentials offerer@test.com / Passw0rd!
 
+## Running in Production mode
 
-## Additional information
+To run the application in production mode (that is: anywhere outside your development machine) no matter where, you should set the following environment variables:
+
+1. RACK_ENV: this variable affects the application behaviour. For all environments outside local development machine it should be set to "production".
+2. DATABASE_URL: contains the connection string to the database, it has the form "postgres://.... "
+3. PORT: is the port where the application should listen
+4. SMTP_X: in production mode the application needs four environment variables in order to send emails (in non-production mode, the mails are not sent but stored in the local file system). The varibales to set are: SMTP_ADDRESS, SMTP_PORT, SMTP_USER and
+SMTP_PASS
+
+
+## Additional development information
 
 In this section you can find setup information in case you don't want to use the Docker Compose setup.
 
