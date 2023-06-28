@@ -20,6 +20,7 @@ gem 'clockwork'
 gem 'erubis', '~> 2.7.0'
 gem 'json'
 gem 'net-smtp'
+gem 'semantic_logger'
 gem 'twitter'
 
 # Padrino Stable Gem

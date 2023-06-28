@@ -25,7 +25,7 @@ if %w[development test travis].include?(RACK_ENV)
   end
 
   task :build_server do
-    ['rake spec_report', 'rake cucumber_report'].each do |cmd|
+    ['rake spec_report', 'rake cucumber_report', 'rubocop'].each do |cmd|
       puts "Starting to run #{cmd}..."
       system("export DISPLAY=:99.0 && bundle exec #{cmd}")
       raise "#{cmd} failed!" unless $CHILD_STATUS.exitstatus.zero?
