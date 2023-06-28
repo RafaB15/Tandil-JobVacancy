@@ -13,3 +13,6 @@ DB =
   when :production
     Sequel.connect(ENV['DATABASE_URL'], loggers: [logger])
   end
+
+# this makes sequel to use debug method to log
+DB.sql_log_level = :debug

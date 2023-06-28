@@ -216,6 +216,8 @@ GEM
       rubocop-capybara (~> 2.17)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
+    semantic_logger (4.13.0)
+      concurrent-ruby (~> 1.0)
     sequel (5.59.0)
     shellany (0.0.1)
     simple_oauth (0.3.1)
@@ -283,6 +285,7 @@ DEPENDENCIES
   rspec_junit_formatter
   rubocop
   rubocop-rspec
+  semantic_logger
   sequel
   simplecov
   thin

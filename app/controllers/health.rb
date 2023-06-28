@@ -1,5 +1,6 @@
 JobVacancy::App.controllers :health do
   get :index do
+    logger.info 'health'
     ping = Ping.create(description: 'health-controller')
     if ping.nil?
       status 500
