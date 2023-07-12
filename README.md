@@ -28,3 +28,17 @@ To run the application in production mode (that is: anywhere outside your develo
 3. PORT: is the port where the application should listen
 4. SMTP_X: in production mode the application needs four environment variables in order to send emails (in non-production mode, the mails are not sent but stored in the local file system). The varibales to set are: SMTP_ADDRESS, SMTP_PORT, SMTP_USER and
 SMTP_PASS
+
+## Troubleshooting
+
+In case of adding new gem, it may be require to rebuild the containers:
+
+    # stop containers
+    docker compose stop
+
+    # remove containers
+    docker compose rm
+
+    # start containers forcing rebuild
+    docker compose up -d --build --force-recreate
+
