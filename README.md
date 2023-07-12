@@ -6,15 +6,13 @@ Job Vacancy Application
 This is a typical web application (Ruby) with a relational database (PostgreSQL).
 It is built on Padrino (web framework) and Sequel (database access framework).
 
-There are several development setup options to work on this application but the recommended one is Docker Compose. 
-
 ## Docker Compose Development Setup
 
-A Docker compose setup is provided with the project, to use it you just need to have Docker Compose  installed. With that in place, just execute _start_dev.sh_. This will spin up 2 Postgres instances (one for running the application and another one for running the automated tests) and a ruby container to work inside. After spinning up the containers, the script with log you in in the ruby development container.
+A Docker compose setup is provided with the project, to use it you just need to have Docker Compose  installed. With that in place, just execute _start_dev.sh_. This will spin up 2 Postgres instances (one for running the application and another one for running the automated tests) and a ruby container to work inside it. After spinning up the containers, the script with log you into the ruby development container.
 
 ## Developing the application
 
-1. Run **_bundle install --without staging production_**, to install all application dependencies
+1. Run **_bundle install --without staging production_**, to install all application development dependencies
 2. Run **_RACK_ENV=test bundle exec rake_**, to run all tests and ensure everything is properly setup
 3. Run **_RACK_ENV=development bundle exec rake db:migrate db:seed_**, to setup the development database
 4. Run **_bundle exec padrino start -p 3000 -h 0.0.0.0_**, to start the application
@@ -30,17 +28,3 @@ To run the application in production mode (that is: anywhere outside your develo
 3. PORT: is the port where the application should listen
 4. SMTP_X: in production mode the application needs four environment variables in order to send emails (in non-production mode, the mails are not sent but stored in the local file system). The varibales to set are: SMTP_ADDRESS, SMTP_PORT, SMTP_USER and
 SMTP_PASS
-
-
-## Additional development information
-
-In this section you can find setup information in case you don't want to use the Docker Compose setup.
-
-### PostgreSQL setup
-
-Follow these steps to initialize the PostgreSQL databases:
-
-1. Install PostgreSQL if needed. On Ubuntu you can do this by running:
-`sudo apt-get install -y postgresql postgresql-contrib libpq-dev`
-1. Create development and test databases by running:
-`sudo -u postgres psql --dbname=postgres -f ./create_dev_and_test_dbs.sql`
