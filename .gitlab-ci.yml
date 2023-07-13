@@ -1,15 +1,16 @@
 image: ruby:3.1.2
-include:
-  - template: Code-Quality.gitlab-ci.yml
+
 services:
   - postgres:14.4
   - docker:dind
+
 variables:
   POSTGRES_DB: jobvacancy_test
   POSTGRES_USER: jobvacancy
   POSTGRES_PASSWORD: jobvacancy
   DB_HOST: postgres
   TEST_DB_URL: postgres://jobvacancy:jobvacancy@postgres/jobvacancy_test
+
 stages:
   - build
   - deploy_staging
@@ -25,14 +26,3 @@ job_build_and_test:
       - reports/
     reports:
       junit: reports/spec/rspec.xml
-
-
-job_deploy_staging:
-  stage: deploy_staging
-  script:
-  - curl $DEPLOY_ENDPOINT
-  environment:
-    name: staging
-    url: https://jobvacancyapp.onrender.com
-  only:
-  - staging
