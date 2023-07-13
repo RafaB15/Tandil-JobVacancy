@@ -10,6 +10,7 @@ variables:
   POSTGRES_PASSWORD: jobvacancy
   DB_HOST: postgres
   TEST_DB_URL: postgres://jobvacancy:jobvacancy@postgres/jobvacancy_test
+  CUCUMBER_PUBLISH_QUIET: true
 
 stages:
   - build
@@ -18,7 +19,7 @@ stages:
 job_build_and_test:
   stage: build
   script:
-    - bundle install --without staging production
+    - bundle install
     - RACK_ENV=test bundle exec rake build_server
   artifacts:
     when: always
