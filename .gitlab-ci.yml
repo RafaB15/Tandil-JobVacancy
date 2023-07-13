@@ -22,9 +22,6 @@ code_quality:
 job_build_and_test:
   stage: build
   script:
-    - apt-get update -qq && apt-get install -y -qq postgresql postgresql-contrib libpq-dev cmake
-    - ruby -v
-    - which ruby
     - gem install bundler -v 2.3.19 --no-document
     - bundle install --without staging production
     - RACK_ENV=test bundle exec rake build_server
