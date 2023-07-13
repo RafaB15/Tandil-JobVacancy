@@ -14,15 +14,9 @@ stages:
   - build
   - deploy_staging
 
-code_quality:
-  stage: build
-  artifacts:
-    paths: [gl-code-quality-report.json]
-
 job_build_and_test:
   stage: build
   script:
-    - gem install bundler -v 2.3.19 --no-document
     - bundle install --without staging production
     - RACK_ENV=test bundle exec rake build_server
   artifacts:
