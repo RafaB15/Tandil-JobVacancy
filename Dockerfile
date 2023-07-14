@@ -5,8 +5,7 @@ LABEL AUTHOR=NicoPaez
 RUN mkdir /jobvacancy
 WORKDIR /jobvacancy
 COPY . /jobvacancy
-RUN gem install bundler -v 2.2.6
-RUN bundler install
+RUN bundler install --without development test
 RUN useradd -m jobvacancy
 RUN chown -R jobvacancy:jobvacancy /jobvacancy
 USER jobvacancy

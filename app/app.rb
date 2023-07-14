@@ -12,7 +12,7 @@ module JobVacancy
       }
     end
 
-    Padrino.configure :staging, :production do
+    Padrino.configure :production do
       set :delivery_method, smtp: {
         address: ENV['SMTP_ADDRESS'],
         port: ENV['SMTP_PORT'],

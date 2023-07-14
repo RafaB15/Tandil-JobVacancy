@@ -12,7 +12,7 @@ A Docker compose setup is provided with the project, to use it you just need to 
 
 ## Developing the application
 
-1. Run **_bundle install --without staging production_**, to install all application development dependencies
+1. Run **_bundle install_**, to install all application dependencies
 2. Run **_RACK_ENV=test bundle exec rake_**, to run all tests and ensure everything is properly setup
 3. Run **_RACK_ENV=development bundle exec rake db:migrate db:seed_**, to setup the development database
 4. Run **_bundle exec padrino start -p 3000 -h 0.0.0.0_**, to start the application
