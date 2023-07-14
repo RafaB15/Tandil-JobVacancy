@@ -59,8 +59,10 @@ if %w[development test travis].include?(RACK_ENV)
   end
 
   require 'rubocop/rake_task'
-  desc 'Run RuboCop on the lib directory'
+  desc 'Run RuboCop'
   RuboCop::RakeTask.new(:rubocop) do |task|
+    task.formatters = %w[simple html]
+    task.options = ['-o', 'reports/rubocop.html']
     task.requires << 'rubocop-rspec'
     task.fail_on_error = false
   end
