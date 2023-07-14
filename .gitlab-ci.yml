@@ -10,7 +10,7 @@ variables:
   POSTGRES_PASSWORD: jobvacancy
   DB_HOST: postgres
   TEST_DB_URL: postgres://jobvacancy:jobvacancy@postgres/jobvacancy_test
-  CUCUMBER_PUBLISH_QUIET: true
+  CUCUMBER_PUBLISH_QUIET: 'true'
 
 stages:
   - build
