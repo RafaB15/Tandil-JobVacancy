@@ -9,23 +9,3 @@ unless user_repository.all.count.positive?
 
   user_repository.save test_user
 end
-
-test_user = user_repository.find_by_email 'offerer@test.com'
-
-offer_repository = JobOfferRepository.new
-
-return unless offer_repository.all.count.zero?
-
-ruby_offer = JobOffer.new(title: 'Ruby Dev',
-                          location: 'Baires, Argentina',
-                          description: 'Remote',
-                          is_active: true)
-ruby_offer.owner = test_user
-offer_repository.save ruby_offer
-
-node_offer = JobOffer.new(title: 'Node Dev',
-                          location: 'Rio, Brazil',
-                          description: 'Remote',
-                          is_active: true)
-node_offer.owner = test_user
-offer_repository.save node_offer
