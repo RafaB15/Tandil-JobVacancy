@@ -27,17 +27,19 @@ gem 'padrino', '~> 0.14'
 
 group :development, :test do
   gem 'capybara'
+  gem 'byebug'
   gem 'cucumber'
+  gem 'debug', '>= 1.0.0'
   gem 'rack-test', require: 'rack/test'
   gem 'rspec'
   gem 'rspec_junit_formatter'
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
   gem 'simplecov'
+  gem 'ruby-debug-ide'
 end
 
 group :development do
-  gem 'byebug'
   gem 'guard'
   gem 'guard-rspec'
 end
