@@ -12,7 +12,9 @@ services:
       POSTGRES_PASSWORD: example
 
   webapp:
-    image: jobvacancy-dev:20230801.2
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     command: "/bin/bash"
     stdin_open: true # docker run -i
     tty: true        # docker run -t
