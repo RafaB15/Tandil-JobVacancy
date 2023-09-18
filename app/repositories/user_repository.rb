@@ -3,7 +3,7 @@ class UserRepository < BaseRepository
   self.model_class = 'User'
 
   def find_by_email(email)
-    row = dataset.first(email: email)
+    row = dataset.first(email:)
     load_object(row) unless row.nil?
   end
 

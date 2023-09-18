@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.7.5'
+ruby '3.1.2'
 
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
@@ -19,8 +19,8 @@ gem 'bcrypt'
 gem 'clockwork'
 gem 'erubis', '~> 2.7.0'
 gem 'json'
-gem 'therubyracer'
-gem 'twitter'
+gem 'net-smtp'
+gem 'semantic_logger'
 
 # Padrino Stable Gem
 gem 'padrino', '~> 0.14'

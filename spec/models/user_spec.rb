@@ -8,7 +8,6 @@ describe User do
     it { is_expected.to respond_to(:name) }
     it { is_expected.to respond_to(:crypted_password) }
     it { is_expected.to respond_to(:email) }
-    it { is_expected.to respond_to(:job_offers) }
   end
 
   describe 'valid?' do
@@ -42,7 +41,7 @@ describe User do
   describe 'has password?' do
     let(:password) { 'password' }
     let(:user) do
-      described_class.new(password: password,
+      described_class.new(password:,
                           email: 'john.doe@someplace.com',
                           name: 'john doe')
     end

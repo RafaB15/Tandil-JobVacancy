@@ -1,33 +1,31 @@
-image: ruby:2.7.5
+image: ruby:3.1.2
+
 services:
-  - postgres:9.5
+  - postgres:14.4
+  - docker:dind
+
 variables:
   POSTGRES_DB: jobvacancy_test
   POSTGRES_USER: jobvacancy
   POSTGRES_PASSWORD: jobvacancy
   DB_HOST: postgres
   TEST_DB_URL: postgres://jobvacancy:jobvacancy@postgres/jobvacancy_test
+  CUCUMBER_PUBLISH_QUIET: 'true'
+
 stages:
   - build
-  - deploy_staging
 
-job_build:
+job_build_and_test:
   stage: build
   script:
-    - apt-get update -qq && apt-get install -y -qq postgresql postgresql-contrib libpq-dev cmake
-    - ruby -v
-    - which ruby
-    - gem install bundler -v 2.1.4 --no-document
-    - bundle install --without staging production
-    - RACK_ENV=test bundle exec rake
+    - bundle install
+    - RACK_ENV=test bundle exec rake build_server
+  artifacts:
+    when: always
+    paths:
+      - reports/
+    reports:
+      junit: reports/spec/rspec.xml
   except:
     variables:
       - $CI_COMMIT_MESSAGE =~ /\[driver-switch\]/
-        
-job_deploy_staging:
-  stage: deploy_staging
-  script:
-  - gem install dpl
-  - dpl --provider=heroku --app=$HEROKU_STAGING_APP --api-key=$HEROKU_STAGING_API_KEY
-  only:
-  - staging

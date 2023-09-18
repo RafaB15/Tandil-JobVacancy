@@ -5,15 +5,14 @@ AllCops:
   SuggestExtensions: false
   Exclude:
     - 'bin/**/*'
-
 # Avoid methods longer than 30 lines of code
-MethodLength:
+Metrics/MethodLength:
   Max: 30
 Metrics/BlockLength:
-  IgnoredMethods: ['controllers', 'describe', 'context']
+  AllowedMethods: ['controllers', 'describe', 'context']
 Layout/LineLength:
   Max: 120
-  IgnoredPatterns: ['(When|Given|Then)', '(get|post|put)']
+  AllowedPatterns: ['(When|Given|Then)', '(get|post|put)']
 Naming/PredicateName:
   Enabled: false
 Style/FrozenStringLiteralComment:
@@ -34,3 +33,5 @@ RSpec/MultipleExpectations:
   Max: 3
 Style/GuardClause:
   Enabled: false
+
+   

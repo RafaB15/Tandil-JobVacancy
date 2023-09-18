@@ -1,9 +1,12 @@
-FROM ruby:2.7.5
-RUN mkdir /temp
-WORKDIR /temp
-ADD . /temp
-RUN gem install bundler -v 2.2.6
-RUN bundler install
+FROM ruby:3.1.2
+ARG GIT_COMMIT=undefined
+LABEL GIT_COMMIT=$GIT_COMMIT
+LABEL AUTHOR=NicoPaez
 RUN mkdir /jobvacancy
 WORKDIR /jobvacancy
-EXPOSE 3000
+COPY . /jobvacancy
+RUN bundler install --without development test
+RUN useradd -m jobvacancy
+RUN chown -R jobvacancy:jobvacancy /jobvacancy
+USER jobvacancy
+CMD ["/jobvacancy/start_app.sh"]

@@ -17,7 +17,7 @@ class BaseRepository
   end
 
   def all
-    dataset
+    load_collection dataset
   end
 
   def find(id)
