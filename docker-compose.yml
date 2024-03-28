@@ -12,6 +12,7 @@ services:
       POSTGRES_PASSWORD: example
 
   webapp:
+    platform: linux/amd64 # force platform to avoid arm64 issue
     build:
       context: .
       dockerfile: Dockerfile.dev

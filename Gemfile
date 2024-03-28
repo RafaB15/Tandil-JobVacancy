@@ -28,6 +28,7 @@ gem 'padrino', '~> 0.14'
 group :development, :test do
   gem 'capybara'
   gem 'cucumber'
+  gem 'nokogiri', '1.8'
   gem 'rack-test', require: 'rack/test'
   gem 'rspec'
   gem 'rspec_junit_formatter'
@@ -37,7 +38,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'byebug'
+  gem 'debug'
   gem 'guard'
   gem 'guard-rspec'
 end
