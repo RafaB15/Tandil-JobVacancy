@@ -1,7 +1,9 @@
 Job Vacancy Application
 =======================
 
-[![pipeline status](https://gitlab.com/fiuba-memo2/jobvacancy/badges/main/pipeline.svg)](https://gitlab.com/fiuba-memo2/jobvacancy/-/commits/main)
+# Julián Melmer Stiefkens
+
+[![pipeline status](https://gitlab.com/fiuba-memo2/alumnos-jobvacancy/julian/badges/main/pipeline.svg)](https://gitlab.com/fiuba-memo2/alumnos-jobvacancy/julian/commits/main)
 
 This is a typical web application (Ruby) with a relational database (PostgreSQL).
 It is built on Padrino (web framework) and Sequel (database access framework).
