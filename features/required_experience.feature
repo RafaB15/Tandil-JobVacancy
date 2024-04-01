@@ -24,7 +24,7 @@ Feature: Required Experience
     And I should see "Rust Dev" with "Not specified" required years of experience in my offers list
 
   Scenario: Check values of activated offer with no required experience
-    Given I have "Rust Dev" offer in my offers list
+    Given I have a offer with "Rust Dev" as title and "" as required years of experience in my offers list
     When I activate the job offer
     Then I should see a offer activated confirmation message
     And I should see "Rust Dev" with "Not specified" required years of experience in the job offers tab
@@ -35,7 +35,7 @@ Feature: Required Experience
     And I should see "Solidity Dev" with "Not specified" required years of experience in my offers list
 
   Scenario: Check values of activated offer with 0 required experience
-    Given I have "Solidity Dev" offer in my offers list
+    Given I have a offer with "Solidity Dev" as title and "0" as required years of experience in my offers list
     When I activate the job offer
     Then I should see a offer activated confirmation message
     And I should see "Solidity Dev" with "Not specified" required years of experience in the job offers tab

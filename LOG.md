@@ -55,3 +55,4 @@
 - Otro aceptance test pasando. Si la Required Experience es 0, entonces mostrar Not specified
 - El siguiente acceptance test tambien va a pasar de una seguramente, por el refactor de _required_experience_formatting.erb
 - De cualquier forma, es importante que este test quede para que yo pueda seguir haciendo cambios en el futuro sin cambiar el behavior del programa cuando le ingreso 0 a Required Experience
+- Cambio 2 acceptance tests. El primer test no era lo suficientemente descriptivo. El segundo probaba lo mismo que el primero por que me faltaba 1 parametro. Ahora si estan probando lo que deberian estar probando 
