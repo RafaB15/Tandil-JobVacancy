@@ -45,3 +45,4 @@
 - Ahora con todo esto hecho, toco un poco la interfaz de la web para hacer pasar el Aceptance Test de Gherkin/Cucumber
 - Para hacer pasar el gherkin, agrego en un helper una conversion de '' a nil para evitar errores en la base de datos
 - Hago pasar siguiente test de aceptacion, ahora tanto los usuarios como los empleados pueden ver el Required Experience en sus respectivas vistas
+- Dejo automatizado y fallando el siguiente test de aceptación

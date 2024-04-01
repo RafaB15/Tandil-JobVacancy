@@ -22,7 +22,7 @@ Feature: Required Experience
   Scenario: Create new deactivated offer with no required experience
     When I create a new offer with "Rust Dev" as the title and "" as required years of experience
     Then I should see a offer created confirmation message
-    And I should see "Rust Dev" with "Not specified" required years of experience in my offers lists
+    And I should see "Rust Dev" with "Not specified" required years of experience in my offers list
 
   @wip
   Scenario: Check values of activated offer with no required experience
