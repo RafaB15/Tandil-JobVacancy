@@ -46,3 +46,6 @@
 - Para hacer pasar el gherkin, agrego en un helper una conversion de '' a nil para evitar errores en la base de datos
 - Hago pasar siguiente test de aceptacion, ahora tanto los usuarios como los empleados pueden ver el Required Experience en sus respectivas vistas
 - Dejo automatizado y fallando el siguiente test de aceptación
+- Empiezo a implementar la funcionalidad de no especificar Required Experience.
+- Creo un test unitario que pasa. Pero sirve para definir el comportamiento del Job Offer con respecto a un dato de entrada nil.
+- 

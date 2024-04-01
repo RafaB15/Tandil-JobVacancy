@@ -19,4 +19,11 @@ describe JobOffer do
       expect(job_offer).to be_valid
     end
   end
+
+  describe 'saved correctly?' do
+    it 'should be saved as nil when required experience is blank' do
+      job_offer = described_class.new(title: 'a title')
+      expect(job_offer.required_experience).to eq nil
+    end
+  end
 end
