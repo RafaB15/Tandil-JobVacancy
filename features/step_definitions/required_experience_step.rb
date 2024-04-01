@@ -1,4 +1,5 @@
 OFFER_ACTIVATED_MESSAGE = 'Offer activated'.freeze
+REQUIRED_EXPERIENCE_ERROR_MESSAGE = 'Invalid required experience'.freeze
 
 # Given:
 
@@ -40,6 +41,10 @@ end
 
 Then(/^I should see a offer activated confirmation message$/) do
   page.should have_content(OFFER_ACTIVATED_MESSAGE)
+end
+
+Then(/^I should see an error message$/) do
+  page.should have_content(REQUIRED_EXPERIENCE_ERROR_MESSAGE)
 end
 
 # And:
