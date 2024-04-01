@@ -7,7 +7,7 @@ Feature: Required Experience
   Background:
   	Given I am logged in as job offerer
 
-	@wip
+  @wip
   Scenario: Create new deactivated offer
     When I create a new offer with "Smalltalk Dev" as the title and "10" as required years of experience
     Then I should see a offer created confirmation message

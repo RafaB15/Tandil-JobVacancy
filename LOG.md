@@ -36,4 +36,5 @@
 - Empiezo de 0
 - Escribo todos los acceptance tests
 - Borro el container para hacer el sq:migrate:up desde 0
--
+- LLevo 12h30m
+- Automatizo la primera prueba de aceptacions
