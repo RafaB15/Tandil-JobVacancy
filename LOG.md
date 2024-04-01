@@ -66,4 +66,5 @@
 - Claramente estos test pasaron por que al final del dia el sistema de guardado de un Edit es el mismo que el de creacion de un Job Offer. Por lo tanto, todos los casos andan bien. Importante que queden los tests para evitar que un refactor cambie el behavior propuesto por estos acceptance test
 - Intento hacer que a pesar de un error se guarden los campos que estan bien. No puedo, desisto
 - Cambio un step de la catedra para que pase un gherkin/cucumber que no pasaba de base por ambiguedad. Ahora pasa correctamente
-- 
+- Luego de atomatizar el acceptance test siguiente, hago un test unitario para probar que no se le puedan pasar strings a un Required Experience de Job Offer
+- Hago que pase el test sin que falle el resto permitiendo que se le puedan pasar nil

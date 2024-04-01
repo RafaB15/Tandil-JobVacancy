@@ -5,7 +5,10 @@ class JobOffer
                 :location, :description, :required_experience, :is_active,
                 :updated_on, :created_on
 
+  REQUIRED_EXPERIENCE_ERROR_MESSAGE = 'invalid'.freeze
+
   validates :title, presence: true
+  validates :required_experience, numericality: { message: REQUIRED_EXPERIENCE_ERROR_MESSAGE, allow_nil: true }
 
   def initialize(data = {})
     @id = data[:id]
