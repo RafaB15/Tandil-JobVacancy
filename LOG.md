@@ -58,4 +58,5 @@
 - Cambio 2 acceptance tests. El primer test no era lo suficientemente descriptivo. El segundo probaba lo mismo que el primero por que me faltaba 1 parametro. Ahora si estan probando lo que deberian estar probando 
 - Automatizo la siguiente prueba de aceptacion. Esta prueba me va a ayudar a desarrollar que luego de darle al edit, me recupere el campo Required Experience
 - Creo una prueba para el JobOfferForm. De esta forma me aseguro de que este siempre deba contener id, title, location, description y required_experience. Si en algún momento tengo que agregar algo mas, debo tocar la prueba. De esa forma hago TDD para agregar funcionalidad
-- 
+- Me falto agregar para la prueba tuve que crear un Job Offer con un ID valido, para eso tengo que persistirlo
+- Hago un refactor del primer test unitario que cree del tipo describe model. Me aseguro de que el Job Offer deba tener esos campos. De esta manera evito borrarlos sin querer en un refactor futuro

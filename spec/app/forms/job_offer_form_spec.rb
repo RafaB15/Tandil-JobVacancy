@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+# Creates a completly valid Job Offer with all its fields filled
 def initialize_job_offer_with_valid_id
   repository = JobOfferRepository.new
 
