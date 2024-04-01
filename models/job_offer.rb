@@ -2,7 +2,7 @@ class JobOffer
   include ActiveModel::Validations
 
   attr_accessor :id, :user, :user_id, :title,
-                :location, :description, :is_active,
+                :location, :description, :required_experience, :is_active,
                 :updated_on, :created_on
 
   validates :title, presence: true
@@ -12,6 +12,7 @@ class JobOffer
     @title = data[:title]
     @location = data[:location]
     @description = data[:description]
+    @required_experience = data[:required_experience]
     @is_active = data[:is_active]
     @updated_on = data[:updated_on]
     @created_on = data[:created_on]

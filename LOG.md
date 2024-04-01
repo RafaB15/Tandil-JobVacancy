@@ -38,3 +38,5 @@
 - Borro el container para hacer el sq:migrate:up desde 0
 - LLevo 12h30m
 - Automatizo la primera prueba de aceptacions
+- Creo unit test para agregar el nuevo dato al modelo
+- Mi modelo ahora tiene required_experience como campo
