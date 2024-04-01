@@ -9,7 +9,8 @@ class JobOffer
 
   validates :title, presence: true
   validates :required_experience,
-            numericality: { greater_than_or_equal_to: 0, allow_nil: true, message: REQUIRED_EXPERIENCE_ERROR_MESSAGE }
+            numericality: { only_integer: true, greater_than_or_equal_to: 0, allow_nil: true,
+                            message: REQUIRED_EXPERIENCE_ERROR_MESSAGE }
 
   def initialize(data = {})
     @id = data[:id]

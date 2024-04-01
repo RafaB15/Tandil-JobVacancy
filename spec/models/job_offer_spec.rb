@@ -38,6 +38,12 @@ describe JobOffer do
         described_class.new(title: 'a title', required_experience: '-5')
       end
     end
+
+    it 'should be invalid when required experience is float value' do
+      check_validation(:required_experience, 'Required experience invalid') do
+        described_class.new(title: 'a title', required_experience: '1.5')
+      end
+    end
   end
 
   describe 'saved correctly?' do
