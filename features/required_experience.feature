@@ -34,7 +34,6 @@ Feature: Required Experience
     Then I should see a offer created confirmation message
     And I should see "Solidity Dev" with "Not specified" required years of experience in my offers list
 
-  @wip
   Scenario: Check values of activated offer with 0 required experience
     Given I have "Solidity Dev" offer in my offers list
     When I activate the job offer
