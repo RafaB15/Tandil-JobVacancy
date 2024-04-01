@@ -52,14 +52,12 @@ Feature: Required Experience
     Then I should see a offer updated confirmation message
     And I should see "Smalltalk Dev" with "4" required years of experience in my offers list
 
-  @wip
   Scenario: Update offer to no required experience
     Given I have a offer with "Smalltalk Dev" as title and "10" as required years of experience in my offers list
     When I change the required years of experience to ""
     Then I should see a offer updated confirmation message
     And I should see "Smalltalk Dev" with "Not specified" required years of experience in my offers list
 
-  @wip
   Scenario: Update offer with 0 required experience to 8 years of experience
     Given I have a offer with "Solidity Dev" as title and "" as required years of experience in my offers list
     When I change the required years of experience to "8"

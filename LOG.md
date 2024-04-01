@@ -63,4 +63,5 @@
 - Pasa el test de aceptacion. Ahora ya no esta el bug de update
 - Automatizo el siguiente test de aceptacion
 - Pasa de 1 ya que el luego del fill_in se crea el Job Offer directamente como en las pruebas anteriores. Los siguientes 2 tests tambien van a pasar de 1 seguramente 
-- 
+- Claramente estos test pasaron por que al final del dia el sistema de guardado de un Edit es el mismo que el de creacion de un Job Offer. Por lo tanto, todos los casos andan bien. Importante que queden los tests para evitar que un refactor cambie el behavior propuesto por estos acceptance test
+-  
