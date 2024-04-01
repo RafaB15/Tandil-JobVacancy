@@ -72,5 +72,5 @@
 - Se cambia un poco el test de Gherkin/Cucumber para que tenga bien el mensaje de error y pase
 - El siguiente test de Gherkin ya esta automatizado
 - Creo un test unitario para evitar que se cree un Job Offer con numero negativos
-- Hago que pase con mas validates
+- Hago que pase con mas validates. Con esto pasa el Acceptance test tambien
 - 
