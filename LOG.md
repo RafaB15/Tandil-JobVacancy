@@ -68,3 +68,6 @@
 - Cambio un step de la catedra para que pase un gherkin/cucumber que no pasaba de base por ambiguedad. Ahora pasa correctamente
 - Luego de atomatizar el acceptance test siguiente, hago un test unitario para probar que no se le puedan pasar strings a un Required Experience de Job Offer
 - Hago que pase el test sin que falle el resto permitiendo que se le puedan pasar nil
+- Cabe aclarar que se modifico la caja de input de la pagina web para que no deje enviar strings tambien
+- Se cambia un poco el test de Gherkin/Cucumber para que tenga bien el mensaje de error y pase
+- 

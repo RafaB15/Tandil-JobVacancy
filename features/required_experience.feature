@@ -64,7 +64,6 @@ Feature: Required Experience
     Then I should see a offer updated confirmation message
     And I should see "Solidity Dev" with "8" required years of experience in my offers list
 
-  @wip
   Scenario: Try to create a offer with text as required years of experience
     When I create a new offer with "C Dev" as the title and "Experienced" as required years of experience
     Then I should see an error message
