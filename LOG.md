@@ -31,7 +31,8 @@
 - Creo un unit test para Required Experience para el caso presentado en un test viejo de Job Offer. Lo hago pasar, y por lo tanto, hago pasar el test viejo
 - Descomento el primer tesst de job_offer_repository_spec, me fijo por que falla y lo hago pasar. Como un buen programador que usa TDD
 - Hago que pase este test cambiando lo que guardo en la base de datos. Con este cambio deberian pasar los demas tests comentados posiblemte
-- Se volvio a romper la base de datos. No puedo cambiar el tipo de dato de la columna de Required Experience tampoco. Voy a hacer un rollback de lo commits por que esta todo roto 
+- Se volvio a romper la base de datos. No puedo cambiar el tipo de dato de la columna de Requisq:migrate:upred Experience tampoco. Voy a hacer un rollback de lo commits por que esta todo roto 
 =======================================================================================
 - Empiezo de 0
+- Borro el container para hacer el sq:migrate:up desde 0
 -
