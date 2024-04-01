@@ -60,3 +60,4 @@
 - Creo una prueba para el JobOfferForm. De esta forma me aseguro de que este siempre deba contener id, title, location, description y required_experience. Si en algún momento tengo que agregar algo mas, debo tocar la prueba. De esa forma hago TDD para agregar funcionalidad
 - Me falto agregar para la prueba tuve que crear un Job Offer con un ID valido, para eso tengo que persistirlo
 - Hago un refactor del primer test unitario que cree del tipo describe model. Me aseguro de que el Job Offer deba tener esos campos. De esta manera evito borrarlos sin querer en un refactor futuro
+- Pasa el test de aceptacion. Ahora ya no esta el bug de update

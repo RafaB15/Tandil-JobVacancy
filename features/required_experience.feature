@@ -40,7 +40,6 @@ Feature: Required Experience
     Then I should see a offer activated confirmation message
     And I should see "Solidity Dev" with "Not specified" required years of experience in the job offers tab
 
-  @wip
   Scenario: Update offer and change nothing
     Given I have a offer with "Smalltalk Dev" as title and "10" as required years of experience in my offers list
     When I change nothing and save
