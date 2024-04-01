@@ -25,6 +25,11 @@ When(/^I activate the job offer$/) do
   click_button('Activate')
 end
 
+When(/^I change nothing and save$/) do
+  click_link('Edit')
+  click_button('Save')
+end
+
 # Then:
 
 Then(/^I should see a offer activated confirmation message$/) do
