@@ -40,3 +40,5 @@
 - Automatizo la primera prueba de aceptacions
 - Creo unit test para agregar el nuevo dato al modelo
 - Mi modelo ahora tiene required_experience como campo
+- Creo nuevo test para agregar la columna de Required Experience a la base de datos. Agrego el migrate 009, esta vez la columna si va a ser un Integer. Además agrego Required Experience al ChangeSet del Job Offers Repository
+- Con esto hago pasar la prueba, tengo la migración hecha y ya puedo persistir un Job Offer con Required Experience
