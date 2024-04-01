@@ -70,4 +70,7 @@
 - Hago que pase el test sin que falle el resto permitiendo que se le puedan pasar nil
 - Cabe aclarar que se modifico la caja de input de la pagina web para que no deje enviar strings tambien
 - Se cambia un poco el test de Gherkin/Cucumber para que tenga bien el mensaje de error y pase
+- El siguiente test de Gherkin ya esta automatizado
+- Creo un test unitario para evitar que se cree un Job Offer con numero negativos
+- Hago que pase con mas validates
 - 

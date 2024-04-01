@@ -72,3 +72,8 @@ Feature: Required Experience
   Scenario: Try to create a offer with negative value as required years of experience
     When I create a new offer with "C Dev" as the title and "-5" as required years of experience
     Then I should see an error message
+  
+  @wip
+  Scenario: Try to create a offer with float value as required years of experience
+    When I create a new offer with "C Dev" as the title and "1.5" as required years of experience
+    Then I should see an error message
