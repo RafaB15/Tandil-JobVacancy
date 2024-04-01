@@ -12,7 +12,6 @@ Feature: Required Experience
     Then I should see a offer created confirmation message
     And I should see "Smalltalk Dev" with "10" required years of experience in my offers list
 
-	@wip
   Scenario: Check values of activated offer
     Given I have a offer with "Smalltalk Dev" as title and "10" as required years of experience in my offers list
     When I activate the job offer
