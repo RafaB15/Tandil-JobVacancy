@@ -34,5 +34,6 @@
 - Se volvio a romper la base de datos. No puedo cambiar el tipo de dato de la columna de Requisq:migrate:upred Experience tampoco. Voy a hacer un rollback de lo commits por que esta todo roto 
 =======================================================================================
 - Empiezo de 0
+- Escribo todos los acceptance tests
 - Borro el container para hacer el sq:migrate:up desde 0
 -
