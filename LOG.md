@@ -1,0 +1,37 @@
+## Log
+
+- Cambio README
+- Creo la nueva Branch
+- Creo un archivo .ps1 para poder correr todo desde PowerShell
+- Hago un commit a main sin querer con el .ps1 y un cambio a el footer de la página
+- Creo todos los Tests de aceptación 1 por 1
+- Veo los videos 1 y otra y otra vez hasta encontrar donde puedo empezar a tocar el código.
+- Creo un test en job_offer para agregar la variable de instancia required_experience a JobOffer
+- Hago pasar el test agregando este nuevo campo a JobOffer
+- Creo un test en job_offer_repository para agregar a la base de datos este nuevo campo
+- Creo el migration para actualizar la base de datos con esta nueva columna
+- Corro el comando para que se ejecuten los migrations
+- Intento levantar postgres con DBeaver y luego de 1h de intentar desisto a la idea de poder ver la base de datos con un gestor
+- Intento hacer pruebas de la interfaz de usuario con Padrino. Como no funciona y la docu de Padrino me hacia querer sacarme los ojos, luego de mucho tiempo perdido desisto de hacer esto tambien 
+- Cambio la interfaz web para que refleje la posibilidad de crear y visualizar un Job Offer con Required Experience
+- Pruebo localmente desde el navegador web que ande esta funcionalidad
+- Con todo esto andando empiezo a automatizar el feature de gherkin
+- Pasa gherkin, pusheo
+- Desactive el largo de una linea de momento hasta ver si me deja hacerlo NicoPaez
+- Llevo 7h de trabajo :D no sali de la compu en todo el dia. Felices Pascuas
+- Pasa el segundo test de aceptación, lo único que se necesito fue agregar a la lista de empleos activados la columna require experience. Hago el mapeo de cucumber a ruby también para verificar qeu el test pase. Además también lo hago pasar en el navegador local de mi compu
+- Cambio un test en job offer repository ya que tiene mas sentido probar el caso en el que el required experience se conserva. Antes probaba el caso en el que cambia a "Not specified"
+- Creo un test para este otro caso en el que inicializo un JobOffer con un required experience nil
+- Creo un test para checkear que mi base de datos tambien guarda el valor correctamente. Por la manera en la que se intercomunican lo objetos del modelo, este test pasa de una. Sin embargo, es importante probar que se persisten los dato correctamente en la base de datos
+- Luego de este commit voy a tener que hacer un refactor grande de todo esto, por que no me gusta nada como quedo modelado. Siento que no representa el negocio
+- Los comentarios de arriba son del commit anterior, no habia guardado bien
+- Creo un objeto required_experience que tenga la responsabilidad de operar con este dato del negocio
+- Cambio varios tests unitarios viejos ya que este es un refactor bastante grande que afecta a muchas partes del codigo. Además, pongo en pending 11 tests para poder hacer el push, seguir documentando mi progreso y que no me rompa el pipeline
+- Llevo 9h de trabajo
+- Creo un unit test para Required Experience para el caso presentado en un test viejo de Job Offer. Lo hago pasar, y por lo tanto, hago pasar el test viejo
+- Descomento el primer tesst de job_offer_repository_spec, me fijo por que falla y lo hago pasar. Como un buen programador que usa TDD
+- Hago que pase este test cambiando lo que guardo en la base de datos. Con este cambio deberian pasar los demas tests comentados posiblemte
+- Se volvio a romper la base de datos. No puedo cambiar el tipo de dato de la columna de Required Experience tampoco. Voy a hacer un rollback de lo commits por que esta todo roto 
+=======================================================================================
+- Empiezo de 0
+-
