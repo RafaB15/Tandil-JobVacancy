@@ -18,7 +18,6 @@ Feature: Required Experience
     Then I should see a offer activated confirmation message
     And I should see "Smalltalk Dev" with "10" required years of experience in the job offers tab
 
-  @wip
   Scenario: Create new deactivated offer with no required experience
     When I create a new offer with "Rust Dev" as the title and "" as required years of experience
     Then I should see a offer created confirmation message

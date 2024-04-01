@@ -48,4 +48,5 @@
 - Dejo automatizado y fallando el siguiente test de aceptación
 - Empiezo a implementar la funcionalidad de no especificar Required Experience.
 - Creo un test unitario que pasa. Pero sirve para definir el comportamiento del Job Offer con respecto a un dato de entrada nil.
+- Hago pasar el siguiente test de aceptacion. Ahora el employer puede ver Not specified si es que le pasa un empty Required Experience a la hora de crear el Job Offer
 - 

@@ -22,7 +22,11 @@
 		</td>
 		</td>
 		<td>
-			<%= offer.required_experience %>
+			<% if offer.required_experience == nil %>
+				<p>Not specified</p>
+			<% else %>
+				<%= offer.required_experience %>
+			<% end %>
 		</td>
 		<td>
 			<%= offer.is_active %>
