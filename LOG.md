@@ -52,4 +52,5 @@
 - Lo mismo para el siguiente Test de aceptacion. Ahora el usuario puede ver Not specified tambien
 - Hago un refactor con un partial para evitar codigo repetido en las views
 - No me gusta el nombre, por ahi lo cambio despues
-- 
+- Otro aceptance test pasando. Si la Required Experience es 0, entonces mostrar Not specified
+- El siguiente acceptance test tambien va a pasar de una seguramente, por el refactor de _required_experience_formatting.erb

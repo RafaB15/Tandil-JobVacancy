@@ -29,7 +29,6 @@ Feature: Required Experience
     Then I should see a offer activated confirmation message
     And I should see "Rust Dev" with "Not specified" required years of experience in the job offers tab
 
-  @wip
   Scenario: Create new deactivated offer with 0 required experience
     When I create a new offer with "Solidity Dev" as the title and "0" as required years of experience
     Then I should see a offer created confirmation message

@@ -1,4 +1,4 @@
-			<% if offer.required_experience == nil %>
+			<% if offer.required_experience == nil || offer.required_experience == 0 %>
 			  <p>Not specified</p>
       <% else %>
         <%= offer.required_experience %>
