@@ -42,3 +42,5 @@
 - Mi modelo ahora tiene required_experience como campo
 - Creo nuevo test para agregar la columna de Required Experience a la base de datos. Agrego el migrate 009, esta vez la columna si va a ser un Integer. Además agrego Required Experience al ChangeSet del Job Offers Repository
 - Con esto hago pasar la prueba, tengo la migración hecha y ya puedo persistir un Job Offer con Required Experience
+- Ahora con todo esto hecho, toco un poco la interfaz de la web para hacer pasar el Aceptance Test de Gherkin/Cucumber
+- Para hacer pasar el gherkin, agrego en un helper una conversion de '' a nil para evitar errores en la base de datos
