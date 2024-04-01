@@ -78,3 +78,4 @@
 - Creo un nuevo unit test para probar que el Job Offer no se cree con un float. Hago pasar el test y pusheo
 - Con este unit test y la automatizacion del aceptance test ya pasan todos los tests que definen el behavior del programa!
 - Se viene el refactor
+- Llevo 16h30
