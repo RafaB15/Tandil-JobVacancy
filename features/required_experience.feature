@@ -23,7 +23,6 @@ Feature: Required Experience
     Then I should see a offer created confirmation message
     And I should see "Rust Dev" with "Not specified" required years of experience in my offers list
 
-  @wip
   Scenario: Check values of activated offer with no required experience
     Given I have "Rust Dev" offer in my offers list
     When I activate the job offer

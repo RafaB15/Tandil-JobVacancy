@@ -22,11 +22,7 @@
 		</td>
 		</td>
 		<td>
-			<% if offer.required_experience == nil %>
-				<p>Not specified</p>
-			<% else %>
-				<%= offer.required_experience %>
-			<% end %>
+			<%= partial 'job_offers/required_experience_formatting', :locals => { :offer => offer } %>
 		</td>
 		<td>
 			<%= offer.is_active %>

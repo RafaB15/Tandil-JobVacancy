@@ -28,7 +28,7 @@
 			<%= offer.description %>
 		</td>
 		<td>
-			<%= offer.required_experience %>
+			<%= partial 'job_offers/required_experience_formatting', :locals => { :offer => offer } %>
 		</td>
 		<td>
 			<%= link_to 'Apply', url_for(:job_offers, :apply, :offer_id => offer.id), :class => "btn btn-primary" %>

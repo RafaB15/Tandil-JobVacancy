@@ -49,4 +49,7 @@
 - Empiezo a implementar la funcionalidad de no especificar Required Experience.
 - Creo un test unitario que pasa. Pero sirve para definir el comportamiento del Job Offer con respecto a un dato de entrada nil.
 - Hago pasar el siguiente test de aceptacion. Ahora el employer puede ver Not specified si es que le pasa un empty Required Experience a la hora de crear el Job Offer
+- Lo mismo para el siguiente Test de aceptacion. Ahora el usuario puede ver Not specified tambien
+- Hago un refactor con un partial para evitar codigo repetido en las views
+- No me gusta el nombre, por ahi lo cambio despues
 - 
