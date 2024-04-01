@@ -61,3 +61,6 @@
 - Me falto agregar para la prueba tuve que crear un Job Offer con un ID valido, para eso tengo que persistirlo
 - Hago un refactor del primer test unitario que cree del tipo describe model. Me aseguro de que el Job Offer deba tener esos campos. De esta manera evito borrarlos sin querer en un refactor futuro
 - Pasa el test de aceptacion. Ahora ya no esta el bug de update
+- Automatizo el siguiente test de aceptacion
+- Pasa de 1 ya que el luego del fill_in se crea el Job Offer directamente como en las pruebas anteriores. Los siguientes 2 tests tambien van a pasar de 1 seguramente 
+- 

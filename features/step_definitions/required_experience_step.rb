@@ -30,6 +30,12 @@ When(/^I change nothing and save$/) do
   click_button('Save')
 end
 
+When(/^I change the required years of experience to "(.*?)"$/) do |required_experience|
+  click_link('Edit')
+  fill_in('job_offer_form[required_experience]', with: required_experience)
+  click_button('Save')
+end
+
 # Then:
 
 Then(/^I should see a offer activated confirmation message$/) do
