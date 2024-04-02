@@ -87,3 +87,5 @@
 - Hay un bug de base del ejercicio en edit, si falla el edit 1 vez, la segunda Padrino rompe si o si. Tiene que ver con la implementacion del :update del JobOfferController. Intente cambiarlo, pero no logre entender del todo como funciona el controller. Nuevamente, desisti
 - Todavia estoy viendo de implementar el objeto RequiredExperience, estoy esperando que NicoPaez me responda el mail. Llego hasta aca por hoy, mañana sigo
 - Llevo 18h30
+- Al final no voy a implementar el objeto RequiredExperience. Voy a darle una ultima pasada al tp y entregar
+- No encontre nada para hacer un refactor realmente. Aca termina el TP
