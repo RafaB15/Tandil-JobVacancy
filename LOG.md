@@ -79,3 +79,11 @@
 - Con este unit test y la automatizacion del aceptance test ya pasan todos los tests que definen el behavior del programa!
 - Se viene el refactor
 - Llevo 16h30
+=========================================================
+### Refactor
+- Saco numeros magicos y los pongo como cte en job_offers_helper y job_offer(el 0). Tengo que ver los nombres todavia
+- Cambio el archivo de partial table para las views de My Offers y Job Offers. Ahora no tiene la condicion del if ahi, sino que pregunta a un metodo de la clase JobOffer
+- Cambio el texto de error del Required Experience que tira el validates para que sea mas descriptivo
+- Hay un bug de base del ejercicio en edit, si falla el edit 1 vez, la segunda Padrino rompe si o si. Tiene que ver con la implementacion del :update del JobOfferController. Intente cambiarlo, pero no logre entender del todo como funciona el controller. Nuevamente, desisti
+- Todavia estoy viendo de implementar el objeto RequiredExperience, estoy esperando que NicoPaez me responda el mail. Llego hasta aca por hoy, mañana sigo
+- Llevo 18h30

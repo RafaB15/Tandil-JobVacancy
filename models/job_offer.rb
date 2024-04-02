@@ -5,11 +5,12 @@ class JobOffer
                 :location, :description, :required_experience, :is_active,
                 :updated_on, :created_on
 
-  REQUIRED_EXPERIENCE_ERROR_MESSAGE = 'invalid'.freeze
+  REQUIRED_EXPERIENCE_ERROR_MESSAGE = 'is not a natural number or empty'.freeze
+  MINIMUM_YEARS_OF_EXPERIENCE = 0
 
   validates :title, presence: true
   validates :required_experience,
-            numericality: { only_integer: true, greater_than_or_equal_to: 0, allow_nil: true,
+            numericality: { only_integer: true, greater_than_or_equal_to: MINIMUM_YEARS_OF_EXPERIENCE, allow_nil: true,
                             message: REQUIRED_EXPERIENCE_ERROR_MESSAGE }
 
   def initialize(data = {})
@@ -43,5 +44,9 @@ class JobOffer
 
   def old_offer?
     (Date.today - updated_on) >= 30
+  end
+
+  def is_required_experience_not_specified?
+    @required_experience.nil? || @required_experience.zero?
   end
 end

@@ -28,19 +28,19 @@ describe JobOffer do
     end
 
     it 'should be invalid when required experience is string' do
-      check_validation(:required_experience, 'Required experience invalid') do
+      check_validation(:required_experience, 'Required experience is not a natural number or empty') do
         described_class.new(title: 'a title', required_experience: 'Experienced')
       end
     end
 
     it 'should be invalid when required experience is negative integer' do
-      check_validation(:required_experience, 'Required experience invalid') do
+      check_validation(:required_experience, 'Required experience is not a natural number or empty') do
         described_class.new(title: 'a title', required_experience: '-5')
       end
     end
 
     it 'should be invalid when required experience is float value' do
-      check_validation(:required_experience, 'Required experience invalid') do
+      check_validation(:required_experience, 'Required experience is not a natural number or empty') do
         described_class.new(title: 'a title', required_experience: '1.5')
       end
     end

@@ -1,5 +1,5 @@
 OFFER_ACTIVATED_MESSAGE = 'Offer activated'.freeze
-REQUIRED_EXPERIENCE_ERROR_MESSAGE = 'invalid'.freeze
+REQUIRED_EXPERIENCE_ERROR_MESSAGE = 'is not a natural number or empty'.freeze
 
 # Given:
 
