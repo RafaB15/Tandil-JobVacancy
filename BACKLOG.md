@@ -1,2 +1,5 @@
-* Add Phone number field to registration
-* Add Required Experience field to offer (create, edit and view)
+## LOG
+
+- Agregado al .gitlab-ci.yml lineas para el deploy
+- Hay que crear branch deploy
+-
