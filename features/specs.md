@@ -1,11 +1,11 @@
 
 Scenario: on-demand with no offers
-    Given there is Pepe user with a on-demand susbcription
+    Given there is Pepe user with a on-demand subscription
     When I get the report for the current month
     Then Pepe should pay 0
 
 Scenario: on-demand with one offer
-    Given there is Pepe user with a on-demand susbcription
+    Given there is Pepe user with a on-demand subscription
     And offer active in the current month
     When I get the report for the current month
     Then Pepe should pay 10    

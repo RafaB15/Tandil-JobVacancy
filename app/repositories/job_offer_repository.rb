@@ -19,6 +19,13 @@ class JobOfferRepository < BaseRepository
     end
   end
 
+  def deactivate_all
+    all_active.each do |offer|
+      offer.deactivate
+      update(offer)
+    end
+  end
+
   def search_by_title(title)
     load_collection dataset.where(Sequel.like(:title, "%#{title}%"))
   end
