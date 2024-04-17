@@ -48,11 +48,8 @@ In case of adding new gem, it may be require to rebuild the containers:
     # start containers forcing rebuild
     docker compose up -d --build --force-recreate
 
-<<<<<<< HEAD
 ```
 $ docker-compose run --rm webapp bundle exec rake db:migrate
 $ docker-compose up -d
 $ docker-compose exec webapp /bin/bash
 ```
-=======
->>>>>>> main

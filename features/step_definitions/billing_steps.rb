@@ -18,8 +18,8 @@ Then('the total active offers is {int}') do |expected_active_offers|
   expect(@report_as_json['total_active_offers']).to eq expected_active_offers
 end
 
-Then('the total amount is {float}') do |_expected_total_amount|
-  pendiente
+Then('the total amount is {float}') do |expected_total_amount|
+  expect(@report_as_json['total_amount']).to eq expected_total_amount
 end
 
 Given('a user {string} with {string} subscription') do |_user_email, _subscription_type|
