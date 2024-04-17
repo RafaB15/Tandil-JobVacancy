@@ -1,4 +1,4 @@
-@billing @wip
+@billing
 Feature: Billing Report
 
   Scenario: b1 - billing report when no active offers
