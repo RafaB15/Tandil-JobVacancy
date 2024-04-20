@@ -17,3 +17,5 @@
 - Agregamos 2 tests nuevos a User para agregar las subscripciones al usuario
 - Agregamos atributo "subscription_type" para User.
 - El atributo "subscription_type" ahora corresponde a una clase del dominio.
+- Cambiamos el máximo de lineas en test en rubocop a 6 (en un mail se indicó max 8).
+- Creamos prueba unitaria para nueva entidad que arme los items del Report.
