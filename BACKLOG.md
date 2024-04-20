@@ -15,4 +15,5 @@
 - Agregamos un unit test que define el comportamiento de SubscriptionOnDemand al calcular el amount to pay cuando no hay ninguna subscripcion activa
 - Hicimos pasar el test. Creamos SubscripcionOnDemand 
 - Agregamos 2 tests nuevos a User para agregar las subscripciones al usuario
-- 
+- Agregamos atributo "subscription_type" para User.
+- El atributo "subscription_type" ahora corresponde a una clase del dominio.

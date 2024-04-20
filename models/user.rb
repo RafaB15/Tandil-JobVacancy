@@ -9,7 +9,7 @@ class User
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX,
                                               message: 'invalid email' }
 
-  def self.create(name, email, password,subscription_type)
+  def self.create(name, email, password, subscription_type)
     data = {}
     data[:name] = name
     data[:email] = email
@@ -29,7 +29,7 @@ class User
                         end
     @updated_on = data[:updated_on]
     @created_on = data[:created_on]
-    @subscription_type = data[:subscription_type]
+    @subscription_type = data[:subscription_type] == 'on-demand' ? SubscriptionOnDemand.new : nil
   end
 
   def has_password?(password)

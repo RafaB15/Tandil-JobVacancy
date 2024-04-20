@@ -4,7 +4,7 @@ Feature: On Demand Billing Report
   Background:
     Given a user "pepe@pepito.com" with "on-demand" subscription
 
-
+@wip
   Scenario: on1 - One user with on-demand subscription with no offers
     Given 0 active offers
     When I get the billing report
