@@ -97,8 +97,13 @@ Then('the total amount is {float}') do |expected_total_amount|
 end
 
 Then('the amount to pay for the user {string} is {float}') do |user_email, expected_amount|
-  expect(@report_as_json['items'][0]['user_email']).to eq user_email
-  expect(@report_as_json['items'][0]['amount_to_pay']).to eq expected_amount
+  amount_to_pay = nil
+
+  @report_as_json['items'].each do |bill|
+    amount_to_pay = bill['amount_to_pay'] if bill['user_email'] == user_email
+  end
+
+  expect(amount_to_pay).to eq expected_amount
 end
 
 Then('the total active offers are {int}') do |expected_active_offers|

@@ -56,3 +56,5 @@
 - La responsabilidad de conocer cuanto pagar pasa al usuario y es este quien le consulta a su suscripcion cuanto es.
 - UserBiller ahora es polimorfico para los tipos de suscripciones.
 - Refactor en los tests para nuevos mensajes en los mocks.
+- Nuevo unit test y steps para reporte de multiples usuarios
+- Pendiente refactor de tests
