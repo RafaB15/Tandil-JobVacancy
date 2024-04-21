@@ -1,9 +1,10 @@
 JobVacancy::App.controllers :reports, provides: [:json] do
   get :billing do
-    repo = JobOfferRepository.new
-    offer_counter = OfferCounter.new(repo)
-    amount_adder = AmountAdder.new(repo)
-    items = [{ user_email: 'wrong@email.com' }]
+    user_repo = UserRepository.new
+    job_offer_repo = JobOfferRepository.new
+    offer_counter = OfferCounter.new(job_offer_repo)
+    amount_adder = AmountAdder.new(job_offer_repo)
+    items = UserBiller.new(user_repo, job_offer_repo).create_all_users_billing
     report = {
       items:,
       total_amount: amount_adder.add_amount.to_f,

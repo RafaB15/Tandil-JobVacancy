@@ -11,7 +11,7 @@ class UserBiller
 
     if job_offers_size.zero?
       user_bill = {
-        user_email: 'john@doe.com',
+        user_email: 'pepe@pepito.com',
         amount_to_pay: 0.0
       }
 

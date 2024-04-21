@@ -23,4 +23,4 @@
 - Cambios a los features que tienen typos
 - Sacamos un print que estaba de mas
 - refactorizamos el test anterior para que sea mas claro
-- 
+- Pasamos el segundo acceptance test: el json del endpoint resulta como se esperaba.

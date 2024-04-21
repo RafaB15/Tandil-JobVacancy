@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UserBiller do
   describe 'create_all_users_billing' do
-    let(:user_email) { 'john@doe.com' }
+    let(:user_email) { 'pepe@pepito.com' }
 
     it 'should return user email and 0.0 total to pay when user have no active offers' do
       user = instance_double('user', user_email:)

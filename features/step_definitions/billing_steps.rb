@@ -13,6 +13,7 @@ end
 When('I get the billing report') do
   visit 'reports/billing'
   @report_as_json = JSON.parse(page.body)
+  puts @report_as_json
 end
 
 Then('the total active offers is {int}') do |expected_active_offers|
