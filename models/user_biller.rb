@@ -5,6 +5,7 @@ class UserBiller
   end
 
   def create_all_users_billing
+    @user_repo.all
     job_offers_size = @offer_repo.all_active.size
 
     all_user_bills = []
@@ -14,7 +15,14 @@ class UserBiller
         user_email: 'pepe@pepito.com',
         amount_to_pay: 0.0
       }
+      all_user_bills.append(user_bill)
+    end
 
+    if job_offers_size == 1
+      user_bill = {
+        user_email: 'pepe@pepito.com',
+        amount_to_pay: 10.0
+      }
       all_user_bills.append(user_bill)
     end
 

@@ -28,4 +28,6 @@
 - Creado los steps para siguiente test de aceptacion
 - Creado un unit test que le hace un double a la bdd
 - Despues de pasar este unit test va a haber que empezar a tocar la BDDs
--
+- Pasamos test unitario para el nuevo escenario.
+- Pasamos nuevo escenario.
+- Hacemos un pequeño refactor.

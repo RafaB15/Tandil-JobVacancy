@@ -16,7 +16,7 @@ describe UserBiller do
       expect(first_users_bill[:amount_to_pay]).to eq 0.0
     end
 
-    xit 'should return user email and 10.0 total to pay when user have 1 active offer' do
+    it 'should return user email and 10.0 total to pay when user have 1 active offer' do
       user = instance_double('user', user_email:)
       job_offer = instance_double('job_offer', owner: user)
 
