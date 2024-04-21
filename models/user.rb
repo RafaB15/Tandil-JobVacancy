@@ -1,3 +1,6 @@
+require_relative 'subscription_corporate'
+require_relative 'subscription_on_demand'
+
 class User
   include ActiveModel::Validations
 
@@ -29,7 +32,7 @@ class User
                         end
     @updated_on = data[:updated_on]
     @created_on = data[:created_on]
-    @subscription_type = data[:subscription_type]
+    @subscription_type = data[:subscription_type].nil? ? SubscriptionOnDemand.new : data[:subscription_type]
   end
 
   def create_subscription_type_for_self

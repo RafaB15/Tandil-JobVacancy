@@ -58,3 +58,9 @@
 - Refactor en los tests para nuevos mensajes en los mocks.
 - Nuevo unit test y steps para reporte de multiples usuarios
 - Pendiente refactor de tests
+- Medio refactor hecho.
+- Pasa nuevo unit test.
+- Refactor a la implementación porque se rompieron otros tests.
+- Refactor a steps para encontrar el user que queremos (uso de each:)
+- Agregamos unit test para soportar varios usuarios con corporate
+-

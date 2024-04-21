@@ -15,18 +15,12 @@ class UserRepository < BaseRepository
     user
   end
 
-  def give_subscription_type(subscription_type)
-    subscription_type_string = 'on-demand' if subscription_type.is_a?(SubscriptionOnDemand)
-    subscription_type_string = 'corporate' if subscription_type.is_a?(SubscriptionCorporate)
-    subscription_type_string
-  end
-
   def changeset(user)
     {
       name: user.name,
       crypted_password: user.crypted_password,
       email: user.email,
-      subscription_type: give_subscription_type(user.subscription_type)
+      subscription_type: user.subscription_type.type
     }
   end
 end
