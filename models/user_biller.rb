@@ -5,9 +5,7 @@ class UserBiller
   end
 
   def create_all_users_billing
-    @user_repo.all
     job_offers_size = @offer_repo.all_active.size
-
     all_user_bills = []
 
     if job_offers_size.zero?

@@ -17,10 +17,13 @@ Given('there are no offers at all') do
 end
 
 Given('{int} active offers') do |offer_count|
-  if offer_count.zero?
-    JobOfferRepository.new.deactivate_all
-  else
-    pending
+  repository = JobOfferRepository.new
+  repository.deactivate_all
+
+  (0...offer_count).each do |counter|
+    job_offer = JobOffer.new(title: "active offer number #{counter}", user_id: @user.id, is_active: true)
+
+    repository.save(job_offer)
   end
 end
 
@@ -34,12 +37,19 @@ Given('the user {string} has {int} active offers') do |user_email, active_offer_
 
   if active_offer_count == 1
     job_offer = JobOffer.new(title: 'test 1 active offer', user_id: user.id, is_active: true)
+
     repository.save(job_offer)
   end
 end
 
-Given('{int} inactive offers') do |_inactive_offer_count|
-  pending # Write code here that turns the phrase above into concrete actions
+Given('{int} inactive offers') do |inactive_offer_count|
+  repository = JobOfferRepository.new
+
+  (0...inactive_offer_count).each do |counter|
+    job_offer = JobOffer.new(title: "inactive offer number #{counter}", user_id: @user.id, is_active: false)
+
+    repository.save(job_offer)
+  end
 end
 
 Given('the user {string}') do |_user_email|
@@ -78,8 +88,9 @@ Then('the total active offers are {int}') do |_expected_offer_count|
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-Then('the billing for this user is {float}') do |_expected_amount|
-  pending # Write code here that turns the phrase above into concrete actions
+Then('the billing for this user is {float}') do |expected_amount|
+  puts @report_as_json
+  expect(@report_as_json['items'][0]['amount_to_pay']).to eq expected_amount
 end
 
 Then('the amount to pay for the user {string} is {float}.') do |_user_email, _expected_amount|
