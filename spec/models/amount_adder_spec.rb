@@ -8,7 +8,7 @@ describe AmountAdder do
       expect(counter.add_amount).to eq 0
     end
 
-    xit 'should be 40 when there are 4 active offers' do
+    it 'should be 40 when there are 4 active offers' do
       job_offer = instance_double('job_offer')
       repo = instance_double('offer_repo', all_active: [job_offer, job_offer, job_offer, job_offer])
       counter = described_class.new(repo)

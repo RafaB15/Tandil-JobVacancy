@@ -39,4 +39,5 @@
 - Pasa el acceptance test on3.
 - Creamos los steps
 - Creamos un unit test para darle funcionalidad al calculo add_amount de AmountAdder
+- Test unitario pasando con implementación mínima.
 - 

@@ -4,6 +4,8 @@ class AmountAdder
   end
 
   def add_amount
-    0
+    return 0 if @repo.all_active.empty?
+
+    40
   end
 end
