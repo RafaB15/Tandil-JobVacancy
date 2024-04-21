@@ -24,7 +24,7 @@ RSpec/AnyInstance:
 RSpec/ExampleWording:
   Enabled: false
 RSpec/ExampleLength:
-  Max: 6
+  Max: 8
 RSpec/DescribeClass:
   Enabled: false
 RSpec/HookArgument:

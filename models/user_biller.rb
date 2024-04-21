@@ -18,7 +18,6 @@ class UserBiller
       all_user_bills.append(user_bill)
     end
 
-    puts all_user_bills
     all_user_bills
   end
 end

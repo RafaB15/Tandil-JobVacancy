@@ -10,9 +10,10 @@ describe UserBiller do
       user_repo = instance_double('user_repo', all: [user])
       offer_repo = instance_double('offer_repo', all_active: [])
 
-      biller = described_class.new(user_repo, offer_repo)
-      expect(biller.create_all_users_billing[0][:user_email]).to eq user_email
-      expect(biller.create_all_users_billing[0][:amount_to_pay]).to eq 0.0
+      users_biller = described_class.new(user_repo, offer_repo)
+      first_users_bill = users_biller.create_all_users_billing[0]
+      expect(first_users_bill[:user_email]).to eq user_email
+      expect(first_users_bill[:amount_to_pay]).to eq 0.0
     end
   end
 end
