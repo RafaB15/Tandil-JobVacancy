@@ -19,3 +19,5 @@
 - El atributo "subscription_type" ahora corresponde a una clase del dominio.
 - Cambiamos el máximo de lineas en test en rubocop a 6 (en un mail se indicó max 8).
 - Creamos prueba unitaria para nueva entidad que arme los items del Report.
+- Pasa el nuevo unit test. Ya esta creado el UserBiller. Este se encarga de hacer el reporte de cada usuario individual y devolver un vector de estos
+- 
