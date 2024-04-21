@@ -32,7 +32,24 @@ class User
     @subscription_type = data[:subscription_type]
   end
 
+  def create_subscription_type_for_self
+    @subscription_type = case @subscription_type
+                         when 'on-demand'
+                           SubscriptionOnDemand.new
+                         when 'corporate'
+                           SubscriptionCorporate.new
+                         end
+  end
+
   def has_password?(password)
     Crypto.decrypt(crypted_password) == password
+  end
+
+  def amount_to_pay(number_of_active_offers)
+    if @subscription_type.is_a?(SubscriptionOnDemand)
+      amount_to_pay = subscription_type.compute_amount_to_pay_for_total_active_offers(number_of_active_offers)
+    end
+    amount_to_pay = 80 if @subscription_type.is_a?(SubscriptionCorporate)
+    amount_to_pay
   end
 end

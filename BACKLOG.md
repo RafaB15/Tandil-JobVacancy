@@ -47,4 +47,12 @@
 - Se crea una prueba unitaria y se crea la clase SubscriptionCorporate para que pase el test
 - Refactor al primer test de gherkin segun un mail. Lo cambiamos ya que no es lo suficientemente descriptivo. Tambien tuvimos que cambiar los steps
 - Agregada nueva prueba unitaria para biller, hay que hacerla pasar
-- 
+- Refactor a los tests para que los mocks sepan devolver el total a pagar.
+- Pasamos test unitario para que haya soporte para el nuevo tipo de suscripcion en UserBiller.
+- Agregamos lo necesario en el migrate y en UserRepository para poder guardar y levantar información acerca la suscripción.
+- GRAN REFACTOR: nos dimos cuenta que la implementación dependía mucho de tener a mano una clase de suscripción y que al momento de tener otro tipo y tener que guadarlo en la base de datos surgieron complicaciones. Además, como la suscripción compone al User, no corresponde acceder a su atributo para mandarle mensaje, sino que deberiamos pedirle al usuario que le pida a su suscripcion lo que necesitemos. De esta manera se puede guardar y rescatar un usuario de la BD sin modificaciones muy grandes.
+- REFACTOR: Refactorizamos steps para que soporten la nueva suscripción y se creen bien los usuarios nuevos.
+- Se agregó un mensaje para que el usuario pueda transformar su suscripcion desde un string a un objeto Suscription, porque desde el repository no podiamos instanciar suscripciones.
+- La responsabilidad de conocer cuanto pagar pasa al usuario y es este quien le consulta a su suscripcion cuanto es.
+- UserBiller ahora es polimorfico para los tipos de suscripciones.
+- Refactor en los tests para nuevos mensajes en los mocks.

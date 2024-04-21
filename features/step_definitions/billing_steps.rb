@@ -1,5 +1,6 @@
 require 'json'
 ON_DEMAND_SUBSCRIPTION = 'on-demand'.freeze
+CORPORATE_SUBSCRIPTION = 'corporate'.freeze
 SOME_PASSWORD = 'somePassword!'.freeze
 ANOTHER_USER_EMAIL = 'another@email.com'.freeze
 
@@ -8,6 +9,7 @@ ANOTHER_USER_EMAIL = 'another@email.com'.freeze
 
 Given('a user {string} with {string} subscription') do |user_email, subscription_type|
   subscription = SubscriptionOnDemand.new if subscription_type == ON_DEMAND_SUBSCRIPTION
+  subscription = SubscriptionCorporate.new if subscription_type == CORPORATE_SUBSCRIPTION
 
   @user = User.create(user_email, user_email, SOME_PASSWORD, subscription)
 
@@ -34,6 +36,7 @@ end
 
 Given('another user {string} with {string} subscription') do |user_email, subscription_type|
   subscription = SubscriptionOnDemand.new if subscription_type == ON_DEMAND_SUBSCRIPTION
+  subscription = SubscriptionCorporate.new if subscription_type == CORPORATE_SUBSCRIPTION
 
   @user = User.create(user_email, user_email, SOME_PASSWORD, subscription)
 
@@ -67,6 +70,7 @@ end
 
 Given('another user with {string} subscription') do |subscription_type|
   subscription = SubscriptionOnDemand.new if subscription_type == ON_DEMAND_SUBSCRIPTION
+  subscription = SubscriptionCorporate.new if subscription_type == CORPORATE_SUBSCRIPTION
 
   @user = User.create(ANOTHER_USER_EMAIL, ANOTHER_USER_EMAIL, SOME_PASSWORD, subscription)
 
@@ -103,8 +107,4 @@ end
 
 Then('the billing for this user is {float}') do |expected_amount|
   expect(@report_as_json['items'][0]['amount_to_pay']).to eq expected_amount
-end
-
-Then('the amount to pay for the user {string} is {float}.') do |_user_email, _expected_amount|
-  pending # Write code here that turns the phrase above into concrete actions
 end

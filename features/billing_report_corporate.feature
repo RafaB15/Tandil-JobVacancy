@@ -4,7 +4,6 @@ Feature: Corporate Billing Report
   Background:
     Given a user "pepe@pepito.com" with "corporate" subscription
 
-  @wip
   Scenario: c1 - corporate subscription with no offers
     Given 0 active offers
     When I get the billing report
