@@ -37,3 +37,6 @@
 - Creada lógica de suscripción 'on-demand'
 - Pasa el unit test para 30.0 de costo
 - Pasa el acceptance test on3.
+- Creamos los steps
+- Creamos un unit test para darle funcionalidad al calculo add_amount de AmountAdder
+- 
