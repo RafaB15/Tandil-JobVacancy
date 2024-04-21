@@ -12,7 +12,7 @@ Feature: Professional Billing Report
     Given a user "pepe@pepito.com" with "professional" subscription
     And 1 active offers
     When I get the billing report
-    Then the amount to pay for the user "pepe@pepito.com" is 30.
+    Then the amount to pay for the user "pepe@pepito.com" is 30.0
     And the total active offers are 1
 
   Scenario: p3 - professional subscription with 7 offers

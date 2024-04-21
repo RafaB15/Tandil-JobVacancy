@@ -25,7 +25,7 @@ Feature: On Demand Billing Report
 
   @wip
   Scenario: on4 - Two users with on-demand subscription with two offers each
-    Given the user "pepe@pepito.com"
+    # Given the user "pepe@pepito.com"
     And 2 active offers
     And another user with "on-demand" subscription
     And 2 active offers
@@ -35,7 +35,7 @@ Feature: On Demand Billing Report
 
   @wip
   Scenario: on5 - Two users with on-demand subscription without offers
-    Given the user "pepe@pepito.com"
+    # Given the user "pepe@pepito.com"
     And 0 active offers
     And another user "maria@maria.com" with "on-demand" subscription
     And 0 active offers
