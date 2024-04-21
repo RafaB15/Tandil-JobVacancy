@@ -28,8 +28,12 @@ Given('{int} active offers') do |offer_count|
   end
 end
 
-Given('another user {string} with {string} subscription') do |_user_email, _subscription_type|
-  pending # Write code here that turns the phrase above into concrete actions
+Given('another user {string} with {string} subscription') do |user_email, subscription_type|
+  subscription = SubscriptionOnDemand.new if subscription_type == ON_DEMAND_SUBSCRIPTION
+
+  @user = User.create(user_email, user_email, SOME_PASSWORD, subscription)
+
+  UserRepository.new.save(@user)
 end
 
 Given('the user {string} has {int} active offers') do |user_email, active_offer_count|

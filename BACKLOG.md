@@ -40,5 +40,6 @@
 - Creamos los steps
 - Creamos un unit test para darle funcionalidad al calculo add_amount de AmountAdder
 - Test unitario pasando con implementación mínima.
-- Paso aceptance test on4
-- 
+- Pasa acceptance test on4
+- Implementamos steps nuevos
+- Pasa acceptance test on5
