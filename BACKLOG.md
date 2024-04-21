@@ -34,3 +34,6 @@
 - Nuevos steps
 - Nuevo unit test. Hay que hacerlo pasar
 - Ahora si se viene el refactor
+- Creada lógica de suscripción 'on-demand'
+- Pasa el unit test para 30.0 de costo
+- Pasa el acceptance test on3.

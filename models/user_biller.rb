@@ -8,21 +8,12 @@ class UserBiller
     job_offers_size = @offer_repo.all_active.size
     all_user_bills = []
 
-    if job_offers_size.zero?
-      user_bill = {
-        user_email: 'pepe@pepito.com',
-        amount_to_pay: 0.0
-      }
-      all_user_bills.append(user_bill)
-    end
-
-    if job_offers_size == 1
-      user_bill = {
-        user_email: 'pepe@pepito.com',
-        amount_to_pay: 10.0
-      }
-      all_user_bills.append(user_bill)
-    end
+    user_bill = {
+      user_email: 'pepe@pepito.com',
+      amount_to_pay: SubscriptionOnDemand.new
+                                         .compute_amount_to_pay_for_total_active_offers(job_offers_size)
+    }
+    all_user_bills.append(user_bill)
 
     all_user_bills
   end
