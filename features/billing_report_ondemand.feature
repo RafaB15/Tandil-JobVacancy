@@ -20,7 +20,6 @@ Feature: On Demand Billing Report
     When I get the billing report
     Then the billing for this user is 30.0
 
-  @wip
   Scenario: on4 - Two users with on-demand subscription with two offers each
     Given the user "pepe@pepito.com"
     And 2 active offers

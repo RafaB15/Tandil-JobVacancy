@@ -20,7 +20,6 @@ end
 
 Given('{int} active offers') do |offer_count|
   repository = JobOfferRepository.new
-  repository.deactivate_all
 
   (0...offer_count).each do |counter|
     job_offer = JobOffer.new(title: "active offer number #{counter}", user_id: @user.id, is_active: true)
@@ -90,8 +89,8 @@ Then('the amount to pay for the user {string} is {float}') do |user_email, expec
   expect(@report_as_json['items'][0]['amount_to_pay']).to eq expected_amount
 end
 
-Then('the total active offers are {int}') do |_expected_offer_count|
-  pending # Write code here that turns the phrase above into concrete actions
+Then('the total active offers are {int}') do |expected_active_offers|
+  expect(@report_as_json['total_active_offers']).to eq expected_active_offers
 end
 
 Then('the billing for this user is {float}') do |expected_amount|
