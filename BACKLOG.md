@@ -24,3 +24,8 @@
 - Sacamos un print que estaba de mas
 - refactorizamos el test anterior para que sea mas claro
 - Pasamos el segundo acceptance test: el json del endpoint resulta como se esperaba.
+- Agregamos un save a pepe@pepito en la BDD. Y un JobOffer save tambien
+- Creado los steps para siguiente test de aceptacion
+- Creado un unit test que le hace un double a la bdd
+- Despues de pasar este unit test va a haber que empezar a tocar la BDDs
+-
