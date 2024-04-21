@@ -29,7 +29,7 @@ class User
                         end
     @updated_on = data[:updated_on]
     @created_on = data[:created_on]
-    @subscription_type = data[:subscription_type] == 'on-demand' ? SubscriptionOnDemand.new : nil
+    @subscription_type = data[:subscription_type]
   end
 
   def has_password?(password)

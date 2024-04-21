@@ -14,6 +14,10 @@ Given('a user {string} with {string} subscription') do |user_email, subscription
   UserRepository.new.save(@user)
 end
 
+Given('there are no users') do
+  UserRepository.new.delete_all
+end
+
 Given('there are no offers at all') do
   JobOfferRepository.new.delete_all
 end

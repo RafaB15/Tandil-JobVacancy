@@ -43,3 +43,8 @@
 - Pasa acceptance test on4
 - Implementamos steps nuevos
 - Pasa acceptance test on5
+- Refactor en las pruebas unitarias de usuario. Este debe recibir una subscription type ya inicializada
+- Se crea una prueba unitaria y se crea la clase SubscriptionCorporate para que pase el test
+- Refactor al primer test de gherkin segun un mail. Lo cambiamos ya que no es lo suficientemente descriptivo. Tambien tuvimos que cambiar los steps
+- Agregada nueva prueba unitaria para biller, hay que hacerla pasar
+- 

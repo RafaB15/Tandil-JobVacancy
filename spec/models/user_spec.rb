@@ -44,11 +44,18 @@ describe User do
     let(:email) { 'john@doe.com' }
     let(:password) { 'password' }
 
-    it 'User should have on-demand subscription type when created with on-demand' do
-      subscription_type = 'on-demand'
+    it 'User should have on-demand subscription type when created with on-demand subscription type' do
+      subscription_type = SubscriptionOnDemand.new
       user = described_class.create(name, email, password, subscription_type)
 
       expect(user.subscription_type.class).to eq SubscriptionOnDemand
+    end
+
+    it 'User should have corporate subscription type when created with corporate subscription type' do
+      subscription_type = SubscriptionCorporate.new
+      user = described_class.create(name, email, password, subscription_type)
+
+      expect(user.subscription_type.class).to eq SubscriptionCorporate
     end
   end
 
