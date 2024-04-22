@@ -22,7 +22,6 @@ Feature: Professional Billing Report
     Then the amount to pay for the user "pepe@pepito.com" is 44.0
     And the total active offers are 7
 
-
   Scenario: p4 - professional subscription with 5 offers
     Given a user "pepe@pepito.com" with "professional" subscription
     And 5 active offers

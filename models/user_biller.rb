@@ -9,13 +9,17 @@ class UserBiller
     all_user_bills = []
 
     all_users.each do |user|
-      number_of_active_offers_for_user = @offer_repo.find_actives_by_owner(user).size
+      active_offers_count = @offer_repo.find_actives_by_owner(user).size
 
       amount_to_pay =
-        user.amount_to_pay(number_of_active_offers_for_user).to_f
+        user.amount_to_pay(active_offers_count).to_f
+
+      subscription = SubscriptionFactory.create_from_object(user.subscription)
 
       user_bill = {
         user_email: user.email,
+        subscription:,
+        active_offers_count:,
         amount_to_pay:
       }
       all_user_bills.append(user_bill)

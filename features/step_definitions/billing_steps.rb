@@ -118,6 +118,26 @@ Then('the amount to pay for the user {string} is {float}') do |user_email, expec
   expect(amount_to_pay).to eq expected_amount
 end
 
+Then('the subscription for the user {string} is {string}') do |user_email, subscription_type|
+  subscription = nil
+
+  @report_as_json['items'].each do |bill|
+    subscription = bill['subscription'] if bill['user_email'] == user_email
+  end
+
+  expect(subscription).to eq subscription_type
+end
+
+Then('the active offers count for the user {string} is {int}') do |user_email, expected_active_offers|
+  active_offers_count = nil
+
+  @report_as_json['items'].each do |bill|
+    active_offers_count = bill['active_offers_count'] if bill['user_email'] == user_email
+  end
+
+  expect(active_offers_count).to eq expected_active_offers
+end
+
 Then('the total active offers are {int}') do |expected_active_offers|
   expect(@report_as_json['total_active_offers']).to eq expected_active_offers
 end

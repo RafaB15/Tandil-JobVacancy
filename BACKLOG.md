@@ -91,3 +91,5 @@
 - Implementamos bien la cuenta en SuscriptionProfessional
 - Pasa unit test
 - Pasan los escenarios restantes. Todos los escenarios terminados.
+- Falta hacer pruebas que checkeen que se ve correctamente en pantalla el subscription y el active_offers_count de cada usuario
+- Nuevo gherkin creado. Pasa, ahora el report billing esta creado al completo 
