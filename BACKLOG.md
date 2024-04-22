@@ -71,3 +71,5 @@
 - Refactor para que la lógica esté en el objeto SubscriptionCorporate.
 - Gran refactor para centralizar los tipos de suscripcion en un archivo junto con un factory para instanciarlos.
 - Refactor en los repositories para arreglar la mala implementación anterior.
+- Refactor a los steps para que contemplen el caso de subscripcion professional
+- refactor a user para que devuelva una clase de subscripcion default

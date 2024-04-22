@@ -14,7 +14,7 @@ class UserRepository < BaseRepository
   def load_object(a_record)
     user = super
     subscription_type_string = a_record[:subscription_type]
-    user.subscription_type = SubscritionFactory.create_with(subscription_type_string)
+    user.subscription_type = SubscriptionFactory.create_with(subscription_type_string)
     user
   end
 

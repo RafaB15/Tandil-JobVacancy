@@ -1,7 +1,7 @@
 ON_DEMAND_TYPE = 'on-demand'.freeze
 CORPORATE_TYPE = 'corporate'.freeze
 
-class SubscritionFactory
+class SubscriptionFactory
   def self.create_with(subscription_type)
     case subscription_type
     when ON_DEMAND_TYPE
@@ -11,6 +11,10 @@ class SubscritionFactory
     else
       SubscriptionOnDemand.new
     end
+  end
+
+  def self.default
+    SubscriptionOnDemand.new
   end
 end
 
