@@ -8,7 +8,6 @@ Feature: Professional Billing Report
     Then the amount to pay for the user "pepe@pepito.com" is 30.0
     And the total active offers are 0
 
-  @wip
   Scenario: p2 - professional subscription with one offers
     Given a user "pepe@pepito.com" with "professional" subscription
     And 1 active offers
@@ -16,7 +15,6 @@ Feature: Professional Billing Report
     Then the amount to pay for the user "pepe@pepito.com" is 30.0
     And the total active offers are 1
 
-  @wip
   Scenario: p3 - professional subscription with 7 offers
     Given a user "pepe@pepito.com" with "professional" subscription
     And 7 active offers
@@ -24,7 +22,7 @@ Feature: Professional Billing Report
     Then the amount to pay for the user "pepe@pepito.com" is 44.0
     And the total active offers are 7
 
-  @wip
+
   Scenario: p4 - professional subscription with 5 offers
     Given a user "pepe@pepito.com" with "professional" subscription
     And 5 active offers

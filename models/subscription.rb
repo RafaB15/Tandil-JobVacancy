@@ -46,7 +46,14 @@ end
 
 class SubscriptionProfessional
   FIXED_AMOUNT = 30
-  def compute_amount_to_pay_for_total_active_offers(_total_active_offers)
-    FIXED_AMOUNT
+  MAXIMUM_AMOUNT_OF_INCLUDED_OFFERS = 5
+  ADDITIONAL_OFFER_PRICE = 7
+
+  def compute_amount_to_pay_for_total_active_offers(total_active_offers)
+    if total_active_offers > MAXIMUM_AMOUNT_OF_INCLUDED_OFFERS
+      FIXED_AMOUNT + (total_active_offers - MAXIMUM_AMOUNT_OF_INCLUDED_OFFERS) * ADDITIONAL_OFFER_PRICE
+    else
+      FIXED_AMOUNT
+    end
   end
 end

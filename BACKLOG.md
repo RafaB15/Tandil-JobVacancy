@@ -84,4 +84,10 @@
 - Refactor a los nombres de subscripcion. Subsscription types son strings, subscriptions son objetos subscriptions
 - Refactor a las pruebas de user repository, saque codigo repetido. 
 - Pasa nueva prueba de user repository, ahora se guarda correctamente un professional subscription en la base de datos y se la loadea correctamente.
-- Pasa acceptance test p1
+- Pasa acceptance test p2
+- Pasa acceptance test p3 de una
+- p4 falla porque no está implementada bien la cuenta.
+- Creamos unit test en Suscription para calcular bien.
+- Implementamos bien la cuenta en SuscriptionProfessional
+- Pasa unit test
+- Pasan los escenarios restantes. Todos los escenarios terminados.
