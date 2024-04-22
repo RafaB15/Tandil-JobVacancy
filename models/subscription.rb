@@ -40,3 +40,6 @@ class SubscriptionCorporate
     CORPORATE_TYPE
   end
 end
+
+class SubscriptionProfessional
+end

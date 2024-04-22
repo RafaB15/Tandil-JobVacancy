@@ -57,6 +57,13 @@ describe User do
 
       expect(user.subscription_type.class).to eq SubscriptionCorporate
     end
+
+    it 'User should have professional subscription type when created with professional subscription type' do
+      subscription_type = SubscriptionProfessional.new
+      user = described_class.create(name, email, password, subscription_type)
+
+      expect(user.subscription_type.class).to eq SubscriptionProfessional
+    end
   end
 
   describe 'has password?' do

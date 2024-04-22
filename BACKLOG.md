@@ -73,3 +73,5 @@
 - Refactor en los repositories para arreglar la mala implementación anterior.
 - Refactor a los steps para que contemplen el caso de subscripcion professional
 - refactor a user para que devuelva una clase de subscripcion default
+- Pasa prueba unitaria. Agregada la clase SubscriptionProfessional
+- 
