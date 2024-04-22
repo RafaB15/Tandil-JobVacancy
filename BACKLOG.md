@@ -75,4 +75,8 @@
 - refactor a user para que devuelva una clase de subscripcion default
 - Pasa prueba unitaria. Agregada la clase SubscriptionProfessional
 - Refactorizada la clase SubscriptionFactory. Ahora mapea de string a clase y de clase a string
-- 
+- El spec del subscription ahora es para todas las clases.
+- Creamos un test para la nueva suscripcion Professional.
+- Pasa el test creado para la nueva suscripcion.
+- Creamos nuevo unit test para UserBilling para implementar el calculo en el reporte.
+-

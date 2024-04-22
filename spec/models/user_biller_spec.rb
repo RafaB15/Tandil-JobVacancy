@@ -70,5 +70,17 @@ describe UserBiller do
       expect(second_users_bill[:user_email]).to eq another_email
       expect(second_users_bill[:amount_to_pay]).to eq 80.0
     end
+
+    xit 'should return user email and 30.0 amount to pay when user has professional and 0 active offers' do
+      user = instance_double('user', email:, amount_to_pay: 30, is_nil?: false)
+
+      user_repo = instance_double('user_repo', all: [user])
+      offer_repo = instance_double('offer_repo', find_actives_by_owner: [])
+
+      users_biller = described_class.new(user_repo, offer_repo)
+      first_users_bill = users_biller.create_all_users_billing[0]
+      expect(first_users_bill[:user_email]).to eq email
+      expect(first_users_bill[:amount_to_pay]).to eq 30.0
+    end
   end
 end

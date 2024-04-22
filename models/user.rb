@@ -37,6 +37,6 @@ class User
   end
 
   def amount_to_pay(number_of_active_offers)
-    subscription_type.compute_amount_to_pay_for_total_active_offers(number_of_active_offers)
+    @subscription_type.compute_amount_to_pay_for_total_active_offers(number_of_active_offers)
   end
 end
