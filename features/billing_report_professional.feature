@@ -1,7 +1,6 @@
 @billing 
 Feature: Professional Billing Report
 
-  @wip
   Scenario: p1 - professional subscription with no offers
     Given a user "pepe@pepito.com" with "professional" subscription
     And 0 active offers

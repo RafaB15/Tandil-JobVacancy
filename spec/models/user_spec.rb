@@ -8,7 +8,7 @@ describe User do
     it { is_expected.to respond_to(:name) }
     it { is_expected.to respond_to(:crypted_password) }
     it { is_expected.to respond_to(:email) }
-    it { is_expected.to respond_to(:subscription_type) }
+    it { is_expected.to respond_to(:subscription) }
   end
 
   describe 'valid?' do
@@ -45,24 +45,24 @@ describe User do
     let(:password) { 'password' }
 
     it 'User should have on-demand subscription type when created with on-demand subscription type' do
-      subscription_type = SubscriptionOnDemand.new
-      user = described_class.create(name, email, password, subscription_type)
+      subscription = SubscriptionOnDemand.new
+      user = described_class.create(name, email, password, subscription)
 
-      expect(user.subscription_type.class).to eq SubscriptionOnDemand
+      expect(user.subscription.class).to eq SubscriptionOnDemand
     end
 
     it 'User should have corporate subscription type when created with corporate subscription type' do
-      subscription_type = SubscriptionCorporate.new
-      user = described_class.create(name, email, password, subscription_type)
+      subscription = SubscriptionCorporate.new
+      user = described_class.create(name, email, password, subscription)
 
-      expect(user.subscription_type.class).to eq SubscriptionCorporate
+      expect(user.subscription.class).to eq SubscriptionCorporate
     end
 
     it 'User should have professional subscription type when created with professional subscription type' do
-      subscription_type = SubscriptionProfessional.new
-      user = described_class.create(name, email, password, subscription_type)
+      subscription = SubscriptionProfessional.new
+      user = described_class.create(name, email, password, subscription)
 
-      expect(user.subscription_type.class).to eq SubscriptionProfessional
+      expect(user.subscription.class).to eq SubscriptionProfessional
     end
   end
 

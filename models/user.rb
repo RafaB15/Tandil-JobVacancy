@@ -1,7 +1,7 @@
 class User
   include ActiveModel::Validations
 
-  attr_accessor :id, :name, :email, :crypted_password, :updated_on, :created_on, :subscription_type
+  attr_accessor :id, :name, :email, :crypted_password, :updated_on, :created_on, :subscription
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d-]+(\.[a-z]+)*\.[a-z]+\z/i
 
@@ -9,12 +9,12 @@ class User
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX,
                                               message: 'invalid email' }
 
-  def self.create(name, email, password, subscription_type)
+  def self.create(name, email, password, subscription)
     data = {}
     data[:name] = name
     data[:email] = email
     data[:password] = password
-    data[:subscription_type] = subscription_type
+    data[:subscription] = subscription
     User.new(data)
   end
 
@@ -29,7 +29,7 @@ class User
                         end
     @updated_on = data[:updated_on]
     @created_on = data[:created_on]
-    @subscription_type = data[:subscription_type] ||= SubscriptionFactory.default
+    @subscription = data[:subscription] ||= SubscriptionFactory.default
   end
 
   def has_password?(password)
@@ -37,6 +37,6 @@ class User
   end
 
   def amount_to_pay(number_of_active_offers)
-    @subscription_type.compute_amount_to_pay_for_total_active_offers(number_of_active_offers)
+    @subscription.compute_amount_to_pay_for_total_active_offers(number_of_active_offers)
   end
 end

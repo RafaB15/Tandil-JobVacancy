@@ -1,22 +1,27 @@
 class SubscriptionFactory
   ON_DEMAND_TYPE = 'on-demand'.freeze
   CORPORATE_TYPE = 'corporate'.freeze
+  PROFESSIONAL_TYPE = 'professional'.freeze
 
-  def self.create_from_string(subscription_type_string)
-    case subscription_type_string
+  def self.create_from_string(subscription_type)
+    case subscription_type
     when ON_DEMAND_TYPE
       SubscriptionOnDemand.new
     when CORPORATE_TYPE
       SubscriptionCorporate.new
+    when PROFESSIONAL_TYPE
+      SubscriptionProfessional.new
     else
       SubscriptionOnDemand.new
     end
   end
 
-  def self.create_from_object(subscription_type_object)
-    return ON_DEMAND_TYPE if subscription_type_object.is_a?(SubscriptionOnDemand)
+  def self.create_from_object(subscription)
+    return ON_DEMAND_TYPE if subscription.is_a?(SubscriptionOnDemand)
 
-    CORPORATE_TYPE if subscription_type_object.is_a?(SubscriptionCorporate)
+    return CORPORATE_TYPE if subscription.is_a?(SubscriptionCorporate)
+
+    PROFESSIONAL_TYPE if subscription.is_a?(SubscriptionProfessional)
   end
 
   def self.default

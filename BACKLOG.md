@@ -79,4 +79,9 @@
 - Creamos un test para la nueva suscripcion Professional.
 - Pasa el test creado para la nueva suscripcion.
 - Creamos nuevo unit test para UserBilling para implementar el calculo en el reporte.
--
+- Refactor de los test unitarios de user biller. Le saco la habilidad al usuario de contestar ".is_null?" 
+- El test que habiamos creado pasa de una. No sirve, no aporta funcionalidad, queda borrado.
+- Refactor a los nombres de subscripcion. Subsscription types son strings, subscriptions son objetos subscriptions
+- Refactor a las pruebas de user repository, saque codigo repetido. 
+- Pasa nueva prueba de user repository, ahora se guarda correctamente un professional subscription en la base de datos y se la loadea correctamente.
+- Pasa acceptance test p1
