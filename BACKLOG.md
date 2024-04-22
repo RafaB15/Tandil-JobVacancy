@@ -74,4 +74,5 @@
 - Refactor a los steps para que contemplen el caso de subscripcion professional
 - refactor a user para que devuelva una clase de subscripcion default
 - Pasa prueba unitaria. Agregada la clase SubscriptionProfessional
+- Refactorizada la clase SubscriptionFactory. Ahora mapea de string a clase y de clase a string
 - 
