@@ -1,3 +1,5 @@
+require_relative '../../models/subscription'
+
 class UserRepository < BaseRepository
   self.table_name = :users
   self.model_class = 'User'
@@ -11,7 +13,8 @@ class UserRepository < BaseRepository
 
   def load_object(a_record)
     user = super
-    user.create_subscription_type_for_self
+    subscription_type_string = a_record[:subscription_type]
+    user.subscription_type = SubscritionFactory.create_with(subscription_type_string)
     user
   end
 

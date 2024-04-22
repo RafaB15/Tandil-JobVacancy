@@ -1,6 +1,3 @@
-require_relative 'subscription_corporate'
-require_relative 'subscription_on_demand'
-
 class User
   include ActiveModel::Validations
 
@@ -32,18 +29,7 @@ class User
                         end
     @updated_on = data[:updated_on]
     @created_on = data[:created_on]
-    @subscription_type = data[:subscription_type].nil? ? SubscriptionOnDemand.new : data[:subscription_type]
-  end
-
-  def create_subscription_type_for_self
-    @subscription_type = case @subscription_type
-                         when 'on-demand'
-                           SubscriptionOnDemand.new
-                         when 'corporate'
-                           SubscriptionCorporate.new
-                         else
-                           SubscriptionOnDemand.new
-                         end
+    @subscription_type = data[:subscription_type] ||= SubscriptionOnDemand.new
   end
 
   def has_password?(password)
@@ -51,12 +37,6 @@ class User
   end
 
   def amount_to_pay(number_of_active_offers)
-    if @subscription_type.is_a?(SubscriptionOnDemand)
-      amount_to_pay = subscription_type.compute_amount_to_pay_for_total_active_offers(number_of_active_offers)
-    end
-
-    amount_to_pay = 80 if @subscription_type.is_a?(SubscriptionCorporate)
-
-    amount_to_pay
+    subscription_type.compute_amount_to_pay_for_total_active_offers(number_of_active_offers)
   end
 end

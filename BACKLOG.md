@@ -67,4 +67,7 @@
 - Refactor a UserBiller. Tambien a sus tests. Ahora funciona correctamente para vario usuarios
 - Agregamos query al repositorio de job offers
 - Pasa el nuevo acceptance test
-- 
+- Los escenarios que faltaban pasaron de una.
+- Refactor para que la lógica esté en el objeto SubscriptionCorporate.
+- Gran refactor para centralizar los tipos de suscripcion en un archivo junto con un factory para instanciarlos.
+- Refactor en los repositories para arreglar la mala implementación anterior.
