@@ -9,7 +9,7 @@ describe UserBiller do
       user = instance_double('user', email:, amount_to_pay: 0, is_nil?: false)
 
       user_repo = instance_double('user_repo', all: [user])
-      offer_repo = instance_double('offer_repo', all_active: [])
+      offer_repo = instance_double('offer_repo', find_actives_by_owner: [])
 
       users_biller = described_class.new(user_repo, offer_repo)
       first_users_bill = users_biller.create_all_users_billing[0]
@@ -23,7 +23,7 @@ describe UserBiller do
 
       user_repo = instance_double('user_repo', all: [user])
 
-      offer_repo = instance_double('offer_repo', all_active: [job_offer])
+      offer_repo = instance_double('offer_repo', find_actives_by_owner: [job_offer])
 
       users_biller = described_class.new(user_repo, offer_repo)
       first_users_bill = users_biller.create_all_users_billing[0]
@@ -37,7 +37,7 @@ describe UserBiller do
 
       user_repo = instance_double('user_repo', all: [user])
 
-      offer_repo = instance_double('offer_repo', all_active: [job_offer, job_offer, job_offer])
+      offer_repo = instance_double('offer_repo', find_actives_by_owner: [job_offer, job_offer, job_offer])
 
       users_biller = described_class.new(user_repo, offer_repo)
       first_users_bill = users_biller.create_all_users_billing[0]
@@ -50,7 +50,7 @@ describe UserBiller do
 
       user_repo = instance_double('user_repo', all: [user])
 
-      offer_repo = instance_double('offer_repo', all_active: [])
+      offer_repo = instance_double('offer_repo', find_actives_by_owner: [])
 
       users_biller = described_class.new(user_repo, offer_repo)
       first_users_bill = users_biller.create_all_users_billing[0]
@@ -63,7 +63,7 @@ describe UserBiller do
       another_user = instance_double('another_user', email: another_email, amount_to_pay: 80, is_nil?: false)
 
       user_repo = instance_double('user_repo', all: [user, another_user])
-      offer_repo = instance_double('offer_repo', all_active: [])
+      offer_repo = instance_double('offer_repo', find_actives_by_owner: [])
 
       users_biller = described_class.new(user_repo, offer_repo)
       second_users_bill = users_biller.create_all_users_billing[1]

@@ -5,16 +5,14 @@ class UserBiller
   end
 
   def create_all_users_billing
-    job_offers_size = @offer_repo.all_active.size
     all_users = @user_repo.all
     all_user_bills = []
 
     all_users.each do |user|
-      amount_to_pay = if user.nil?
-                        0
-                      else
-                        user.amount_to_pay(job_offers_size)
-                      end
+      number_of_active_offers_for_user = @offer_repo.find_actives_by_owner(user).size
+
+      amount_to_pay =
+        user.amount_to_pay(number_of_active_offers_for_user)
 
       user_bill = {
         user_email: user.email,
@@ -22,6 +20,7 @@ class UserBiller
       }
       all_user_bills.append(user_bill)
     end
+
     all_user_bills
   end
 end

@@ -10,7 +10,6 @@ Feature: Corporate Billing Report
     Then the amount to pay for the user "pepe@pepito.com" is 80.0
     And the total active offers are 0
 
-  @wip
   Scenario: c2 - corporate subscription for two users with no offers
     Given 0 active offers
     And another user "maria@maria.com" with "corporate" subscription

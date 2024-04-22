@@ -63,4 +63,8 @@
 - Refactor a la implementación porque se rompieron otros tests.
 - Refactor a steps para encontrar el user que queremos (uso de each:)
 - Agregamos unit test para soportar varios usuarios con corporate
--
+- Refactor del amount_adder. Lo borramos, encontramos una mejor manera de hacer esto. Perdon
+- Refactor a UserBiller. Tambien a sus tests. Ahora funciona correctamente para vario usuarios
+- Agregamos query al repositorio de job offers
+- Pasa el nuevo acceptance test
+- 

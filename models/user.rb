@@ -41,6 +41,8 @@ class User
                            SubscriptionOnDemand.new
                          when 'corporate'
                            SubscriptionCorporate.new
+                         else
+                           SubscriptionOnDemand.new
                          end
   end
 
@@ -52,7 +54,9 @@ class User
     if @subscription_type.is_a?(SubscriptionOnDemand)
       amount_to_pay = subscription_type.compute_amount_to_pay_for_total_active_offers(number_of_active_offers)
     end
+
     amount_to_pay = 80 if @subscription_type.is_a?(SubscriptionCorporate)
+
     amount_to_pay
   end
 end
