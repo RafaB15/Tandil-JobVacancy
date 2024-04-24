@@ -4,6 +4,7 @@
 		<th>Title</th>
 		<th>Location</th>
 		<th>Description</th>
+		<th>Required Experience</th>
 		<th>Is active</th>
 		<th>Actions</th>
 	</tr>
@@ -18,7 +19,11 @@
 		</td>
 		<td>
 			<%= offer.description %>
-		</td>		
+		</td>
+		</td>
+		<td>
+			<%= partial 'job_offers/format_required_experience_output', :locals => { :offer => offer } %>
+		</td>
 		<td>
 			<%= offer.is_active %>
 		</td>		

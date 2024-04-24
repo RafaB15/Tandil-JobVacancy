@@ -9,6 +9,27 @@ describe JobOfferRepository do
     user
   end
 
+  describe 'is Job Offer well persisted?' do
+    let!(:complete_offer) do
+      complete_offer = JobOffer.new(title: 'a title',
+                                    location: 'a location',
+                                    description: 'a description',
+                                    required_experience: 10,
+                                    created_on: Date.today,
+                                    updated_on: Date.today,
+                                    is_active: true,
+                                    user_id: owner.id)
+      repository.save(complete_offer)
+      complete_offer
+    end
+
+    it 'should be able to save and load a complete Job Offer, with title and required exprience persisted correctly' do
+      saved_offer = repository.find(complete_offer.id)
+      expect(saved_offer.title).to eq complete_offer.title
+      expect(saved_offer.required_experience).to eq 10
+    end
+  end
+
   describe 'deactive_old_offers' do
     let!(:today_offer) do
       today_offer = JobOffer.new(title: 'a title',
