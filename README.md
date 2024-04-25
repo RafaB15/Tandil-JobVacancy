@@ -31,6 +31,12 @@ To run the application in production mode (that is: anywhere outside your develo
 4. SMTP_X: in production mode the application needs four environment variables in order to send emails (in non-production mode, the mails are not sent but stored in the local file system). The varibales to set are: SMTP_ADDRESS, SMTP_PORT, SMTP_USER and
 SMTP_PASS
 
+
+## Pair/Mob Programming
+
+If you are practicing Pair/Mob Programming and want to switch driver without running CI, then use "[driver-switch]" as your exact commit message.
+
+
 ## Troubleshooting
 
 In case of adding new gem, it may be require to rebuild the containers:
@@ -44,3 +50,8 @@ In case of adding new gem, it may be require to rebuild the containers:
     # start containers forcing rebuild
     docker compose up -d --build --force-recreate
 
+```
+$ docker-compose run --rm webapp bundle exec rake db:migrate
+$ docker-compose up -d
+$ docker-compose exec webapp /bin/bash
+```

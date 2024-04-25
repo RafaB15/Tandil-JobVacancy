@@ -23,6 +23,8 @@ RSpec/AnyInstance:
   Enabled: false
 RSpec/ExampleWording:
   Enabled: false
+RSpec/ExampleLength:
+  Max: 8
 RSpec/DescribeClass:
   Enabled: false
 RSpec/HookArgument:

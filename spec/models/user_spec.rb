@@ -8,6 +8,7 @@ describe User do
     it { is_expected.to respond_to(:name) }
     it { is_expected.to respond_to(:crypted_password) }
     it { is_expected.to respond_to(:email) }
+    it { is_expected.to respond_to(:subscription) }
   end
 
   describe 'valid?' do
@@ -35,6 +36,33 @@ describe User do
       user = described_class.new(name: 'John Doe', email: 'john@doe.com',
                                  crypted_password: 'a_secure_passWord!')
       expect(user.valid?).to eq true
+    end
+  end
+
+  describe 'create with subscription type' do
+    let(:name) { 'John Doe' }
+    let(:email) { 'john@doe.com' }
+    let(:password) { 'password' }
+
+    it 'User should have on-demand subscription type when created with on-demand subscription type' do
+      subscription = SubscriptionOnDemand.new
+      user = described_class.create(name, email, password, subscription)
+
+      expect(user.subscription.class).to eq SubscriptionOnDemand
+    end
+
+    it 'User should have corporate subscription type when created with corporate subscription type' do
+      subscription = SubscriptionCorporate.new
+      user = described_class.create(name, email, password, subscription)
+
+      expect(user.subscription.class).to eq SubscriptionCorporate
+    end
+
+    it 'User should have professional subscription type when created with professional subscription type' do
+      subscription = SubscriptionProfessional.new
+      user = described_class.create(name, email, password, subscription)
+
+      expect(user.subscription.class).to eq SubscriptionProfessional
     end
   end
 

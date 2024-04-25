@@ -6,6 +6,10 @@ class JobOfferRepository < BaseRepository
     load_collection dataset.where(is_active: true)
   end
 
+  def find_actives_by_owner(user)
+    load_collection dataset.where(user_id: user.id, is_active: true)
+  end
+
   def find_by_owner(user)
     load_collection dataset.where(user_id: user.id)
   end
@@ -16,6 +20,13 @@ class JobOfferRepository < BaseRepository
         offer.deactivate
         update(offer)
       end
+    end
+  end
+
+  def deactivate_all
+    all_active.each do |offer|
+      offer.deactivate
+      update(offer)
     end
   end
 

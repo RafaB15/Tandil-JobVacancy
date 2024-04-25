@@ -14,6 +14,7 @@ variables:
 
 stages:
   - build
+  - deploy_staging
 
 job_build_and_test:
   stage: build
@@ -26,3 +27,13 @@ job_build_and_test:
       - reports/
     reports:
       junit: reports/spec/rspec.xml
+  except:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /\[driver-switch\]/
+
+job_deploy_staging:
+  stage: deploy_staging
+  script:
+    - curl $DEPLOY_STAGING_URL\?$DEPLOY_STAGING_PARAMS
+  only:
+    - deploy
