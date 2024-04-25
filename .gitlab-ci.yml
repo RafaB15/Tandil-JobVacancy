@@ -31,9 +31,16 @@ job_build_and_test:
     variables:
       - $CI_COMMIT_MESSAGE =~ /\[driver-switch\]/
 
-job_deploy_staging:
-  stage: deploy_staging
+job_deploy_test:
+  stage: deploy_test
   script:
-    - curl $DEPLOY_STAGING_URL\?$DEPLOY_STAGING_PARAMS
+    - curl $DEPLOY_TEST_URL\?$DEPLOY_TEST_PARAMS
   only:
-    - deploy
+    - test
+
+job_deploy_prod:
+  stage: deploy_prod
+  script:
+    - curl $DEPLOY_PROD_URL\?$DEPLOY_PROD_PARAMS
+  only:
+    - prod
