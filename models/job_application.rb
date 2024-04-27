@@ -16,6 +16,7 @@ class JobApplication
   end
 
   def process
-    JobVacancy::App.deliver(:notification, :contact_info_email, self)
+    JobVacancy::App.deliver(:notification, :contact_info_email_to_applicant, self)
+    JobVacancy::App.deliver(:notification, :contact_info_email_to_employer, self)
   end
 end
