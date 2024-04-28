@@ -17,6 +17,9 @@ JobVacancy::App.controllers :users do
       elsif params[:user][:password].length < 8
         flash.now[:error] = 'Password too short, minimum length is 8 characters'
         render 'users/new'
+      elsif params[:user][:password].scan(/\d/).empty?
+        flash.now[:error] = 'Password must contain at least one number'
+        render 'users/new'
       elsif UserRepository.new.save(@user)
         flash[:success] = 'User created'
         redirect '/'
