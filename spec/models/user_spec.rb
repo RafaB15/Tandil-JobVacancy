@@ -58,6 +58,13 @@ describe User do
       expect(user.valid?).to eq false
       expect(user.errors).to have_key(:crypted_password)
     end
+
+    it 'should be false when the password does not include either $, _, &' do
+      user = described_class.new(name: 'John Doe', email: 'john',
+                                 crypted_password: 'holahola1A')
+      expect(user.valid?).to eq false
+      expect(user.errors).to have_key(:crypted_password)
+    end
   end
 
   describe 'create with subscription type' do
