@@ -16,7 +16,6 @@ Feature: User Create
         When I create a new user "pablo@gmail.com" with a password "holapepito123"
         Then I should see an error message "Missing uppercase letters"
 
-    @wip
     Scenario: US32 - 05 Create a new user account with a invalid password with no special character
         When I create a new user "pablo@gmail.com" with a password "Hola1234"
         Then I should see an error message "Special character missing : $ , _ , &"
