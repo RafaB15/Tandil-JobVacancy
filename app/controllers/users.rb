@@ -11,11 +11,17 @@ JobVacancy::App.controllers :users do
     @user = User.new(params[:user])
 
     if params[:user][:password] == password_confirmation
-      if UserRepository.new.save(@user)
+      if params[:user][:password] == '' || params[:user][:name] == '' || params[:user][:email] == ''
+        flash.now[:error] = 'All fields are mandatory'
+        render 'users/new'
+      elsif params[:user][:password].length < 8
+        flash.now[:error] = 'Password too short, minimum length is 8 characters'
+        render 'users/new'
+      elsif UserRepository.new.save(@user)
         flash[:success] = 'User created'
         redirect '/'
       else
-        flash.now[:error] = 'All fields are mandatory'
+        flash.now[:error] = 'Error creating user'
         render 'users/new'
       end
     else
