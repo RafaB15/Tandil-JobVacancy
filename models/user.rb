@@ -10,6 +10,7 @@ class User
                                               message: 'invalid email' }
   validates_length_of :crypted_password, minimum: 8, message: 'Password too short, minimum length is 8 characters'
   validates_format_of :crypted_password, with: /\d/, message: 'Password must contain at least one number'
+  validates_format_of :crypted_password, with: /[A-Z]/, message: 'Missing uppercase letters'
 
   def self.create(name, email, password, subscription)
     data = {}
