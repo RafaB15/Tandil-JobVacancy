@@ -11,3 +11,8 @@ Feature: User Create
     Scenario: US32 - 03 Create a new user account with a invalid password with no numbers
         When I create a new user "pablo@gmail.com" with a password "holapepito"
         Then I should see an error message "Password must contain at least one number"
+
+    @wip
+    Scenario: US32 - 04 Create a new user account with a invalid password with no uppercase characters
+        When I create a new user "pablo@gmail.com" with a password "holapepito123"
+        Then I should see an error message "Missing uppercase letters"
