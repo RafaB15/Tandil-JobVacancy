@@ -37,6 +37,13 @@ describe User do
                                  crypted_password: 'a_secure_passWord!')
       expect(user.valid?).to eq true
     end
+
+    it 'should be false when the password length is less than 8 characters' do
+      user = described_class.new(name: 'John Doe', email: 'john',
+                                 crypted_password: 'hola')
+      expect(user.valid?).to eq false
+      expect(user.errors).to have_key(:crypted_password)
+    end
   end
 
   describe 'create with subscription type' do

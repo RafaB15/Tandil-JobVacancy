@@ -8,6 +8,7 @@ class User
   validates :name, :crypted_password, presence: true
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX,
                                               message: 'invalid email' }
+  validates_length_of :crypted_password, minimum: 8, message: 'Password too short, minimum length is 8 characters'
 
   def self.create(name, email, password, subscription)
     data = {}
