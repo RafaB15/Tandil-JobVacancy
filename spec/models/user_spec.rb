@@ -34,13 +34,20 @@ describe User do
 
     it 'should be true when all field are valid' do
       user = described_class.new(name: 'John Doe', email: 'john@doe.com',
-                                 crypted_password: 'a_secure_passWord!')
+                                 crypted_password: 'a_secure_passW0rd!')
       expect(user.valid?).to eq true
     end
 
     it 'should be false when the password length is less than 8 characters' do
       user = described_class.new(name: 'John Doe', email: 'john',
                                  crypted_password: 'hola')
+      expect(user.valid?).to eq false
+      expect(user.errors).to have_key(:crypted_password)
+    end
+
+    it 'should be false when the password does not include a number' do
+      user = described_class.new(name: 'John Doe', email: 'john',
+                                 crypted_password: 'holahola')
       expect(user.valid?).to eq false
       expect(user.errors).to have_key(:crypted_password)
     end

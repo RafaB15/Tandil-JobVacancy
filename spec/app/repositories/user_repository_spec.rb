@@ -4,8 +4,8 @@ describe UserRepository do
   let(:repository) { described_class.new }
   let(:name) { 'Joe' }
   let(:email) { 'joe@doe.com' }
-  let(:crypted_password) { 'secure_pwd' }
-  let(:password) { 'SomePassw0rd' }
+  let(:crypted_password) { 'SecureP4$$word' }
+  let(:password) { 'SomePa$$w0rd' }
 
   it 'should find by email' do
     joe_user = User.new(name:, email:, crypted_password:)
