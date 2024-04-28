@@ -10,3 +10,7 @@ end
 Then('I should see a user created confirmation message {string}') do |confirmation_message|
   page.should have_content(confirmation_message)
 end
+
+Then('I should see an error message {string}') do |error_message|
+  page.should have_content(error_message)
+end
