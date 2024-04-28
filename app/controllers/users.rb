@@ -1,3 +1,6 @@
+MANDATORY_FIELDS_MESSAGE = 'All fields are mandatory'.freeze
+PASSWORDS_DONT_MATCH_MESSAGE = 'Passwords do not match'.freeze
+
 JobVacancy::App.controllers :users do
   get :new, map: '/register' do
     @user = User.new
@@ -12,23 +15,21 @@ JobVacancy::App.controllers :users do
 
     if params[:user][:password] == password_confirmation
       if params[:user][:password] == '' || params[:user][:name] == '' || params[:user][:email] == ''
-        flash.now[:error] = 'All fields are mandatory'
+        flash.now[:error] = MANDATORY_FIELDS_MESSAGE
         render 'users/new'
-      elsif params[:user][:password].length < 8
-        flash.now[:error] = 'Password too short, minimum length is 8 characters'
-        render 'users/new'
-      elsif params[:user][:password].scan(/\d/).empty?
-        flash.now[:error] = 'Password must contain at least one number'
-        render 'users/new'
-      elsif UserRepository.new.save(@user)
-        flash[:success] = 'User created'
-        redirect '/'
       else
-        flash.now[:error] = 'Error creating user'
-        render 'users/new'
+        validator = PasswordValidator.new(params[:user][:password])
+        string_state = validator.describe_state
+        if string_state == PasswordValidator::USER_CREATED_MESSAGE
+          flash[:success] = string_state
+          redirect '/'
+        else
+          flash.now[:error] = string_state
+          render 'users/new'
+        end
       end
     else
-      flash.now[:error] = 'Passwords do not match'
+      flash.now[:error] = PASSWORDS_DONT_MATCH_MESSAGE
       render 'users/new'
     end
   end
