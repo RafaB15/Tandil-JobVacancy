@@ -7,6 +7,9 @@
   <%= f.label :applicant_email %>
  	<%= f.text_field :applicant_email %>
 
+  <%= f.label :cv_link %>
+ 	<%= f.text_field :cv_link %>
+
 	<hr/>
   <%= f.submit "Apply", :class => "btn btn-primary" %>
   <%= link_to 'Cancel', url_for(:job_offers, :latest), :class => "btn btn-secondary" %>
