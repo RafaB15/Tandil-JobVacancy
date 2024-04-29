@@ -15,6 +15,11 @@ describe JobApplication do
         described_class.create_for('applicant@test.com', nil)
       end
     end
+
+    it 'should be valid when cv link exists' do
+      job_application = described_class.create_for('applicant@test.com', job_offer, 'www.linkedin/juan.com')
+      expect(job_application.valid?).to eq true
+    end
   end
 
   describe 'create_for' do

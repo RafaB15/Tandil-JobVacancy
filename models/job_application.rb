@@ -5,14 +5,15 @@ class JobApplication
 
   validates :applicant_email, :job_offer, presence: true
 
-  def initialize(email, offer)
+  def initialize(email, offer, cv_link = nil)
     @applicant_email = email
     @job_offer = offer
+    @cv_link = cv_link
     validate!
   end
 
-  def self.create_for(email, offer)
-    JobApplication.new(email, offer)
+  def self.create_for(email, offer, cv_link = nil)
+    JobApplication.new(email, offer, cv_link)
   end
 
   def process
