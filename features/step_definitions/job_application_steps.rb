@@ -28,3 +28,14 @@ Then(/^I should receive a mail with offerer info$/) do
   content.include?(@job_offer.owner.email).should be true
   content.include?(@job_offer.owner.name).should be true
 end
+
+When('I apply to a job offer with my email {string} and my CV link {string}') do |email, cv_link|
+  click_link 'Apply'
+  fill_in('job_application_form[applicant_email]', with: email)
+  fill_in('job_application_form[cv_link]', with: cv_link)
+  click_button('Apply')
+end
+
+Then('I should see a applied to job offer confirmation message {string}') do |confirmation_message|
+  page.should have_content(confirmation_message)
+end

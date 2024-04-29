@@ -10,3 +10,9 @@ Feature: Job Application
     Given I access the offers list page
     When I apply
     Then I should receive a mail with offerer info
+
+  @wip
+  Scenario: US14 - 01 Apply to a job offer and add a valid CV link
+    Given I access the offers list page
+    When I apply to a job offer with my email "juan@gmail.com" and my CV link "www.linkedin/juan.com"
+    Then I should see a applied to job offer confirmation message "Contact information sent."
