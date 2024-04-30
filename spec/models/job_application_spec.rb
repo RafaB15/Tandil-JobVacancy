@@ -16,6 +16,16 @@ describe JobApplication do
       end
     end
 
+    xit 'should be invalid when cv link exists and does not contain www.' do
+      # job_application = described_class.new('applicant@test.com', job_offer, 'linkedin/juan')
+      # expect(job_application.valid?).to eq false
+      # expect(job_application.errors).to have_key(:cv_link)
+
+      check_validation(:job_offer, 'Cv link must contain "www"') do
+        described_class.new('applicant@test.com', job_offer, 'linkedin/juan')
+      end
+    end
+
     it 'should be valid when cv link exists' do
       job_application = described_class.create_for('applicant@test.com', job_offer, 'www.linkedin/juan.com')
       expect(job_application.valid?).to eq true
