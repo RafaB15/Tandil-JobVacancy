@@ -16,7 +16,6 @@ Feature: Job Application
     When I apply to a job offer with my email "juan@gmail.com" and my CV link "www.linkedin/juan.com"
     Then I should see a applied to job offer confirmation message "Contact information sent."
 
-  @wip
   Scenario: US14 - 02 Apply to a job offer and add a invalid CV link with no www.
     Given I access the offers list page
     When I apply to a job offer with my email "juan@gmail.com" and my CV link "linkedin/juan.com"

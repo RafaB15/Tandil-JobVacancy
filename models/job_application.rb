@@ -5,6 +5,7 @@ class JobApplication
 
   validates :applicant_email, :job_offer, presence: true
   validates_format_of :cv_link, with: /www./, message: 'must contain "www"', allow_nil: true
+
   def initialize(email, offer, cv_link = nil)
     @applicant_email = email
     @job_offer = offer

@@ -40,10 +40,18 @@ JobVacancy::App.controllers :job_offers do
   post :apply, with: :offer_id do
     @job_offer = JobOfferRepository.new.find(params[:offer_id])
     applicant_email = params[:job_application_form][:applicant_email]
-    @job_application = JobApplication.create_for(applicant_email, @job_offer)
+    cv_link = params[:job_application_form][:cv_link]
+
+    @job_application = JobApplication.new(applicant_email, @job_offer, cv_link)
     @job_application.process
+
     flash[:success] = 'Contact information sent.'
     redirect '/job_offers'
+  rescue ActiveModel::ValidationError => _e
+    @job_offer = JobOfferForm.from(JobOfferRepository.new.find(params[:offer_id]))
+    @job_application = JobApplicationForm.new
+    flash.now[:error] = 'Invalid CV link'
+    render 'job_offers/apply'
   end
 
   post :create do
