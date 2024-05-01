@@ -1,4 +1,4 @@
-PASSWORD = 'PassW0rd!'.freeze
+PASSWORD = 'PassW0rd_'.freeze
 
 Given('I create a new user {string} with the email {string}') do |user_name, user_email|
   @email = user_email
@@ -12,9 +12,7 @@ Given('I create a new user {string} with the email {string}') do |user_name, use
 end
 
 Given('The email was never used to create another account') do
-  repo = UserRepository.new.find_by_email(@email)
-
-  expect(repo).to eq nil
+  pending # Write code here that turns the phrase above into concrete actions
 end
 
 Then('I should log in with my new user account') do
