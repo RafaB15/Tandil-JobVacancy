@@ -1,5 +1,9 @@
 CONFIRMATION_OF_INFORMATION_SENT_MESSAGE = 'Contact information sent.'.freeze
 SUCCESFUL_CREATION_MESSAGE = 'Offer created'.freeze
+CREATION_ERROR_MESSAGE = 'Please review the errors'.freeze
+UPDATE_ERROR_MESSAGE = 'Please review the errors'.freeze
+SUCCESFUL_UPDATE_MESSAGE = 'Offer updated'.freeze
+JOB_APPLICATION_ERROR_MESSAGE = 'Invalid CV link'.freeze
 
 JobVacancy::App.controllers :job_offers do
   get :my do
@@ -53,7 +57,7 @@ JobVacancy::App.controllers :job_offers do
   rescue ActiveModel::ValidationError => _e
     @job_offer = JobOfferForm.from(JobOfferRepository.new.find(params[:offer_id]))
     @job_application = JobApplicationForm.new
-    flash.now[:error] = 'Invalid CV link'
+    flash.now[:error] = JOB_APPLICATION_ERROR_MESSAGE
     render 'job_offers/apply'
   end
 
@@ -67,7 +71,7 @@ JobVacancy::App.controllers :job_offers do
   rescue ActiveModel::ValidationError => e
     @job_offer = JobOfferForm.new
     @errors = e.model.errors
-    flash.now[:error] = 'Please review the errors'
+    flash.now[:error] = CREATION_ERROR_MESSAGE
     render 'job_offers/new'
   end
 
@@ -76,13 +80,13 @@ JobVacancy::App.controllers :job_offers do
     @job_offer.owner = current_user
 
     if JobOfferRepository.new.save(@job_offer)
-      flash[:success] = 'Offer updated'
+      flash[:success] = SUCCESFUL_UPDATE_MESSAGE
       redirect '/job_offers/my'
     end
   rescue ActiveModel::ValidationError => e
     @job_offer = JobOfferForm.new
     @errors = e.model.errors
-    flash.now[:error] = 'Please review the errors'
+    flash.now[:error] = UPDATE_ERROR_MESSAGE
     render 'job_offers/edit'
   end
 

@@ -21,7 +21,6 @@ Feature: Job Application
     When I apply to a job offer with my email "juan@gmail.com" and my CV link "linkedin/juan.com"
     Then I should see an error message "Invalid CV link"
 
-  @wip
   Scenario: US14 - 03 Apply to a job offer and add a invalid CV link with no .com
     Given I access the offers list page
     When I apply to a job offer with my email "juan@gmail.com" and my CV link "www.linkedin/juan"
