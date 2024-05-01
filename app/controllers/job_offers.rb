@@ -1,3 +1,6 @@
+CONFIRMATION_OF_INFORMATION_SENT_MESSAGE = 'Contact information sent.'.freeze
+SUCCESFUL_CREATION_MESSAGE = 'Offer created'.freeze
+
 JobVacancy::App.controllers :job_offers do
   get :my do
     @offers = JobOfferRepository.new.find_by_owner(current_user)
@@ -45,7 +48,7 @@ JobVacancy::App.controllers :job_offers do
     @job_application = JobApplication.new(applicant_email, @job_offer, cv_link)
     @job_application.process
 
-    flash[:success] = 'Contact information sent.'
+    flash[:success] = CONFIRMATION_OF_INFORMATION_SENT_MESSAGE
     redirect '/job_offers'
   rescue ActiveModel::ValidationError => _e
     @job_offer = JobOfferForm.from(JobOfferRepository.new.find(params[:offer_id]))
@@ -58,7 +61,7 @@ JobVacancy::App.controllers :job_offers do
     job_offer = JobOffer.new(job_offer_params)
     job_offer.owner = current_user
     if JobOfferRepository.new.save(job_offer)
-      flash[:success] = 'Offer created'
+      flash[:success] = SUCCESFUL_CREATION_MESSAGE
       redirect '/job_offers/my'
     end
   rescue ActiveModel::ValidationError => e
