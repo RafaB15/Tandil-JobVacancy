@@ -49,7 +49,7 @@ JobVacancy::App.controllers :job_offers do
     applicant_email = params[:job_application_form][:applicant_email]
     cv_link = params[:job_application_form][:cv_link]
 
-    @job_application = JobApplication.new(applicant_email, @job_offer, cv_link)
+    @job_application = JobApplication.create_for(applicant_email, @job_offer, cv_link)
     @job_application.process
 
     flash[:success] = CONFIRMATION_OF_INFORMATION_SENT_MESSAGE

@@ -15,6 +15,7 @@ class JobApplication
   end
 
   def self.create_for(email, offer, cv_link = nil)
+    cv_link = nil if cv_link == ''
     JobApplication.new(email, offer, cv_link)
   end
 
