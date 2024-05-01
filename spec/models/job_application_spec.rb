@@ -16,9 +16,15 @@ describe JobApplication do
       end
     end
 
+    it 'should be invalid when cv link exists and does not contain .com' do
+      check_validation(:cv_link, 'Cv link must contain ".com"') do
+        described_class.new('applicant@test.com', job_offer, 'www.linkedin/juan')
+      end
+    end
+
     it 'should be invalid when cv link exists and does not contain www.' do
-      check_validation(:cv_link, 'Cv link must contain "www"') do
-        described_class.new('applicant@test.com', job_offer, 'linkedin/juan')
+      check_validation(:cv_link, 'Cv link must contain "www."') do
+        described_class.new('applicant@test.com', job_offer, 'linkedin/juan.com')
       end
     end
 
