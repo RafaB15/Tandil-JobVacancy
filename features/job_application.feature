@@ -32,7 +32,6 @@ Scenario: US02 - 01 Apply to a job offer and add a valid description
     When I apply to a job offer with my email "juan@gmail.com" and my description "No tengo experiencia pero si muchas ganas de aprender"
     Then I should see a applied to job offer confirmation message "Contact information sent."
 
-@wip
 Scenario: US02 - 02 Apply to a job offer and add a short description
 
     Given I access the offers list page

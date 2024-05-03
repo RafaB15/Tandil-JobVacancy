@@ -3,7 +3,8 @@ SUCCESFUL_CREATION_MESSAGE = 'Offer created'.freeze
 CREATION_ERROR_MESSAGE = 'Please review the errors'.freeze
 UPDATE_ERROR_MESSAGE = 'Please review the errors'.freeze
 SUCCESFUL_UPDATE_MESSAGE = 'Offer updated'.freeze
-JOB_APPLICATION_ERROR_MESSAGE = 'Invalid CV link'.freeze
+CV_LINK_ERROR_MESSAGE = 'Invalid CV link'.freeze
+DESCRIPTION_ERROR_MESSAGE = 'Invalid description minimum 10 characters and maximum 500 characters'.freeze
 
 JobVacancy::App.controllers :job_offers do
   get :my do
@@ -48,16 +49,23 @@ JobVacancy::App.controllers :job_offers do
     @job_offer = JobOfferRepository.new.find(params[:offer_id])
     applicant_email = params[:job_application_form][:applicant_email]
     cv_link = params[:job_application_form][:cv_link]
+    description = params[:job_application_form][:description]
 
-    @job_application = JobApplication.create_for(applicant_email, @job_offer, cv_link)
+    @job_application = JobApplication.create_for(applicant_email, @job_offer, cv_link, description)
     @job_application.process
 
     flash[:success] = CONFIRMATION_OF_INFORMATION_SENT_MESSAGE
     redirect '/job_offers'
-  rescue ActiveModel::ValidationError => _e
+  rescue ActiveModel::ValidationError => e
     @job_offer = JobOfferForm.from(JobOfferRepository.new.find(params[:offer_id]))
     @job_application = JobApplicationForm.new
-    flash.now[:error] = JOB_APPLICATION_ERROR_MESSAGE
+
+    if e.model.errors.key?('cv_link') # to-do constante
+      error_message = CV_LINK_ERROR_MESSAGE
+    elsif e.model.errors.key?('description') # to-do constante
+      error_message = DESCRIPTION_ERROR_MESSAGE
+    end
+    flash.now[:error] = error_message
     render 'job_offers/apply'
   end
 
