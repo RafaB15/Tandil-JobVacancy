@@ -1,7 +1,7 @@
 Job Vacancy Application
 =======================
 
-### Julián Melmer Stiefkens
+### Equipo Tandil
 
 [![pipeline status](https://gitlab.com/fiuba-memo2/alumnos-jobvacancy/julian/badges/main/pipeline.svg)](https://gitlab.com/fiuba-memo2/alumnos-jobvacancy/julian/commits/main)
 
