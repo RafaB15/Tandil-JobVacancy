@@ -39,3 +39,10 @@ end
 Then('I should see a applied to job offer confirmation message {string}') do |confirmation_message|
   page.should have_content(confirmation_message)
 end
+
+Given('I apply to a job offer with my email {string} and my description {string}') do |email, description|
+  click_link 'Apply'
+  fill_in('job_application_form[applicant_email]', with: email)
+  fill_in('job_application_form[description]', with: description)
+  click_button('Apply')
+end
