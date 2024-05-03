@@ -32,6 +32,12 @@ describe JobApplication do
       job_application = described_class.create_for('applicant@test.com', job_offer, 'www.linkedin/juan.com')
       expect(job_application.valid?).to eq true
     end
+
+    it 'should be invalid when the description has less than 10 characters' do
+      check_validation(:description, 'Description must contain at least 10 characters') do
+        described_class.create_for('applicant@test.com', job_offer, nil, 'hello')
+      end
+    end
   end
 
   describe 'create_for' do
