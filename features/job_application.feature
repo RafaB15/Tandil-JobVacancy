@@ -48,7 +48,6 @@ Feature: Job Application
     When I apply to a job offer with a valid description
     Then the owner should receive an email with my description
 
-  @wip
   Scenario: Apply to job offer with valid cv link and description
       Given I access the offers list page
       When I apply to a job offer with a valid cv link and description

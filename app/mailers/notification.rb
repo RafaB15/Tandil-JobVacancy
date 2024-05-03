@@ -55,7 +55,7 @@ JobVacancy::App.mailer :notification do
     to job_application.job_offer.owner.email
     subject 'Job Application: New applicant submission'
     locals job_offer: job_application.job_offer, applicant_email: job_application.applicant_email,
-           applicant_description: job_application.description
+           applicant_description: job_application.description, applicant_cv_link: job_application.cv_link
     content_type :plain
     render 'notification/contact_info_email_to_employer'
   end
