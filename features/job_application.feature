@@ -26,6 +26,11 @@ Feature: Job Application
     When I apply to a job offer with my email "juan@gmail.com" and my CV link "www.linkedin/juan"
     Then I should see an error message "Invalid CV link"
 
+  Scenario: US14 - 04 Apply to job offer with valid cv link and description and receive an email
+    Given I access the offers list page
+    When I apply to a job offer with a valid cv link and description
+    Then the owner should receive an email with my cv link and description
+
   Scenario: US02 - 01 Apply to a job offer and add a valid description
 
     Given I access the offers list page
@@ -47,8 +52,3 @@ Feature: Job Application
     Given I access the offers list page
     When I apply to a job offer with a valid description
     Then the owner should receive an email with my description
-
-  Scenario: Apply to job offer with valid cv link and description
-      Given I access the offers list page
-      When I apply to a job offer with a valid cv link and description
-      Then the owner should receive an email with my cv link and description
