@@ -38,7 +38,6 @@ Scenario: US02 - 02 Apply to a job offer and add a short description
     When I apply to a job offer with my email "juan@gmail.com" and my description "Hola"
     Then I should see an error message "Invalid description minimum 10 characters and maximum 500 characters"
 
-@wip
 Scenario: US02 - 03 Apply to a job offer and add a long description
 
     Given I access the offers list page

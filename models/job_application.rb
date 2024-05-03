@@ -7,6 +7,7 @@ class JobApplication
   validates_format_of :cv_link, with: /www./, message: 'must contain "www."', allow_nil: true
   validates_format_of :cv_link, with: /.com/, message: 'must contain ".com"', allow_nil: true
   validates_length_of :description, minimum: 10, message: 'must contain at least 10 characters', allow_nil: true
+  validates_length_of :description, maximum: 500, message: 'can contain up to 500 characters', allow_nil: true
 
   def initialize(email, offer, cv_link = nil, description = nil)
     @applicant_email = email

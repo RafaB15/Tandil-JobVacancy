@@ -1,5 +1,14 @@
 require 'spec_helper'
 
+DESCRIPTION_TOO_LONG = 'Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola
+  Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola
+  Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola
+  Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola
+  Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola
+  Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola
+  Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola
+  Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola Hola'.freeze
+
 describe JobApplication do
   let(:job_offer) { JobOffer.new(title: 'a title') }
 
@@ -36,6 +45,12 @@ describe JobApplication do
     it 'should be invalid when the description has less than 10 characters' do
       check_validation(:description, 'Description must contain at least 10 characters') do
         described_class.create_for('applicant@test.com', job_offer, nil, 'hello')
+      end
+    end
+
+    it 'should be invalid when the description has more than 500 characters' do
+      check_validation(:description, 'Description can contain up to 500 characters') do
+        described_class.create_for('applicant@test.com', job_offer, nil, DESCRIPTION_TOO_LONG)
       end
     end
   end
