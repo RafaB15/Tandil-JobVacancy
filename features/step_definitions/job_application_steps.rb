@@ -9,6 +9,7 @@ Given(/^only a "(.*?)" offer exists in the offers list$/) do |job_title|
 
   @applicant_email = 'applicant@test.com'
   @applicant_description = 'Estoy muy entusiasmado por participar en el proyecto'
+  @cv_link = 'www.validurl.com/validcv'
 end
 
 Given(/^I access the offers list page$/) do
@@ -24,6 +25,14 @@ end
 When('I apply to a job offer with a valid description') do
   click_link 'Apply'
   fill_in('job_application_form[applicant_email]', with: @applicant_email)
+  fill_in('job_application_form[description]', with: @applicant_description)
+  click_button('Apply')
+end
+
+When('I apply to a job offer with a valid cv link and description') do
+  click_link 'Apply'
+  fill_in('job_application_form[applicant_email]', with: @applicant_email)
+  fill_in('job_application_form[cv_link]', with: @cv_link)
   fill_in('job_application_form[description]', with: @applicant_description)
   click_button('Apply')
 end
@@ -46,6 +55,16 @@ Then('the owner should receive an email with my description') do
   content.include?(@job_offer.title).should be true
   content.include?(@applicant_email).should be true
   content.include?(@applicant_description).should be true
+end
+
+Then('the owner should receive an email with my cv link and description') do
+  mail_store = "#{Padrino.root}/tmp/emails"
+  file = File.open("#{mail_store}/#{@job_offer.owner.email}", 'r')
+  content = file.read
+  content.include?(@job_offer.title).should be true
+  content.include?(@applicant_email).should be true
+  content.include?(@applicant_description).should be true
+  content.include?(@cv_link).should be true
 end
 
 When('I apply to a job offer with my email {string} and my CV link {string}') do |email, cv_link|
