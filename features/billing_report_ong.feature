@@ -9,4 +9,8 @@ Feature: ONG Billing Report
 		When I get the billing report
 		Then the amount to pay for the user "pepe@pepito.com" is 0.0
 
-    
+	@wip
+	Scenario: US90 - 02 One User with an ONG subscription with 4 offers.
+		Given 4 active offers
+		When I get the billing report
+		Then the amount to pay for the user "pepe@pepito.com" is 15.0

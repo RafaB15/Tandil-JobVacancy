@@ -37,6 +37,13 @@ describe 'Subscription' do
 
         expect(subscription_type.compute_amount_to_pay_for_total_active_offers(total_active_offers)).to eq 0
       end
+
+      it 'should be 15 when more than 3 active offers' do
+        total_active_offers = 4
+        subscription_type = described_class.new
+
+        expect(subscription_type.compute_amount_to_pay_for_total_active_offers(total_active_offers)).to eq 15
+      end
     end
   end
 end
