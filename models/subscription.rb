@@ -1,3 +1,17 @@
+class InvalidSubscriptionTypeError < StandardError
+  ERROR_MSG = 'error: provided subscription type is not a valid one.'.freeze
+  def initialize(msg = ERROR_MSG)
+    super(msg)
+  end
+end
+
+class InvalidSubscriptionError < StandardError
+  ERROR_MSG = 'error: provided subscription is not a valid one.'.freeze
+  def initialize(msg = ERROR_MSG)
+    super(msg)
+  end
+end
+
 class SubscriptionFactory
   ON_DEMAND_TYPE = 'on-demand'.freeze
   CORPORATE_TYPE = 'corporate'.freeze
@@ -12,7 +26,7 @@ class SubscriptionFactory
     when PROFESSIONAL_TYPE
       SubscriptionProfessional.new
     else
-      SubscriptionOnDemand.new
+      raise InvalidSubscriptionTypeError
     end
   end
 
@@ -21,7 +35,9 @@ class SubscriptionFactory
 
     return CORPORATE_TYPE if subscription.is_a?(SubscriptionCorporate)
 
-    PROFESSIONAL_TYPE if subscription.is_a?(SubscriptionProfessional)
+    return PROFESSIONAL_TYPE if subscription.is_a?(SubscriptionProfessional)
+
+    raise InvalidSubscriptionError
   end
 
   def self.default

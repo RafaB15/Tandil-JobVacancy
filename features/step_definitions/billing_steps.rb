@@ -6,24 +6,11 @@ PROFESSIONAL_SUBSCRIPTION = 'professional'.freeze
 ANOTHER_USER_EMAIL = 'another@email.com'.freeze
 SOME_PASSWORD = 'someP4$$word!'.freeze
 
-def create_subscription_with(subscription_type)
-  case subscription_type
-  when ON_DEMAND_SUBSCRIPTION
-    SubscriptionOnDemand.new
-  when CORPORATE_SUBSCRIPTION
-    SubscriptionCorporate.new
-  when PROFESSIONAL_SUBSCRIPTION
-    SubscriptionProfessional.new
-  else
-    expect(true).to eq false # raise error, no known subscription
-  end
-end
-
 # Given
 # =========================================================s
 
 Given('a user {string} with {string} subscription') do |user_email, subscription_type|
-  subscription = create_subscription_with(subscription_type)
+  subscription = SubscriptionFactory.create_from_string(subscription_type)
 
   @user = User.create(user_email, user_email, SOME_PASSWORD, subscription)
 
@@ -49,7 +36,7 @@ Given('{int} active offers') do |offer_count|
 end
 
 Given('another user {string} with {string} subscription') do |user_email, subscription_type|
-  subscription = create_subscription_with(subscription_type)
+  subscription = SubscriptionFactory.create_from_string(subscription_type)
 
   @user = User.create(user_email, user_email, SOME_PASSWORD, subscription)
 
@@ -82,7 +69,7 @@ Given('the user {string}') do |user_email|
 end
 
 Given('another user with {string} subscription') do |subscription_type|
-  subscription = create_subscription_with(subscription_type)
+  subscription = SubscriptionFactory.create_from_string(subscription_type)
 
   @user = User.create(ANOTHER_USER_EMAIL, ANOTHER_USER_EMAIL, SOME_PASSWORD, subscription)
 
