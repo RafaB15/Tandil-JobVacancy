@@ -80,8 +80,10 @@ class SubscriptionProfessional
 end
 
 class SubscriptionONG
+  FIXED_AMOUNT = 15
+
   def compute_amount_to_pay_for_total_active_offers(total_active_offers)
-    return 15 if total_active_offers.positive?
+    return FIXED_AMOUNT if total_active_offers.positive?
 
     0
   end
