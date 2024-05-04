@@ -4,16 +4,10 @@ JobVacancy::App.controllers :reports, provides: [:json] do
     job_offer_repo = JobOfferRepository.new
 
     offer_counter = OfferCounter.new(job_offer_repo)
+    user_biller = UserBiller.new(user_repo, job_offer_repo)
 
-    items = UserBiller.new(user_repo, job_offer_repo).create_all_users_billing
+    reporter = Reporter.new(offer_counter, user_biller)
 
-    total_amount = items.sum { |item| item[:amount_to_pay] }
-
-    report = {
-      items:,
-      total_amount:,
-      total_active_offers: offer_counter.count_active
-    }
-    return report.to_json
+    return reporter.report.to_json
   end
 end
