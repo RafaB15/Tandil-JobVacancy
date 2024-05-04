@@ -16,6 +16,7 @@ class SubscriptionFactory
   ON_DEMAND_TYPE = 'on-demand'.freeze
   CORPORATE_TYPE = 'corporate'.freeze
   PROFESSIONAL_TYPE = 'professional'.freeze
+  ONG_TYPE = 'ONG'.freeze
 
   def self.create_from_string(subscription_type)
     case subscription_type
@@ -25,6 +26,8 @@ class SubscriptionFactory
       SubscriptionCorporate.new
     when PROFESSIONAL_TYPE
       SubscriptionProfessional.new
+    when ONG_TYPE
+      SubscriptionONG.new
     else
       raise InvalidSubscriptionTypeError
     end
@@ -72,4 +75,7 @@ class SubscriptionProfessional
       FIXED_AMOUNT
     end
   end
+end
+
+class SubscriptionONG
 end
