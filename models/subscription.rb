@@ -80,4 +80,7 @@ class SubscriptionProfessional
 end
 
 class SubscriptionONG
+  def compute_amount_to_pay_for_total_active_offers(_total_active_offers)
+    0
+  end
 end
