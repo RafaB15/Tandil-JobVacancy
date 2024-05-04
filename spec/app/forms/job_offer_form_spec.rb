@@ -4,7 +4,7 @@ require 'spec_helper'
 def initialize_job_offer_with_valid_id
   repository = JobOfferRepository.new
 
-  owner = User.new(name: 'Joe', email: 'joe@doe.com', crypted_password: 'secure_pwd')
+  owner = User.new(name: 'Joe', email: 'joe@doe.com', crypted_password: 'secure_P4$$word')
   UserRepository.new.save(owner)
 
   job_offer = JobOffer.new(title: 'a title',

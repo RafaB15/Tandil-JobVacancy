@@ -4,7 +4,7 @@ CORPORATE_SUBSCRIPTION = 'corporate'.freeze
 PROFESSIONAL_SUBSCRIPTION = 'professional'.freeze
 
 ANOTHER_USER_EMAIL = 'another@email.com'.freeze
-SOME_PASSWORD = 'somePassword!'.freeze
+SOME_PASSWORD = 'someP4$$word!'.freeze
 
 def create_subscription_with(subscription_type)
   case subscription_type
