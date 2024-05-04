@@ -40,6 +40,8 @@ class SubscriptionFactory
 
     return PROFESSIONAL_TYPE if subscription.is_a?(SubscriptionProfessional)
 
+    return ONG_TYPE if subscription.is_a?(SubscriptionONG)
+
     raise InvalidSubscriptionError
   end
 
