@@ -52,6 +52,7 @@ end
 
 class SubscriptionOnDemand
   AMOUNT_PER_OFFER = 10
+
   def compute_amount_to_pay_for_total_active_offers(total_active_offers)
     AMOUNT_PER_OFFER * total_active_offers
   end
@@ -81,9 +82,10 @@ end
 
 class SubscriptionONG
   FIXED_AMOUNT = 15
+  MAXIMUM_AMOUNT_OF_INCLUDED_OFFERS = 3
 
   def compute_amount_to_pay_for_total_active_offers(total_active_offers)
-    return FIXED_AMOUNT if total_active_offers.positive?
+    return FIXED_AMOUNT if total_active_offers > MAXIMUM_AMOUNT_OF_INCLUDED_OFFERS
 
     0
   end
