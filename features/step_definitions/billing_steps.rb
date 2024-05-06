@@ -7,7 +7,7 @@ ANOTHER_USER_EMAIL = 'another@email.com'.freeze
 SOME_PASSWORD = 'someP4$$word!'.freeze
 
 # Given
-# =========================================================s
+# =========================================================
 
 Given('a user {string} with {string} subscription') do |user_email, subscription_type|
   subscription = SubscriptionFactory.create_from_string(subscription_type)

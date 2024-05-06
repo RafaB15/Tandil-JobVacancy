@@ -20,7 +20,9 @@ Feature: User Create
         When I create a new user "pablo@gmail.com" with a password "Hola1234"
         Then I should see an error message "Special character missing : $ , _ , &"
 
-    @wip
+# US53
+# =========================================================
+
     Scenario: US53 - 01 Create an account with default subscription and review it in the report
 
         When I create a new user with default subscription

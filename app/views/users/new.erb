@@ -1,8 +1,11 @@
 <h1>Registration</h1>
-<% form_for(@user, '/users/create') do |f| %> <%= f.label :name %>
+<% form_for(@user, '/users/create') do |f| %> 
+  <%= f.label :name %>
 	<%= f.text_field :name %>
 	<%= f.label :email %>
  	<%= f.text_field :email %>
+  <%= f.label :subscription_type %>
+ 	<%= f.text_field :subscription_type %>
   <%= f.label :password %>
   <%= f.password_field :password %>
   <%= f.label :password_confirmation %>
