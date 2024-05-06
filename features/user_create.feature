@@ -29,30 +29,29 @@ Feature: User Create
         Then I should see a user created confirmation message "User created"
         And I should see "on-demand" subscription in the users report
 
-    @wip
     Scenario: US53 - 02 Create an account with on-demand subscription and review it in the report
 
-        Given a user "pepe@pepito.com" with "on-demand" subscription
+        When I create a new user with "on-demand" subscription
         Then I should see a user created confirmation message "User created"
-        And I should see "on-demand" subscription in the user's report
+        And I should see "on-demand" subscription in the users report
 
     @wip
     Scenario: US53 - 03 Create an account with corporate subscription and review it in the report
 
-        Given a user "pepe@pepito.com" with "corporate" subscription
+        When I create a new user with "corporate" subscription
         Then I should see a user created confirmation message "User created"
-        And I should see "corporate" subscription in the user's report
+        And I should see "corporate" subscription in the users report
 
     @wip
     Scenario: US53 - 04 Create an account with professional subscription and review it in the report
 
-        Given a user "pepe@pepito.com" with "professional" subscription
+        When I create a new user with "professional" subscription
         Then I should see a user created confirmation message "User created"
-        And I should see "professional" subscription in the user's report
+        And I should see "professional" subscription in the users report
 
     @wip
     Scenario: US53 - 05 Create an account with ONG subscription and 5 active job offers and review it in the report
 
-        Given I create a new user with "ONG" subscription
+        When I create a new user with "ONG" subscription
         And 5 active offers
-        Then I should see "ONG" subscription in the user's report
+        Then I should see "ONG" subscription in the users report
