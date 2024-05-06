@@ -5,6 +5,11 @@ describe SubscriptionFactory do
       subscription = described_class.create_from_string('ONG')
       expect(subscription).to be_a(SubscriptionONG)
     end
+
+    it 'should create an on-demand subscription when empty string' do
+      subscription = described_class.create_from_string('')
+      expect(subscription).to be_a(SubscriptionOnDemand)
+    end
   end
 
   describe 'create_from_object' do

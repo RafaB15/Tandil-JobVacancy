@@ -12,7 +12,8 @@ JobVacancy::App.controllers :users do
     password_confirmation = params[:user][:password_confirmation]
     params[:user].reject! { |k, _| k == 'password_confirmation' }
 
-    @user = User.new(params[:user])
+    subscription = SubscriptionFactory.create_from_string(params[:user][:subscription_type])
+    @user = User.create(params[:user][:name], params[:user][:email], params[:user][:password], subscription)
 
     if params[:user][:password] == password_confirmation
       if params[:user][:password] == BLANK_INPUT || params[:user][:name] == BLANK_INPUT ||

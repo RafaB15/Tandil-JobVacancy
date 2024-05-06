@@ -1,3 +1,6 @@
+USER_NAME = 'pepito'.freeze
+PASSWORD = 'P4$$word'.freeze
+
 # When
 # =========================================================
 
@@ -14,11 +17,11 @@ When('I create a new user with default subscription') do
   @user_email = 'pepito@gmail.com'
 
   visit '/register'
-  fill_in('user[name]', with: 'pepito')
+  fill_in('user[name]', with: USER_NAME)
   fill_in('user[email]', with: @user_email)
   fill_in('user[subscription_type]', with: '')
-  fill_in('user[password]', with: 'P4$$word')
-  fill_in('user[password_confirmation]', with: 'P4$$word')
+  fill_in('user[password]', with: PASSWORD)
+  fill_in('user[password_confirmation]', with: PASSWORD)
   click_button('Create')
 end
 
@@ -26,11 +29,11 @@ When('I create a new user with {string} subscription') do |subscription_type|
   @user_email = 'pepito@gmail.com'
 
   visit '/register'
-  fill_in('user[name]', with: 'pepito')
+  fill_in('user[name]', with: USER_NAME)
   fill_in('user[email]', with: @user_email)
   fill_in('user[subscription_type]', with: subscription_type)
-  fill_in('user[password]', with: 'P4$$word')
-  fill_in('user[password_confirmation]', with: 'P4$$word')
+  fill_in('user[password]', with: PASSWORD)
+  fill_in('user[password_confirmation]', with: PASSWORD)
   click_button('Create')
 end
 
