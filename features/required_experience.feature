@@ -1,0 +1,77 @@
+Feature: Required Experience
+  In order to get employees
+  As a job offerer
+  I want to detail the required experience 
+  While creating an offer
+
+  Background:
+  	Given I am logged in as job offerer
+
+  Scenario: Create new deactivated offer
+    When I create a new offer with "Smalltalk Dev" as the title and "10" as required years of experience
+    Then I should see a offer created confirmation message
+    And I should see "Smalltalk Dev" with "10" required years of experience in my offers list
+
+  Scenario: Check values of activated offer
+    Given I have a offer with "Smalltalk Dev" as title and "10" as required years of experience in my offers list
+    When I activate the job offer
+    Then I should see a offer activated confirmation message
+    And I should see "Smalltalk Dev" with "10" required years of experience in the job offers tab
+
+  Scenario: Create new deactivated offer with no required experience
+    When I create a new offer with "Rust Dev" as the title and "" as required years of experience
+    Then I should see a offer created confirmation message
+    And I should see "Rust Dev" with "Not specified" required years of experience in my offers list
+
+  Scenario: Check values of activated offer with no required experience
+    Given I have a offer with "Rust Dev" as title and "" as required years of experience in my offers list
+    When I activate the job offer
+    Then I should see a offer activated confirmation message
+    And I should see "Rust Dev" with "Not specified" required years of experience in the job offers tab
+
+  Scenario: Create new deactivated offer with 0 required experience
+    When I create a new offer with "Solidity Dev" as the title and "0" as required years of experience
+    Then I should see a offer created confirmation message
+    And I should see "Solidity Dev" with "Not specified" required years of experience in my offers list
+
+  Scenario: Check values of activated offer with 0 required experience
+    Given I have a offer with "Solidity Dev" as title and "0" as required years of experience in my offers list
+    When I activate the job offer
+    Then I should see a offer activated confirmation message
+    And I should see "Solidity Dev" with "Not specified" required years of experience in the job offers tab
+
+  Scenario: Update offer and change nothing
+    Given I have a offer with "Smalltalk Dev" as title and "10" as required years of experience in my offers list
+    When I change nothing and save
+    Then I should see a offer updated confirmation message
+    And I should see "Smalltalk Dev" with "10" required years of experience in my offers list
+  
+  Scenario: Update offer
+    Given I have a offer with "Smalltalk Dev" as title and "10" as required years of experience in my offers list
+    When I change the required years of experience to "4"
+    Then I should see a offer updated confirmation message
+    And I should see "Smalltalk Dev" with "4" required years of experience in my offers list
+
+  Scenario: Update offer to no required experience
+    Given I have a offer with "Smalltalk Dev" as title and "10" as required years of experience in my offers list
+    When I change the required years of experience to ""
+    Then I should see a offer updated confirmation message
+    And I should see "Smalltalk Dev" with "Not specified" required years of experience in my offers list
+
+  Scenario: Update offer with 0 required experience to 8 years of experience
+    Given I have a offer with "Solidity Dev" as title and "" as required years of experience in my offers list
+    When I change the required years of experience to "8"
+    Then I should see a offer updated confirmation message
+    And I should see "Solidity Dev" with "8" required years of experience in my offers list
+
+  Scenario: Try to create a offer with text as required years of experience
+    When I create a new offer with "C Dev" as the title and "Experienced" as required years of experience
+    Then I should see an error message
+
+  Scenario: Try to create a offer with negative value as required years of experience
+    When I create a new offer with "C Dev" as the title and "-5" as required years of experience
+    Then I should see an error message
+  
+  Scenario: Try to create a offer with float value as required years of experience
+    When I create a new offer with "C Dev" as the title and "1.5" as required years of experience
+    Then I should see an error message
