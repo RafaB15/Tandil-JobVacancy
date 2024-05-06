@@ -6,13 +6,11 @@ class User
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d-]+(\.[a-z]+)*\.[a-z]+\z/i
 
   validates :name, :crypted_password, presence: true
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX,
-                                              message: 'invalid email' }
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX, message: 'invalid email' }
   validates_length_of :crypted_password, minimum: 8, message: 'Password too short, minimum length is 8 characters'
   validates_format_of :crypted_password, with: /\d/, message: 'Password must contain at least one number'
   validates_format_of :crypted_password, with: /[A-Z]/, message: 'Missing uppercase letters'
-  validates_format_of :crypted_password, with: /[$_&]/,
-                                         message: 'Missing uppercase lettersSpecial character missing : $ , _ , &'
+  validates_format_of :crypted_password, with: /[$_&]/, message: 'Special character missing : $ , _ , &'
 
   def self.create(name, email, password, subscription)
     data = {}
@@ -43,5 +41,12 @@ class User
 
   def amount_to_pay(number_of_active_offers)
     @subscription.compute_amount_to_pay_for_total_active_offers(number_of_active_offers)
+  end
+end
+
+class ErrorSavingUser < StandardError
+  ERROR_MSG = 'Error saving user in repository'.freeze
+  def initialize(error_message = ERROR_MSG)
+    super(error_message)
   end
 end

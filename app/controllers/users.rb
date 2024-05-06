@@ -9,30 +9,34 @@ JobVacancy::App.controllers :users do
   end
 
   post :create do
+    name = params[:user][:name]
+    email = params[:user][:email]
+    subscription_type = params[:user][:subscription_type]
+    password = params[:user][:password]
     password_confirmation = params[:user][:password_confirmation]
-    params[:user].reject! { |k, _| k == 'password_confirmation' }
 
-    subscription = SubscriptionFactory.create_from_string(params[:user][:subscription_type])
-    @user = User.create(params[:user][:name], params[:user][:email], params[:user][:password], subscription)
+    # Si no se guarda un objeto user (valido o no) rompe el users/new
+    user_creator = UserCreator.new(name, email, subscription_type, password)
+    @user = user_creator.create_user
 
-    if params[:user][:password] == password_confirmation
-      if params[:user][:password] == BLANK_INPUT || params[:user][:name] == BLANK_INPUT ||
-         params[:user][:email] == BLANK_INPUT
-        flash.now[:error] = MANDATORY_FIELDS_MESSAGE
-        render 'users/new'
-      else
-        validator = PasswordValidator.new(params[:user][:password])
-        string_state = validator.describe_state
-        if string_state == PasswordValidator::USER_CREATED_MESSAGE && UserRepository.new.save(@user)
-          flash[:success] = string_state
-          redirect '/'
-        else
-          flash.now[:error] = string_state
-          render 'users/new'
-        end
-      end
-    else
+    if password != password_confirmation
       flash.now[:error] = PASSWORDS_DONT_MATCH_MESSAGE
+      render 'users/new'
+      return
+    end
+
+    if name == BLANK_INPUT || email == BLANK_INPUT || password == BLANK_INPUT
+      flash.now[:error] = MANDATORY_FIELDS_MESSAGE
+      render 'users/new'
+      return
+    end
+
+    begin
+      user_creator.validate_and_save_user
+      flash[:success] = 'User created'
+      redirect '/'
+    rescue ActiveModel::ValidationError => e
+      flash.now[:error] = e.message
       render 'users/new'
     end
   end
