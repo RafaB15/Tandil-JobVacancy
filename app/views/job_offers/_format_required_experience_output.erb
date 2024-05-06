@@ -1,0 +1,5 @@
+			<% if offer.is_required_experience_not_specified? %>
+        <p>Not specified</p>
+      <% else %>
+        <%= offer.required_experience %>
+      <% end %>

@@ -1,0 +1,95 @@
+## LOG
+
+- Agregado al .gitlab-ci.yml lineas para el deploy
+- Hay que crear branch deploy
+- Cambio el .gitlab-ci.yml denuevo
+- Creada la branch deploy
+- Agregado step de primer acceptance test
+- En controller de reports creamos una entidad que haga la cuenta del monto total de ganancia de la página web. Esta entidad esta pensada de tal forma que se puede comunicar con los repos y pedir informacion acerca de todos los JobOffers
+- Tenemos un unit test para probar AmountAdder
+- Llamamos a Amount Adder desde el controller para obtener la suma total e imprimirla como float en el JSON
+- Definimos los steps para el primer escenario de 'on-demand'
+- Agregamos método en JobOfferRepository para poder desactivar todas las ofertas.
+- Nos damos cuenta de que mi deploy a merge no cuenta como un commit (claramente). Entramos en panico por que paez nos va a bajar puntos
+- Tomamos como valor default para la suscripción como 'on-demand'. Es decir, si no se aclara cuál, se usa 'on-demand'
+- Agregamos un unit test que define el comportamiento de SubscriptionOnDemand al calcular el amount to pay cuando no hay ninguna subscripcion activa
+- Hicimos pasar el test. Creamos SubscripcionOnDemand 
+- Agregamos 2 tests nuevos a User para agregar las subscripciones al usuario
+- Agregamos atributo "subscription_type" para User.
+- El atributo "subscription_type" ahora corresponde a una clase del dominio.
+- Cambiamos el máximo de lineas en test en rubocop a 8 (en un mail se indicó max 8).
+- Creamos prueba unitaria para nueva entidad que arme los items del Report.
+- Pasa el nuevo unit test. Ya esta creado el UserBiller. Este se encarga de hacer el reporte de cada usuario individual y devolver un vector de estos
+- Cambios a los features que tienen typos
+- Sacamos un print que estaba de mas
+- refactorizamos el test anterior para que sea mas claro
+- Pasamos el segundo acceptance test: el json del endpoint resulta como se esperaba
+- Agregamos un save a pepe@pepito en la BDD. Y un JobOffer save tambien
+- Creado los steps para siguiente test de aceptacion
+- Creado un unit test que le hace un double a la bdd
+- Despues de pasar este unit test va a haber que empezar a tocar la BDDs
+- Pasamos test unitario para el nuevo escenario
+- Pasamos nuevo escenario
+- "En terminos de refactor. No tenemos refactor" ~ Gru
+- Nuevos steps
+- Nuevo unit test. Hay que hacerlo pasar
+- Ahora si se viene el refactor
+- Creada lógica de suscripción 'on-demand'
+- Pasa el unit test para 30.0 de costo
+- Pasa el acceptance test on3.
+- Creamos los steps
+- Creamos un unit test para darle funcionalidad al calculo add_amount de AmountAdder
+- Test unitario pasando con implementación mínima.
+- Pasa acceptance test on4
+- Implementamos steps nuevos
+- Pasa acceptance test on5
+- Refactor en las pruebas unitarias de usuario. Este debe recibir una subscription type ya inicializada
+- Se crea una prueba unitaria y se crea la clase SubscriptionCorporate para que pase el test
+- Refactor al primer test de gherkin segun un mail. Lo cambiamos ya que no es lo suficientemente descriptivo. Tambien tuvimos que cambiar los steps
+- Agregada nueva prueba unitaria para biller, hay que hacerla pasar
+- Refactor a los tests para que los mocks sepan devolver el total a pagar.
+- Pasamos test unitario para que haya soporte para el nuevo tipo de suscripcion en UserBiller.
+- Agregamos lo necesario en el migrate y en UserRepository para poder guardar y levantar información acerca la suscripción.
+- GRAN REFACTOR: nos dimos cuenta que la implementación dependía mucho de tener a mano una clase de suscripción y que al momento de tener otro tipo y tener que guadarlo en la base de datos surgieron complicaciones. Además, como la suscripción compone al User, no corresponde acceder a su atributo para mandarle mensaje, sino que deberiamos pedirle al usuario que le pida a su suscripcion lo que necesitemos. De esta manera se puede guardar y rescatar un usuario de la BD sin modificaciones muy grandes.
+- REFACTOR: Refactorizamos steps para que soporten la nueva suscripción y se creen bien los usuarios nuevos.
+- Se agregó un mensaje para que el usuario pueda transformar su suscripcion desde un string a un objeto Suscription, porque desde el repository no podiamos instanciar suscripciones.
+- La responsabilidad de conocer cuanto pagar pasa al usuario y es este quien le consulta a su suscripcion cuanto es.
+- UserBiller ahora es polimorfico para los tipos de suscripciones.
+- Refactor en los tests para nuevos mensajes en los mocks.
+- Nuevo unit test y steps para reporte de multiples usuarios
+- Pendiente refactor de tests
+- Medio refactor hecho.
+- Pasa nuevo unit test.
+- Refactor a la implementación porque se rompieron otros tests.
+- Refactor a steps para encontrar el user que queremos (uso de each:)
+- Agregamos unit test para soportar varios usuarios con corporate
+- Refactor del amount_adder. Lo borramos, encontramos una mejor manera de hacer esto. Perdon
+- Refactor a UserBiller. Tambien a sus tests. Ahora funciona correctamente para vario usuarios
+- Agregamos query al repositorio de job offers
+- Pasa el nuevo acceptance test
+- Los escenarios que faltaban pasaron de una.
+- Refactor para que la lógica esté en el objeto SubscriptionCorporate.
+- Gran refactor para centralizar los tipos de suscripcion en un archivo junto con un factory para instanciarlos.
+- Refactor en los repositories para arreglar la mala implementación anterior.
+- Refactor a los steps para que contemplen el caso de subscripcion professional
+- refactor a user para que devuelva una clase de subscripcion default
+- Pasa prueba unitaria. Agregada la clase SubscriptionProfessional
+- Refactorizada la clase SubscriptionFactory. Ahora mapea de string a clase y de clase a string
+- El spec del subscription ahora es para todas las clases.
+- Creamos un test para la nueva suscripcion Professional.
+- Pasa el test creado para la nueva suscripcion.
+- Creamos nuevo unit test para UserBilling para implementar el calculo en el reporte.
+- Refactor de los test unitarios de user biller. Le saco la habilidad al usuario de contestar ".is_null?" 
+- El test que habiamos creado pasa de una. No sirve, no aporta funcionalidad, queda borrado.
+- Refactor a los nombres de subscripcion. Subsscription types son strings, subscriptions son objetos subscriptions
+- Refactor a las pruebas de user repository, saque codigo repetido. 
+- Pasa nueva prueba de user repository, ahora se guarda correctamente un professional subscription en la base de datos y se la loadea correctamente.
+- Pasa acceptance test p2
+- Pasa acceptance test p3 de una
+- p4 falla porque no está implementada bien la cuenta.
+- Creamos unit test en Suscription para calcular bien.
+- Implementamos bien la cuenta en SuscriptionProfessional
+- Pasa unit test
+- Pasan los escenarios restantes. Todos los escenarios terminados.
+- Falta hacer pruebas que checkeen que se ve correctamente en pantalla el subscription y el active_offers_count de cada usuario
+- Nuevo gherkin creado. Pasa, ahora el report billing esta creado al completo 
