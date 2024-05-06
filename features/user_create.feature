@@ -41,7 +41,6 @@ Feature: User Create
         Then I should see a user created confirmation message "User created"
         And I should see "corporate" subscription in the users report
 
-    @wip
     Scenario: US53 - 04 Create an account with professional subscription and review it in the report
 
         When I create a new user with "professional" subscription
