@@ -35,6 +35,8 @@ When('I create a new user with {string} subscription') do |subscription_type|
   fill_in('user[password]', with: PASSWORD)
   fill_in('user[password_confirmation]', with: PASSWORD)
   click_button('Create')
+
+  @user = UserRepository.new.find_by_email(@user_email)
 end
 
 # Then
