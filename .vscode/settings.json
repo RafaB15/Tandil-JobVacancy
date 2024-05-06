@@ -1,4 +1,0 @@
-{
-    "rubyTestExplorer.rspecCommand": "RACK_ENV=test bundle exec rspec",
-    "rubyTestRunner.specCommand": "RACK_ENV=test bundle exec rspec"
-}
