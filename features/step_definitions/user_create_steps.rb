@@ -1,6 +1,18 @@
 USER_NAME = 'pepito'.freeze
 PASSWORD = 'P4$$word'.freeze
 
+Given('I create a new user {string} with the email {string} and age {string}') do |name, email, age|
+  @email = email
+
+  visit '/register'
+  fill_in('user[name]', with: name)
+  fill_in('user[email]', with: email)
+  fill_in('user[password]', with: PASSWORD)
+  fill_in('user[password_confirmation]', with: PASSWORD)
+  fill_in('user[age]', with: age)
+  click_button('Create')
+end
+
 # When
 # =========================================================
 
