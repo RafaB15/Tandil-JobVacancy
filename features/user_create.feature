@@ -61,7 +61,6 @@ Feature: User Create
     Given I create a new user "Pablo" with the email "pablito@gmail.com" and age "17"
     Then I should see an error message "Invalid age. Must be 18 or over."
 
-  @wip
   Scenario: US35.1 - 03 Create a new user with age 18
     Given I create a new user "Pablo" with the email "pablito@gmail.com" and age "18"
     Then I should see a user created confirmation message "User created"
