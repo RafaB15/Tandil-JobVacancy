@@ -5,7 +5,7 @@
 	<%= f.label :email %>
  	<%= f.text_field :email %>
   <%= f.label :subscription_type %>
- 	<%= f.text_field :subscription_type %>
+ 	<%= f.select :subscription_type, :options =>SubscriptionFactory.load_hash_for_user_creation_form%>
   <%= f.label :password %>
   <%= f.password_field :password %>
   <%= f.label :password_confirmation %>

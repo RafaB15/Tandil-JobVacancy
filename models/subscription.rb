@@ -51,6 +51,16 @@ class SubscriptionFactory
   def self.default
     SubscriptionOnDemand.new
   end
+
+  def self.load_hash_for_user_creation_form
+    {
+      '': ON_DEMAND_TYPE,
+      'on-demand': ON_DEMAND_TYPE,
+      'professional': PROFESSIONAL_TYPE,
+      'corporate': CORPORATE_TYPE,
+      'ONG': ONG_TYPE
+    }
+  end
 end
 
 class SubscriptionOnDemand
