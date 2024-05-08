@@ -7,7 +7,7 @@ class UserCreator
     @age = age
   end
 
-  def validate_and_save_user
+  def create_user
     PasswordValidator.new(@password).describe_state # Si hago el validate abajo, tiene sentido este objeto ?
     User.verify_age(@age)
     user = User.create(@name, @email, @password, @subscription)

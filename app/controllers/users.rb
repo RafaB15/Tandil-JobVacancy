@@ -22,7 +22,7 @@ JobVacancy::App.controllers :users do
         flash.now[:error] = MANDATORY_FIELDS_MESSAGE
         render 'users/new'
       else
-        user_creator.validate_and_save_user
+        user_creator.create_user
         flash[:success] = 'User created'
         redirect '/'
       end
