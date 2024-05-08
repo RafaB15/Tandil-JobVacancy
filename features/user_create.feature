@@ -65,7 +65,6 @@ Feature: User Create
     Given I create a new user "Pablo" with the email "pablito@gmail.com" and age "18"
     Then I should see a user created confirmation message "User created"
 
-  @wip
   Scenario: US35.1 - 04 Create a new user with age over 18
     Given I create a new user "Pablo" with the email "pablito@gmail.com" and age "21"
     Then I should see a user created confirmation message "User created"
