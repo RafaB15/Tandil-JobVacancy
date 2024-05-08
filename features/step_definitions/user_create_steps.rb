@@ -22,6 +22,7 @@ When('I create a new user {string} with a password {string}') do |email, passwor
   fill_in('user[email]', with: email)
   fill_in('user[password]', with: password)
   fill_in('user[password_confirmation]', with: password)
+  fill_in('user[age]', with: '20')
   click_button('Create')
 end
 
@@ -34,6 +35,7 @@ When('I create a new user with default subscription') do
   fill_in('user[subscription_type]', with: '')
   fill_in('user[password]', with: PASSWORD)
   fill_in('user[password_confirmation]', with: PASSWORD)
+  fill_in('user[age]', with: '20')
   click_button('Create')
 end
 
@@ -46,6 +48,7 @@ When('I create a new user with {string} subscription') do |subscription_type|
   fill_in('user[subscription_type]', with: subscription_type)
   fill_in('user[password]', with: PASSWORD)
   fill_in('user[password_confirmation]', with: PASSWORD)
+  fill_in('user[age]', with: '20')
   click_button('Create')
 
   @user = UserRepository.new.find_by_email(@user_email)

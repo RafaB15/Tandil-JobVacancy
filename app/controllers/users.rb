@@ -13,7 +13,7 @@ JobVacancy::App.controllers :users do
     begin
       subscription = SubscriptionFactory.create_from_string(params[:user][:subscription_type])
       user_creator = UserCreator.new(params[:user][:name], params[:user][:email], subscription,
-                                     params[:user][:password])
+                                     params[:user][:password], params[:user][:age])
       if params[:user][:password] != params[:user][:password_confirmation]
         flash.now[:error] = PASSWORDS_DONT_MATCH_MESSAGE
         render 'users/new'
@@ -29,7 +29,7 @@ JobVacancy::App.controllers :users do
     rescue InvalidSubscriptionTypeError
       flash.now[:error] = 'Invalid subscription type'
       render 'users/new'
-    rescue InvalidPasswordError, ActiveModel::ValidationError => e
+    rescue InvalidPasswordError, InvalidAgeError, ActiveModel::ValidationError => e
       flash.now[:error] = e.message
       render 'users/new'
     end

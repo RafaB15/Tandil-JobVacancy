@@ -52,7 +52,7 @@ Feature: User Create
 
   # US35.1
   # =========================================================
-  @wip
+
   Scenario: US35.1 - 01 Create a new user without given age
     Given I create a new user "Pablo" with the email "pablito@gmail.com" and age ""
     Then I should see an error message "Invalid age. Must be 18 or over."
