@@ -25,5 +25,10 @@ describe SubscriptionFactory do
       subscription_type = described_class.create_from_object(subscription)
       expect(subscription_type).to eq 'ONG'
     end
+
+    it 'should raise error when invalid subscription' do
+      invalid_subscription = nil
+      expect { described_class.create_from_object(invalid_subscription) }.to raise_error(InvalidSubscriptionError)
+    end
   end
 end
