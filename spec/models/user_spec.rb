@@ -110,4 +110,12 @@ describe User do
       expect(user).to have_password(password)
     end
   end
+
+  describe 'verify_age' do
+    it 'should raise error when age is blank' do
+      described_class.verify_age('')
+    rescue InvalidAgeError => e
+      expect(e.message).to eq InvalidAgeError::INVALID_AGE_ERROR_MSG
+    end
+  end
 end

@@ -42,11 +42,22 @@ class User
   def amount_to_pay(number_of_active_offers)
     @subscription.compute_amount_to_pay_for_total_active_offers(number_of_active_offers)
   end
+
+  def self.verify_age(age)
+    raise InvalidAgeError if age.empty?
+  end
 end
 
 class ErrorSavingUser < StandardError
   ERROR_MSG = 'Error saving user in repository'.freeze
   def initialize(error_message = ERROR_MSG)
     super(error_message)
+  end
+end
+
+class InvalidAgeError < StandardError
+  INVALID_AGE_ERROR_MSG = 'Invalid age. Must be 18 or over.'.freeze
+  def message
+    INVALID_AGE_ERROR_MSG
   end
 end
