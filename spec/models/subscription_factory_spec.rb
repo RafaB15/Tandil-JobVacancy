@@ -10,6 +10,13 @@ describe SubscriptionFactory do
       subscription = described_class.create_from_string('')
       expect(subscription).to be_a(SubscriptionOnDemand)
     end
+
+    it 'should raise error when invalid string' do
+      invalid_subscription_type = 'NotASubcription'
+      expect do
+        described_class.create_from_string(invalid_subscription_type)
+      end.to raise_error(InvalidSubscriptionTypeError)
+    end
   end
 
   describe 'create_from_object' do
