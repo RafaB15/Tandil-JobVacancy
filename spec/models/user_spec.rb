@@ -117,5 +117,11 @@ describe User do
     rescue InvalidAgeError => e
       expect(e.message).to eq InvalidAgeError::INVALID_AGE_ERROR_MSG
     end
+
+    it 'should raise error when age is lower than 18' do
+      described_class.verify_age('17')
+    rescue InvalidAgeError => e
+      expect(e.message).to eq InvalidAgeError::INVALID_AGE_ERROR_MSG
+    end
   end
 end

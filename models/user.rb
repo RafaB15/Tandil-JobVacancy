@@ -1,4 +1,5 @@
 class User
+  MINIMUM_AGE = 18
   include ActiveModel::Validations
 
   attr_accessor :id, :name, :email, :crypted_password, :updated_on, :created_on, :subscription
@@ -44,7 +45,7 @@ class User
   end
 
   def self.verify_age(age)
-    raise InvalidAgeError if age.empty?
+    raise InvalidAgeError if age.empty? || age.to_i < MINIMUM_AGE
   end
 end
 
